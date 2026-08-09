@@ -7,6 +7,11 @@
   <title>My Critical Role Journey</title>
 
   <style>
+    :root {
+      --accent: #c6404f;
+      --progress: 0deg;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -47,17 +52,47 @@
 
     h1 span {
       display: block;
-      color: #c6404f;
+      color: var(--accent);
+      transition: color .25s ease;
     }
 
     .subtitle {
       max-width: 560px;
-      margin: 25px auto 45px;
+      margin: 25px auto 35px;
       text-align: center;
       color: #a99fa0;
       font-family: Arial, sans-serif;
       line-height: 1.7;
       font-size: 16px;
+    }
+
+    .customize {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      border: 1px solid #3e2b31;
+      background: rgba(25,18,21,.72);
+      border-radius: 15px;
+      padding: 15px 18px;
+      margin-bottom: 20px;
+    }
+
+    .customize-title {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #a99fa0;
+      text-transform: uppercase;
+    }
+
+    .color-picker {
+      width: 45px;
+      height: 38px;
+      padding: 2px;
+      border: 1px solid #5d4b50;
+      border-radius: 10px;
+      background: #161115;
     }
 
     .progress-card {
@@ -68,12 +103,25 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.35);
     }
 
-    .progress-circle {
-      width: 135px;
-      height: 135px;
+    .progress-ring {
+      width: 145px;
+      height: 145px;
       border-radius: 50%;
-      border: 11px solid #40232a;
       margin: auto;
+      display: grid;
+      place-items: center;
+      background:
+        conic-gradient(
+          var(--accent) var(--progress),
+          #40232a var(--progress)
+        );
+    }
+
+    .progress-inner {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #201519;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,7 +129,7 @@
     }
 
     .percent {
-      color: #d54b5b;
+      color: var(--accent);
       font-size: 34px;
       font-weight: bold;
     }
@@ -103,7 +151,7 @@
     }
 
     .up-label {
-      color: #d54b5b;
+      color: var(--accent);
       font-family: Arial, sans-serif;
       font-size: 10px;
       letter-spacing: 3px;
@@ -134,7 +182,7 @@
 
     .stat strong {
       display: block;
-      color: #d54b5b;
+      color: var(--accent);
       font-size: 20px;
     }
 
@@ -170,7 +218,7 @@
     }
 
     .campaign-number {
-      color: #c6404f;
+      color: var(--accent);
       font-size: 35px;
       width: 45px;
       text-align: center;
@@ -196,6 +244,120 @@
       font-size: 22px;
     }
 
+    .episode-list {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .episode-list::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: #39292e;
+    }
+
+    .episode {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      border: 1px solid #432a31;
+      background: rgba(27,18,22,.82);
+      border-radius: 17px;
+      padding: 18px;
+      margin-bottom: 14px;
+      transition: opacity .25s ease;
+    }
+
+    .episode::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 27px;
+      width: 11px;
+      height: 11px;
+      border: 3px solid #66545a;
+      border-radius: 50%;
+      background: #100d11;
+    }
+
+    .episode.watched::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .episode.watched {
+      opacity: .58;
+    }
+
+    .episode.watched .episode-name {
+      text-decoration: line-through;
+    }
+
+    .watch-check {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      border: 2px solid #67575c;
+      border-radius: 8px;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .watch-check:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .watch-check:checked::after {
+      content: "✓";
+      color: white;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .episode-number {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+
+    .episode-name {
+      font-family: Arial, sans-serif;
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .episode-note {
+      color: #887c7e;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+    .reset-button {
+      margin-top: 22px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #4b363d;
+      background: transparent;
+      color: #998b8f;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
     .footer-quote {
       margin-top: 55px;
       text-align: center;
@@ -203,167 +365,364 @@
       font-style: italic;
       font-size: 14px;
     }
-
-    @media (max-width: 430px) {
-      .page {
-        padding-top: 40px;
-      }
-
-      .stats {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .campaign {
-        padding: 17px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <main class="page">
+<main class="page">
 
-    <div class="eyebrow">
-      A fan-made watch tracker
+  <div class="eyebrow">
+    A fan-made watch tracker
+  </div>
+
+  <h1>
+    My Critical Role
+    <span>Journey</span>
+  </h1>
+
+  <p class="subtitle">
+    Track your adventures through Critical Role.
+    Check off what you've watched, find what comes next,
+    and never lose your place.
+  </p>
+
+  <div class="customize">
+    <div class="customize-title">
+      🎨 Choose Your Color
     </div>
 
-    <h1>
-      My Critical Role
-      <span>Journey</span>
-    </h1>
+    <input
+      type="color"
+      id="accentPicker"
+      class="color-picker"
+      value="#c6404f"
+      aria-label="Choose accent color"
+    >
+  </div>
 
-    <p class="subtitle">
-      Track your adventures through Critical Role.
-      Check off what you've watched, find what comes next,
-      and never lose your place.
-    </p>
+  <section class="progress-card">
 
-    <section class="progress-card">
-
-      <div class="progress-circle">
-        <div class="percent">0%</div>
+    <div class="progress-ring" id="progressRing">
+      <div class="progress-inner">
+        <div class="percent" id="percent">0%</div>
         <div class="complete">COMPLETE</div>
       </div>
+    </div>
 
-      <div class="up-next">
-        <div class="up-label">◆ Up Next</div>
-        <div class="up-title">
-          Campaign 1, Episode 1
+    <div class="up-next">
+      <div class="up-label">◆ Up Next</div>
+      <div class="up-title" id="upNext">
+        Campaign 1, Episode 1
+      </div>
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong id="watchedCount">0</strong>
+        <span>Watched</span>
+      </div>
+
+      <div class="stat">
+        <strong id="remainingCount">5</strong>
+        <span>Remaining</span>
+      </div>
+
+      <div class="stat">
+        <strong id="totalCount">5</strong>
+        <span>Adventures</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="section-title">
+    Begin Your Adventure
+  </div>
+
+  <div class="campaign">
+    <div class="campaign-number">I</div>
+
+    <div class="campaign-info">
+      <div class="campaign-name">Vox Machina</div>
+      <div class="campaign-subtitle">Campaign One</div>
+    </div>
+
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="campaign">
+    <div class="campaign-number">II</div>
+
+    <div class="campaign-info">
+      <div class="campaign-name">The Mighty Nein</div>
+      <div class="campaign-subtitle">Campaign Two</div>
+    </div>
+
+    <div class="arrow">›</div>
+  </div>
+
+  <div class="campaign">
+    <div class="campaign-number">III</div>
+
+    <div class="campaign-info">
+      <div class="campaign-name">Bells Hells</div>
+      <div class="campaign-subtitle">Campaign Three</div>
+    </div>
+
+    <div class="arrow">›</div>
+  </div>
+
+
+  <div class="section-title">
+    Test Your Tracker
+  </div>
+
+  <div class="episode-list" id="episodeList"></div>
+
+  <button class="reset-button" id="resetProgress">
+    Reset test progress
+  </button>
+
+  <div class="footer-quote">
+    "How do you want to do this?"
+  </div>
+
+</main>
+
+
+<script>
+
+  const episodes = [
+    {
+      id: "c1e1",
+      label: "Campaign 1 • Episode 1",
+      title: "Campaign 1, Episode 1"
+    },
+    {
+      id: "c1e2",
+      label: "Campaign 1 • Episode 2",
+      title: "Campaign 1, Episode 2"
+    },
+    {
+      id: "c1e3",
+      label: "Campaign 1 • Episode 3",
+      title: "Campaign 1, Episode 3"
+    },
+    {
+      id: "c1e4",
+      label: "Campaign 1 • Episode 4",
+      title: "Campaign 1, Episode 4"
+    },
+    {
+      id: "c1e5",
+      label: "Campaign 1 • Episode 5",
+      title: "Campaign 1, Episode 5"
+    }
+  ];
+
+
+  const savedWatched =
+    JSON.parse(localStorage.getItem("criticalRoleWatched")) || [];
+
+  let watched = new Set(savedWatched);
+
+
+  function saveProgress() {
+
+    localStorage.setItem(
+      "criticalRoleWatched",
+      JSON.stringify([...watched])
+    );
+
+  }
+
+
+  function renderEpisodes() {
+
+    const list = document.getElementById("episodeList");
+
+    list.innerHTML = "";
+
+    episodes.forEach((episode) => {
+
+      const card = document.createElement("div");
+
+      card.className =
+        "episode" +
+        (watched.has(episode.id) ? " watched" : "");
+
+      card.innerHTML = `
+
+        <input
+          class="watch-check"
+          type="checkbox"
+          ${watched.has(episode.id) ? "checked" : ""}
+          aria-label="Mark ${episode.title} watched"
+        >
+
+        <div>
+
+          <div class="episode-number">
+            ${episode.label}
+          </div>
+
+          <div class="episode-name">
+            ${episode.title}
+          </div>
+
+          <div class="episode-note">
+            Tap the box to mark this adventure watched.
+          </div>
+
         </div>
-      </div>
 
-      <div class="stats">
+      `;
 
-        <div class="stat">
-          <strong>0</strong>
-          <span>Watched</span>
-        </div>
+      const checkbox =
+        card.querySelector(".watch-check");
 
-        <div class="stat">
-          <strong>—</strong>
-          <span>Hours Left</span>
-        </div>
+      checkbox.addEventListener("change", () => {
 
-        <div class="stat">
-          <strong>—</strong>
-          <span>Adventures</span>
-        </div>
+        if (checkbox.checked) {
 
-      </div>
+          watched.add(episode.id);
 
-    </section>
+        } else {
 
-    <div class="section-title">
-      Begin Your Adventure
-    </div>
+          watched.delete(episode.id);
 
-    <div class="campaign">
-      <div class="campaign-number">I</div>
+        }
 
-      <div class="campaign-info">
-        <div class="campaign-name">Vox Machina</div>
-        <div class="campaign-subtitle">Campaign One</div>
-      </div>
+        saveProgress();
+        renderEpisodes();
+        updateProgress();
 
-      <div class="arrow">›</div>
-    </div>
+      });
 
-    <div class="campaign">
-      <div class="campaign-number">II</div>
+      list.appendChild(card);
 
-      <div class="campaign-info">
-        <div class="campaign-name">The Mighty Nein</div>
-        <div class="campaign-subtitle">Campaign Two</div>
-      </div>
+    });
 
-      <div class="arrow">›</div>
-    </div>
+  }
 
-    <div class="campaign">
-      <div class="campaign-number">III</div>
 
-      <div class="campaign-info">
-        <div class="campaign-name">Bells Hells</div>
-        <div class="campaign-subtitle">Campaign Three</div>
-      </div>
+  function updateProgress() {
 
-      <div class="arrow">›</div>
-    </div>
+    const total = episodes.length;
 
-    <div class="campaign">
-      <div class="campaign-number">IV</div>
+    const watchedNumber =
+      episodes.filter(
+        episode => watched.has(episode.id)
+      ).length;
 
-      <div class="campaign-info">
-        <div class="campaign-name">Campaign Four</div>
-        <div class="campaign-subtitle">A new adventure</div>
-      </div>
+    const remaining =
+      total - watchedNumber;
 
-      <div class="arrow">›</div>
-    </div>
+    const percentage =
+      Math.round(
+        (watchedNumber / total) * 100
+      );
 
-    <div class="section-title">
-      More Stories
-    </div>
+    document.getElementById("percent").textContent =
+      percentage + "%";
 
-    <div class="campaign">
-      <div class="campaign-number">✦</div>
+    document.getElementById("watchedCount").textContent =
+      watchedNumber;
 
-      <div class="campaign-info">
-        <div class="campaign-name">Exandria Unlimited</div>
-        <div class="campaign-subtitle">Limited series & adventures</div>
-      </div>
+    document.getElementById("remainingCount").textContent =
+      remaining;
 
-      <div class="arrow">›</div>
-    </div>
+    document.getElementById("totalCount").textContent =
+      total;
 
-    <div class="campaign">
-      <div class="campaign-number">◆</div>
+    const degrees =
+      percentage * 3.6;
 
-      <div class="campaign-info">
-        <div class="campaign-name">One-Shots & Specials</div>
-        <div class="campaign-subtitle">Side quests and special events</div>
-      </div>
+    document.documentElement.style.setProperty(
+      "--progress",
+      degrees + "deg"
+    );
 
-      <div class="arrow">›</div>
-    </div>
 
-    <div class="campaign">
-      <div class="campaign-number">◇</div>
+    const nextEpisode =
+      episodes.find(
+        episode => !watched.has(episode.id)
+      );
 
-      <div class="campaign-info">
-        <div class="campaign-name">Animated Adventures</div>
-        <div class="campaign-subtitle">The Legend of Vox Machina & more</div>
-      </div>
+    if (nextEpisode) {
 
-      <div class="arrow">›</div>
-    </div>
+      document.getElementById("upNext").textContent =
+        nextEpisode.title;
 
-    <div class="footer-quote">
-      "How do you want to do this?"
-    </div>
+    } else {
 
-  </main>
+      document.getElementById("upNext").textContent =
+        "All caught up! ✦";
+
+    }
+
+  }
+
+
+  const picker =
+    document.getElementById("accentPicker");
+
+  const savedAccent =
+    localStorage.getItem("criticalRoleAccent");
+
+  if (savedAccent) {
+
+    picker.value = savedAccent;
+
+    document.documentElement.style.setProperty(
+      "--accent",
+      savedAccent
+    );
+
+  }
+
+
+  picker.addEventListener("input", () => {
+
+    const newColor = picker.value;
+
+    document.documentElement.style.setProperty(
+      "--accent",
+      newColor
+    );
+
+    localStorage.setItem(
+      "criticalRoleAccent",
+      newColor
+    );
+
+  });
+
+
+  document
+    .getElementById("resetProgress")
+    .addEventListener("click", () => {
+
+      watched.clear();
+
+      saveProgress();
+
+      renderEpisodes();
+
+      updateProgress();
+
+    });
+
+
+  renderEpisodes();
+
+  updateProgress();
+
+</script>
 
 </body>
 </html>
