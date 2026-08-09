@@ -2290,23 +2290,23 @@
     /* =========================
        CAMPAIGN 1 PROGRESS
     ========================= */
-
+    
     function updateCampaignProgress() {
-
+    
       const campaign1 =
         episodes.filter(
           episode =>
             episode.campaign === 1
         );
-
-
+    
+    
       const watchedCampaign1 =
         campaign1.filter(
           episode =>
             watched.has(episode.id)
         ).length;
-
-
+    
+    
       const percentage =
         campaign1.length
           ? Math.round(
@@ -2316,8 +2316,8 @@
               ) * 100
             )
           : 0;
-
-
+    
+    
       document
         .getElementById(
           "c1ProgressText"
@@ -2326,8 +2326,8 @@
           watchedCampaign1 +
           " / " +
           campaign1.length;
-
-
+    
+    
       document
         .getElementById(
           "c1ProgressFill"
@@ -2335,9 +2335,14 @@
         .style
         .width =
           percentage + "%";
-
+    
     }
-
+    
+    
+    /* =========================
+       ARC 1 OPEN / CLOSE
+    ========================= */
+    
     const arc1Button =
       document.getElementById(
         "arc1Button"
@@ -2372,55 +2377,99 @@
             : "›";
     
       }
+    );
     
+    
+    /* =========================
+       ARC 2 PROGRESS
+    ========================= */
+    
+    function updateArc2Progress() {
+    
+      const arc2 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1 &&
+            episode.arc === 2
+        );
+    
+    
+      const watchedArc2 =
+        arc2.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+    
+    
+      const percentage =
+        arc2.length
+          ? Math.round(
+              (
+                watchedArc2 /
+                arc2.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(
+          "arc2ProgressText"
+        )
+        .textContent =
+          watchedArc2 +
+          " / " +
+          arc2.length +
+          " watched";
+    
+    
+      document
+        .getElementById(
+          "arc2ProgressFill"
+        )
+        .style
+        .width =
+          percentage + "%";
+       
+    }
 
-      function updateArc2Progress() {
-
-        const arc2 =
-          episodes.filter(
-            episode =>
-              episode.campaign === 1 &&
-              episode.arc === 2
-          );
-      
-      
-        const watchedArc2 =
-          arc2.filter(
-            episode =>
-              watched.has(episode.id)
-          ).length;
-      
-      
-        const percentage =
-          arc2.length
-            ? Math.round(
-                (
-                  watchedArc2 /
-                  arc2.length
-                ) * 100
-              )
-            : 0;
-      
-      
-        document
-          .getElementById(
-            "arc2ProgressText"
-          )
-          .textContent =
-            watchedArc2 +
-            " / " +
-            arc2.length +
-            " watched";
-      
-      
-        document
-          .getElementById(
-            "arc2ProgressFill"
-          )
-          .style
-          .width =
-            percentage + "%";
-      
+    /* =========================
+       ARC 2 OPEN / CLOSE
+    ========================= */
+    
+    const arc2Button =
+      document.getElementById(
+        "arc2Button"
+      );
+    
+    
+    const arc2Content =
+      document.getElementById(
+        "arc2Content"
+      );
+    
+    
+    const arc2Arrow =
+      document.getElementById(
+        "arc2Arrow"
+      );
+    
+    
+    arc2Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          arc2Content
+            .classList
+            .toggle("open");
+    
+    
+        arc2Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
       }
     );
 
