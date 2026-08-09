@@ -4186,7 +4186,8 @@
         });
     
     }
-
+    
+    
     document
       .querySelectorAll(
         ".arc-action-button"
@@ -4212,6 +4213,7 @@
     
     
             const arcComplete =
+              arcEpisodes.length > 0 &&
               arcEpisodes.every(
                 episode =>
                   watched.has(
@@ -4245,7 +4247,36 @@
               );
     
             }
-
+    
+    
+            saveProgress();
+    
+            renderEpisodes();
+    
+            updateProgress();
+    
+            updateCampaignProgress();
+    
+            updateArc1Progress();
+    
+            updateArc2Progress();
+    
+            updateArc3Progress();
+    
+            updateArc4Progress();
+    
+            updateArc5Progress();
+    
+            updateArcActionButtons();
+    
+            updateCampaignActionButton();
+    
+          }
+        );
+    
+      });
+    
+    
     /* =========================
        CAMPAIGN WATCH BUTTON
     ========================= */
@@ -4296,7 +4327,8 @@
       }
     
     }
-
+    
+    
     const campaign1ActionButton =
       document.getElementById(
         "campaign1ActionButton"
@@ -4315,6 +4347,7 @@
     
     
         const campaignComplete =
+          campaign1Episodes.length > 0 &&
           campaign1Episodes.every(
             episode =>
               watched.has(
@@ -4350,33 +4383,30 @@
         }
     
     
-            saveProgress();
+        saveProgress();
     
-            renderEpisodes();
+        renderEpisodes();
     
-            updateProgress();
+        updateProgress();
     
-            updateCampaignProgress();
+        updateCampaignProgress();
     
-            updateArc1Progress();
+        updateArc1Progress();
     
-            updateArc2Progress();
+        updateArc2Progress();
     
-            updateArc3Progress();
+        updateArc3Progress();
     
-            updateArc4Progress();
+        updateArc4Progress();
     
-            updateArc5Progress();
+        updateArc5Progress();
     
-            updateArcActionButtons();
-
-            updateCampaignActionButton();
+        updateArcActionButtons();
     
-          }
-        );
+        updateCampaignActionButton();
     
-      });
-
+      }
+    );
 
     /* =========================
        CAMPAIGN 1 PROGRESS
