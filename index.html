@@ -531,6 +531,108 @@
       text-transform: uppercase;
     }
 
+    /* =========================
+       CAMPAIGN ARCS
+    ========================= */
+    
+    .arc {
+      margin-top: 18px;
+    }
+    
+    .arc-header {
+      width: 100%;
+    
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    
+      padding: 17px 18px;
+    
+      text-align: left;
+    
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    
+      background: var(--card-soft);
+      color: var(--text);
+    
+      cursor: pointer;
+    }
+    
+    .arc-header:active {
+      transform: scale(0.99);
+    }
+    
+    .arc-label {
+      margin-bottom: 4px;
+    
+      color: var(--accent);
+    
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    
+    .arc-name {
+      font-size: 20px;
+    }
+    
+    .arc-progress-text {
+      margin-top: 6px;
+    
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+    
+    .arc-arrow {
+      color: var(--muted);
+    
+      font-size: 24px;
+    
+      transition: transform 0.2s ease;
+    }
+    
+    .arc-content {
+      display: none;
+    
+      padding-top: 16px;
+    }
+    
+    .arc-content.open {
+      display: block;
+    }
+    
+    .arc-progress-bar {
+      height: 6px;
+    
+      margin: 0 0 18px 28px;
+    
+      overflow: hidden;
+    
+      border-radius: 20px;
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--border) 60%,
+          transparent
+        );
+    }
+    
+    .arc-progress-fill {
+      width: 0%;
+      height: 100%;
+    
+      border-radius: inherit;
+    
+      background: var(--accent);
+    
+      transition: width 0.3s ease;
+    }
 
     /* =========================
        EPISODE TIMELINE
@@ -1015,14 +1117,61 @@
       </div>
 
 
-      <div class="arc-title">
-        Arc I — Kraghammer & Vasselheim
+      <div class="arc">
+
+  <button
+    class="arc-header"
+    id="arc1Button"
+    type="button"
+  >
+
+    <div>
+      <div class="arc-label">
+        Arc I
+      </div>
+
+      <div class="arc-name">
+        Kraghammer & Vasselheim
       </div>
 
       <div
-        class="episode-list"
-        id="campaign1Episodes"
+        class="arc-progress-text"
+        id="arc1ProgressText"
+      >
+        0 / 23 watched
+      </div>
+    </div>
+
+    <div
+      class="arc-arrow"
+      id="arc1Arrow"
+    >
+      ›
+    </div>
+
+  </button>
+
+
+  <div
+    class="arc-content"
+    id="arc1Content"
+  >
+
+    <div class="arc-progress-bar">
+      <div
+        class="arc-progress-fill"
+        id="arc1ProgressFill"
       ></div>
+    </div>
+
+    <div
+      class="episode-list"
+      id="campaign1Episodes"
+    ></div>
+
+  </div>
+
+</div>
 
 
       <button
@@ -1404,43 +1553,210 @@
       {
         id: "c1e1",
         campaign: 1,
+        arc: 1,
         episode: 1,
         label: "Campaign 1 • Episode 1",
         title: "Arrival at Kraghammer"
       },
-
+    
       {
         id: "c1e2",
         campaign: 1,
+        arc: 1,
         episode: 2,
         label: "Campaign 1 • Episode 2",
         title: "Into the Greyspine Mines"
       },
-
+    
       {
         id: "c1e3",
         campaign: 1,
+        arc: 1,
         episode: 3,
         label: "Campaign 1 • Episode 3",
         title: "Strange Bedfellows"
       },
-
+    
       {
         id: "c1e4",
         campaign: 1,
+        arc: 1,
         episode: 4,
         label: "Campaign 1 • Episode 4",
         title: "Attack on the Duergar Warcamp"
       },
-
+    
       {
         id: "c1e5",
         campaign: 1,
+        arc: 1,
         episode: 5,
         label: "Campaign 1 • Episode 5",
         title: "The Trick About Falling"
+      },
+    
+      {
+        id: "c1e6",
+        campaign: 1,
+        arc: 1,
+        episode: 6,
+        label: "Campaign 1 • Episode 6",
+        title: "Breaching the Emberhold"
+      },
+    
+      {
+        id: "c1e7",
+        campaign: 1,
+        arc: 1,
+        episode: 7,
+        label: "Campaign 1 • Episode 7",
+        title: "The Throne Room"
+      },
+    
+      {
+        id: "c1e8",
+        campaign: 1,
+        arc: 1,
+        episode: 8,
+        label: "Campaign 1 • Episode 8",
+        title: "Glass and Bone"
+      },
+    
+      {
+        id: "c1e9",
+        campaign: 1,
+        arc: 1,
+        episode: 9,
+        label: "Campaign 1 • Episode 9",
+        title: "Yug'voril Uncovered"
+      },
+    
+      {
+        id: "c1e10",
+        campaign: 1,
+        arc: 1,
+        episode: 10,
+        label: "Campaign 1 • Episode 10",
+        title: "K'Varn Revealed"
+      },
+    
+      {
+        id: "c1e11",
+        campaign: 1,
+        arc: 1,
+        episode: 11,
+        label: "Campaign 1 • Episode 11",
+        title: "The Temple Showdown"
+      },
+    
+      {
+        id: "c1e12",
+        campaign: 1,
+        arc: 1,
+        episode: 12,
+        label: "Campaign 1 • Episode 12",
+        title: "Dungeons & Dragons Campaign Tips"
+      },
+    
+      {
+        id: "c1e13",
+        campaign: 1,
+        arc: 1,
+        episode: 13,
+        label: "Campaign 1 • Episode 13",
+        title: "Escape from the Underdark"
+      },
+    
+      {
+        id: "c1e14",
+        campaign: 1,
+        arc: 1,
+        episode: 14,
+        label: "Campaign 1 • Episode 14",
+        title: "Shopping and Shipping"
+      },
+    
+      {
+        id: "c1e15",
+        campaign: 1,
+        arc: 1,
+        episode: 15,
+        label: "Campaign 1 • Episode 15",
+        title: "Skyward"
+      },
+    
+      {
+        id: "c1e16",
+        campaign: 1,
+        arc: 1,
+        episode: 16,
+        label: "Campaign 1 • Episode 16",
+        title: "Enter Vasselheim"
+      },
+    
+      {
+        id: "c1e17",
+        campaign: 1,
+        arc: 1,
+        episode: 17,
+        label: "Campaign 1 • Episode 17",
+        title: "Hubris"
+      },
+    
+      {
+        id: "c1e18",
+        campaign: 1,
+        arc: 1,
+        episode: 18,
+        label: "Campaign 1 • Episode 18",
+        title: "Trial of the Take: Part 1"
+      },
+    
+      {
+        id: "c1e19",
+        campaign: 1,
+        arc: 1,
+        episode: 19,
+        label: "Campaign 1 • Episode 19",
+        title: "Trial of the Take: Part 2"
+      },
+    
+      {
+        id: "c1e20",
+        campaign: 1,
+        arc: 1,
+        episode: 20,
+        label: "Campaign 1 • Episode 20",
+        title: "Trial of the Take: Part 3"
+      },
+    
+      {
+        id: "c1e21",
+        campaign: 1,
+        arc: 1,
+        episode: 21,
+        label: "Campaign 1 • Episode 21",
+        title: "Trial of the Take: Part 4"
+      },
+    
+      {
+        id: "c1e22",
+        campaign: 1,
+        arc: 1,
+        episode: 22,
+        label: "Campaign 1 • Episode 22",
+        title: "Aramente to Pyrah"
+      },
+    
+      {
+        id: "c1e23",
+        campaign: 1,
+        arc: 1,
+        episode: 23,
+        label: "Campaign 1 • Episode 23",
+        title: "The Rematch"
       }
-
+    
     ];
 
 
@@ -1574,6 +1890,8 @@
 
             updateCampaignProgress();
 
+            updateArc1Progress();
+
           }
         );
 
@@ -1666,6 +1984,52 @@
     }
 
 
+    function updateArc1Progress() {
+
+      const arc1 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1 &&
+            episode.arc === 1
+        );
+    
+    
+      const watchedArc1 =
+        arc1.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+    
+    
+      const percentage =
+        arc1.length
+          ? Math.round(
+              (
+                watchedArc1 /
+                arc1.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById("arc1ProgressText")
+        .textContent =
+          watchedArc1 +
+          " / " +
+          arc1.length +
+          " watched";
+    
+    
+      document
+        .getElementById("arc1ProgressFill")
+        .style
+        .width =
+          percentage + "%";
+    
+    }
+
+
     /* =========================
        CAMPAIGN 1 PROGRESS
     ========================= */
@@ -1716,6 +2080,42 @@
           percentage + "%";
 
     }
+
+    const arc1Button =
+      document.getElementById(
+        "arc1Button"
+      );
+    
+    
+    const arc1Content =
+      document.getElementById(
+        "arc1Content"
+      );
+    
+    
+    const arc1Arrow =
+      document.getElementById(
+        "arc1Arrow"
+      );
+    
+    
+    arc1Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          arc1Content
+            .classList
+            .toggle("open");
+    
+    
+        arc1Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
 
 
     /* =========================
@@ -1781,6 +2181,8 @@
 
           updateCampaignProgress();
 
+          updateArc1Progress();
+
         }
       );
 
@@ -1794,6 +2196,8 @@
     updateProgress();
 
     updateCampaignProgress();
+
+    updateArc1Progress();
 
   </script>
 
