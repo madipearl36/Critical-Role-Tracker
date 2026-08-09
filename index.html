@@ -3478,10 +3478,30 @@
         "criticalRoleHideWatched"
       ) === "true";
 
-    function getEpisodeYouTubeLink(episode) {
+    const campaign1YouTubeLinks = {
 
+      1: "https://www.youtube.com/watch?v=i-p9lWIhcLQ"
+    
+    };
+
+    function getEpisodeYouTubeLink(episode) {
+    
+      const directLink =
+        campaign1YouTubeLinks[
+          episode.episode
+        ];
+    
+    
+      if (directLink) {
+    
+        return directLink;
+    
+      }
+    
+    
       const searchText =
         `Critical Role Campaign 1 Episode ${episode.episode} ${episode.title}`;
+    
     
       return (
         "https://www.youtube.com/results?search_query=" +
