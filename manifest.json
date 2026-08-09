@@ -1,0 +1,15 @@
+{
+  "name": "My Critical Role Journey",
+  "short_name": "CR Journey",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#c6404f",
+  "icons": [
+    {
+      "src": "d20.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    }
+  ]
+}
