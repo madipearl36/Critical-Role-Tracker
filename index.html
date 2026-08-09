@@ -633,6 +633,75 @@
     
     }
 
+    /* =========================
+       ARC WATCH CONTROLS
+    ========================= */
+    
+    .arc-action-button {
+      width: calc(100% - 28px);
+    
+      margin:
+        0
+        0
+        18px
+        28px;
+    
+      padding: 11px 14px;
+    
+      border:
+        1px solid
+        var(--border);
+    
+      border-radius: 10px;
+    
+      background:
+        var(--card-soft);
+    
+      color:
+        var(--muted);
+    
+      font-family:
+        Arial,
+        sans-serif;
+    
+      font-size: 11px;
+    
+      cursor: pointer;
+    
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+    
+    .arc-action-button:hover {
+      border-color:
+        var(--accent);
+    
+      color:
+        var(--accent);
+    }
+    
+    .arc-action-button.complete {
+      border-color:
+        var(--accent);
+    
+      color:
+        var(--accent);
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--accent) 10%,
+          var(--card-soft)
+        );
+    }
+    
+    .arc-action-button:active {
+      transform:
+        scale(0.99);
+    }
+
 
     /* =========================
        CAMPAIGN PROGRESS
@@ -1471,7 +1540,15 @@
               id="arc1ProgressFill"
             ></div>
           </div>
-      
+
+          <button
+            class="arc-action-button"
+            data-arc="1"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+          
           <div
             class="episode-list"
             id="campaign1Episodes"
@@ -1528,6 +1605,14 @@
               id="arc2ProgressFill"
             ></div>
           </div>
+
+          <button
+            class="arc-action-button"
+            data-arc="2"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
       
           <div
             class="episode-list"
@@ -1585,6 +1670,14 @@
               id="arc3ProgressFill"
             ></div>
           </div>
+
+          <button
+            class="arc-action-button"
+            data-arc="3"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
       
           <div
             class="episode-list"
@@ -1641,6 +1734,14 @@
               id="arc4ProgressFill"
             ></div>
           </div>
+
+          <button
+            class="arc-action-button"
+            data-arc="4"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
       
           <div
             class="episode-list"
@@ -1697,6 +1798,14 @@
               id="arc5ProgressFill"
             ></div>
           </div>
+
+          <button
+            class="arc-action-button"
+            data-arc="5"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
       
           <div
             class="episode-list"
@@ -3394,6 +3503,8 @@
             updateArc4Progress();
 
             updateArc5Progress();
+
+            updateArcActionButtons();
     
           }
         );
@@ -3941,6 +4052,151 @@
     
     }
 
+    /* =========================
+       ARC WATCH BUTTONS
+    ========================= */
+    
+    function updateArcActionButtons() {
+    
+      document
+        .querySelectorAll(
+          ".arc-action-button"
+        )
+        .forEach(button => {
+    
+          const arcNumber =
+            Number(
+              button.dataset.arc
+            );
+    
+    
+          const arcEpisodes =
+            episodes.filter(
+              episode =>
+                episode.campaign === 1 &&
+                episode.arc === arcNumber
+            );
+    
+    
+          const arcComplete =
+            arcEpisodes.length > 0 &&
+            arcEpisodes.every(
+              episode =>
+                watched.has(
+                  episode.id
+                )
+            );
+    
+    
+          if (arcComplete) {
+    
+            button.textContent =
+              "↶ Mark Arc Unwatched";
+    
+            button.classList.add(
+              "complete"
+            );
+    
+          } else {
+    
+            button.textContent =
+              "✓ Mark Arc Watched";
+    
+            button.classList.remove(
+              "complete"
+            );
+    
+          }
+    
+        });
+    
+    }
+
+    document
+      .querySelectorAll(
+        ".arc-action-button"
+      )
+      .forEach(button => {
+    
+        button.addEventListener(
+          "click",
+          () => {
+    
+            const arcNumber =
+              Number(
+                button.dataset.arc
+              );
+    
+    
+            const arcEpisodes =
+              episodes.filter(
+                episode =>
+                  episode.campaign === 1 &&
+                  episode.arc === arcNumber
+              );
+    
+    
+            const arcComplete =
+              arcEpisodes.every(
+                episode =>
+                  watched.has(
+                    episode.id
+                  )
+              );
+    
+    
+            if (arcComplete) {
+    
+              arcEpisodes.forEach(
+                episode => {
+    
+                  watched.delete(
+                    episode.id
+                  );
+    
+                }
+              );
+    
+            } else {
+    
+              arcEpisodes.forEach(
+                episode => {
+    
+                  watched.add(
+                    episode.id
+                  );
+    
+                }
+              );
+    
+            }
+    
+    
+            saveProgress();
+    
+            renderEpisodes();
+    
+            updateProgress();
+    
+            updateCampaignProgress();
+    
+            updateArc1Progress();
+    
+            updateArc2Progress();
+    
+            updateArc3Progress();
+    
+            updateArc4Progress();
+    
+            updateArc5Progress();
+    
+            updateArcActionButtons();
+    
+          }
+        );
+    
+      });
+
 
     /* =========================
        CAMPAIGN 1 PROGRESS
@@ -4263,6 +4519,8 @@
 
           updateArc5Progress();
 
+          updateArcActionButtons();
+
         }
       );
 
@@ -4286,6 +4544,8 @@
     updateArc4Progress();
 
     updateArc5Progress();
+
+    updateArcActionButtons();
 
   </script>
 
