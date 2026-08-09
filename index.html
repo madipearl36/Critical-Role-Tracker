@@ -119,6 +119,53 @@
       text-transform: uppercase;
     }
 
+    .theme-toggle {
+      width: 100%;
+    
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    
+      padding: 0;
+    
+      border: none;
+    
+      background: transparent;
+      color: var(--text);
+    
+      text-align: left;
+    
+      cursor: pointer;
+    }
+    
+    .theme-toggle .theme-heading {
+      margin-bottom: 3px;
+    }
+    
+    .theme-toggle-subtitle {
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+    
+    .theme-toggle-arrow {
+      color: var(--muted);
+    
+      font-size: 24px;
+    }
+    
+    .theme-settings {
+      display: none;
+    
+      padding-top: 20px;
+    }
+    
+    .theme-settings.open {
+      display: block;
+    }
+
     .preset-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -906,9 +953,36 @@
 
     <section class="theme-panel">
 
-      <div class="theme-heading">
-        ✦ Customize Your Journey
-      </div>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+      >
+      
+        <div>
+          <div class="theme-heading">
+            ✦ Customize Your Journey
+          </div>
+      
+          <div class="theme-toggle-subtitle">
+            Themes & colors
+          </div>
+        </div>
+      
+        <div
+          class="theme-toggle-arrow"
+          id="themeToggleArrow"
+        >
+          ›
+        </div>
+      
+      </button>
+      
+      
+      <div
+        class="theme-settings"
+        id="themeSettings"
+      >
 
       <div class="preset-grid">
 
@@ -1021,7 +1095,9 @@
       >
         Reset to default theme
       </button>
-
+        
+      </div>
+        
     </section>
 
 
@@ -1770,6 +1846,69 @@
         );
 
       });
+
+    /* =========================
+       OPEN / CLOSE THEME SETTINGS
+    ========================= */
+    
+    const themeToggle =
+      document.getElementById(
+        "themeToggle"
+      );
+    
+    
+    const themeSettings =
+      document.getElementById(
+        "themeSettings"
+      );
+    
+    
+    const themeToggleArrow =
+      document.getElementById(
+        "themeToggleArrow"
+      );
+    
+    
+    themeToggle.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          themeSettings
+            .classList
+            .toggle("open");
+    
+    
+        themeToggleArrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+    
+        localStorage.setItem(
+          "criticalRoleThemePanelOpen",
+          isOpen
+        );
+    
+      }
+    );
+
+    const savedThemePanelState =
+      localStorage.getItem(
+        "criticalRoleThemePanelOpen"
+      );
+    
+    
+    if (savedThemePanelState === "true") {
+    
+      themeSettings
+        .classList
+        .add("open");
+    
+      themeToggleArrow.textContent =
+        "⌄";
+    
+    }
 
 
     function updateActiveThemeButton() {
