@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +29,7 @@
       min-height: 100vh;
       color: var(--text);
       font-family: Georgia, "Times New Roman", serif;
+
       background:
         radial-gradient(
           circle at top,
@@ -35,9 +37,10 @@
           var(--background) 48%,
           var(--background) 100%
         );
+
       transition:
-        background .3s ease,
-        color .3s ease;
+        background 0.3s ease,
+        color 0.3s ease;
     }
 
     .page {
@@ -47,20 +50,23 @@
     }
 
     .eyebrow {
+      margin-bottom: 18px;
+
       text-align: center;
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 18px;
     }
 
     h1 {
+      margin: 0;
+
       text-align: center;
       font-size: clamp(45px, 11vw, 78px);
-      line-height: .9;
-      margin: 0;
+      line-height: 0.9;
       font-weight: normal;
       letter-spacing: -2px;
     }
@@ -73,44 +79,65 @@
     .subtitle {
       max-width: 560px;
       margin: 25px auto 30px;
+
       text-align: center;
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       line-height: 1.7;
       font-size: 16px;
     }
 
+
+    /* =========================
+       THEME CUSTOMIZATION
+    ========================= */
+
     .theme-panel {
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      border-radius: 18px;
-      padding: 20px;
       margin-bottom: 22px;
+      padding: 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--card) 92%,
+          transparent
+        );
     }
 
     .theme-heading {
-      font-family: Arial, sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 11px;
-      color: var(--muted);
       margin-bottom: 14px;
+
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     .preset-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 9px;
+
       margin-bottom: 20px;
     }
 
     .preset-button {
+      padding: 12px 8px;
+
       border: 1px solid var(--border);
+      border-radius: 12px;
+
       background: var(--card-soft);
       color: var(--text);
-      border-radius: 12px;
-      padding: 12px 8px;
+
       font-family: Arial, sans-serif;
+
       cursor: pointer;
     }
 
@@ -130,74 +157,105 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      font-family: Arial, sans-serif;
+
       color: var(--muted);
+
+      font-family: Arial, sans-serif;
       font-size: 13px;
     }
 
     .color-input {
       width: 52px;
       height: 38px;
+
       padding: 2px;
-      border-radius: 9px;
+
       border: 1px solid var(--border);
+      border-radius: 9px;
+
       background: var(--card);
     }
 
     .reset-theme {
-      margin-top: 16px;
       width: 100%;
+      margin-top: 16px;
       padding: 11px;
-      border-radius: 10px;
+
       border: 1px dashed var(--border);
+      border-radius: 10px;
+
       background: transparent;
       color: var(--muted);
+
       font-family: Arial, sans-serif;
+
       cursor: pointer;
     }
 
+
+    /* =========================
+       OVERALL PROGRESS
+    ========================= */
+
     .progress-card {
-      background: var(--card);
+      padding: 28px 22px;
+
       border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 28px 22px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.3);
+
+      background: var(--card);
+
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
     }
 
     .progress-ring {
       width: 145px;
       height: 145px;
-      border-radius: 50%;
+
       margin: auto;
+
       display: grid;
       place-items: center;
+
+      border-radius: 50%;
+
       background:
         conic-gradient(
           var(--accent) var(--progress),
-          color-mix(in srgb, var(--border) 70%, transparent) var(--progress)
+          color-mix(
+            in srgb,
+            var(--border) 70%,
+            transparent
+          ) var(--progress)
         );
     }
 
     .progress-inner {
       width: 120px;
       height: 120px;
-      border-radius: 50%;
-      background: var(--card);
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--card);
     }
 
     .percent {
       color: var(--accent);
+
       font-size: 34px;
       font-weight: bold;
     }
 
     .complete {
       margin-top: 5px;
+
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 9px;
       letter-spacing: 3px;
@@ -206,13 +264,16 @@
     .up-next {
       margin-top: 25px;
       padding: 18px;
+
       border: 1px solid var(--border);
-      background: var(--card-soft);
       border-radius: 14px;
+
+      background: var(--card-soft);
     }
 
     .up-label {
       color: var(--accent);
+
       font-family: Arial, sans-serif;
       font-size: 10px;
       letter-spacing: 3px;
@@ -221,68 +282,109 @@
 
     .up-title {
       margin-top: 8px;
+
       font-family: Arial, sans-serif;
-      font-weight: bold;
       font-size: 18px;
+      font-weight: bold;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+
       margin-top: 16px;
     }
 
     .stat {
+      padding: 15px 5px;
+
+      text-align: center;
+
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 15px 5px;
-      text-align: center;
-      background: color-mix(in srgb, var(--background) 60%, transparent);
+
+      background:
+        color-mix(
+          in srgb,
+          var(--background) 60%,
+          transparent
+        );
     }
 
     .stat strong {
       display: block;
+
       color: var(--accent);
+
       font-size: 20px;
     }
 
     .stat span {
       display: block;
+
       margin-top: 5px;
+
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 8px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
     .section-title {
       margin-top: 48px;
       margin-bottom: 18px;
+
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
     }
 
+
+    /* =========================
+       CAMPAIGN CARDS
+    ========================= */
+
     .campaign {
       display: flex;
       align-items: center;
       gap: 18px;
-      padding: 20px;
+
       margin-bottom: 13px;
+      padding: 20px;
+
       border: 1px solid var(--border);
       border-radius: 17px;
+
       background: var(--card);
     }
 
+    .campaign-button {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .campaign-button:active {
+      transform: scale(0.99);
+    }
+
     .campaign-number {
-      color: var(--accent);
-      font-size: 35px;
       width: 45px;
+
       text-align: center;
+      color: var(--accent);
+
+      font-size: 35px;
     }
 
     .campaign-info {
@@ -290,12 +392,13 @@
     }
 
     .campaign-name {
-      font-size: 22px;
       margin-bottom: 5px;
+      font-size: 22px;
     }
 
     .campaign-subtitle {
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 12px;
     }
@@ -305,6 +408,134 @@
       font-size: 22px;
     }
 
+
+    /* =========================
+       EXPANDED CAMPAIGN
+    ========================= */
+
+    .campaign-content {
+      display: none;
+
+      margin: 5px 0 28px;
+      padding: 22px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--card) 92%,
+          var(--background)
+        );
+    }
+
+    .campaign-content.open {
+      display: block;
+    }
+
+    .campaign-header h2 {
+      margin: 4px 0 10px;
+
+      font-size: 34px;
+      font-weight: normal;
+    }
+
+    .campaign-header p {
+      margin: 0;
+
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .campaign-small-label {
+      color: var(--accent);
+
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       CAMPAIGN PROGRESS
+    ========================= */
+
+    .campaign-progress {
+      margin: 24px 0 30px;
+      padding: 16px;
+
+      border: 1px solid var(--border);
+      border-radius: 13px;
+
+      background: var(--card-soft);
+    }
+
+    .campaign-progress-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 11px;
+
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .campaign-progress-top strong {
+      color: var(--accent);
+    }
+
+    .campaign-progress-bar {
+      height: 8px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--border) 60%,
+          transparent
+        );
+    }
+
+    .campaign-progress-fill {
+      width: 0%;
+      height: 100%;
+
+      border-radius: inherit;
+
+      background: var(--accent);
+
+      transition: width 0.3s ease;
+    }
+
+    .arc-title {
+      margin-bottom: 16px;
+
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       EPISODE TIMELINE
+    ========================= */
+
     .episode-list {
       position: relative;
       padding-left: 28px;
@@ -312,36 +543,48 @@
 
     .episode-list::before {
       content: "";
+
       position: absolute;
       left: 9px;
       top: 20px;
       bottom: 20px;
+
       width: 2px;
+
       background: var(--border);
     }
 
     .episode {
       position: relative;
+
       display: flex;
       align-items: flex-start;
       gap: 15px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 17px;
-      padding: 18px;
+
       margin-bottom: 14px;
-      transition: opacity .25s ease;
+      padding: 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 17px;
+
+      background: var(--card);
+
+      transition: opacity 0.25s ease;
     }
 
     .episode::before {
       content: "";
+
       position: absolute;
       left: -26px;
       top: 27px;
+
       width: 11px;
       height: 11px;
+
       border: 3px solid var(--muted);
       border-radius: 50%;
+
       background: var(--background);
     }
 
@@ -351,7 +594,7 @@
     }
 
     .episode.watched {
-      opacity: .58;
+      opacity: 0.58;
     }
 
     .episode.watched .episode-name {
@@ -361,36 +604,45 @@
     .watch-check {
       appearance: none;
       -webkit-appearance: none;
+
       width: 30px;
       min-width: 30px;
       height: 30px;
-      border: 2px solid var(--muted);
-      border-radius: 8px;
+
       margin: 0;
+
       display: grid;
       place-items: center;
+
+      border: 2px solid var(--muted);
+      border-radius: 8px;
+
       cursor: pointer;
     }
 
     .watch-check:checked {
-      background: var(--accent);
       border-color: var(--accent);
+      background: var(--accent);
     }
 
     .watch-check:checked::after {
       content: "✓";
-      color: #fff;
+
+      color: #ffffff;
+
       font-family: Arial, sans-serif;
-      font-weight: bold;
       font-size: 18px;
+      font-weight: bold;
     }
 
     .episode-number {
+      margin-bottom: 7px;
+
+      color: var(--accent);
+
       font-family: Arial, sans-serif;
       font-size: 11px;
       letter-spacing: 2px;
-      color: var(--accent);
-      margin-bottom: 7px;
       text-transform: uppercase;
     }
 
@@ -402,581 +654,622 @@
     }
 
     .episode-note {
+      margin-top: 7px;
+
       color: var(--muted);
+
       font-family: Arial, sans-serif;
       font-size: 11px;
-      margin-top: 7px;
     }
+
+
+    /* =========================
+       BUTTONS & FOOTER
+    ========================= */
 
     .reset-button {
       margin-top: 22px;
       padding: 12px 18px;
-      border-radius: 12px;
+
       border: 1px solid var(--border);
+      border-radius: 12px;
+
       background: transparent;
       color: var(--muted);
+
       font-family: Arial, sans-serif;
+
       cursor: pointer;
     }
 
     .footer-quote {
       margin-top: 55px;
+
       text-align: center;
       color: var(--muted);
-      font-style: italic;
+
       font-size: 14px;
-      opacity: .7;
+      font-style: italic;
+
+      opacity: 0.7;
     }
+
+
+    /* =========================
+       LARGER SCREENS
+    ========================= */
 
     @media (min-width: 600px) {
       .preset-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
-
-    .campaign-button {
-  cursor: pointer;
-  user-select: none;
-}
-
-.campaign-button:active {
-  transform: scale(.99);
-}
-
-.campaign-content {
-  display: none;
-  margin: 5px 0 28px;
-  padding: 22px 18px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background:
-    color-mix(
-      in srgb,
-      var(--card) 92%,
-      var(--background)
-    );
-}
-
-.campaign-content.open {
-  display: block;
-}
-
-.campaign-header h2 {
-  margin: 4px 0 10px;
-  font-size: 34px;
-  font-weight: normal;
-}
-
-.campaign-header p {
-  margin: 0;
-  color: var(--muted);
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.campaign-small-label {
-  color: var(--accent);
-  font-family: Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 9px;
-}
-
-.campaign-progress {
-  margin: 24px 0 30px;
-  padding: 16px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--card-soft);
-}
-
-.campaign-progress-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 11px;
-  color: var(--muted);
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.campaign-progress-top strong {
-  color: var(--accent);
-}
-
-.campaign-progress-bar {
-  height: 8px;
-  border-radius: 20px;
-  overflow: hidden;
-  background:
-    color-mix(
-      in srgb,
-      var(--border) 60%,
-      transparent
-    );
-}
-
-.campaign-progress-fill {
-  width: 0%;
-  height: 100%;
-  background: var(--accent);
-  border-radius: inherit;
-  transition: width .3s ease;
-}
-
-.arc-title {
-  margin-bottom: 16px;
-  color: var(--muted);
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-    
   </style>
 </head>
 
+
 <body>
 
-<main class="page">
+  <main class="page">
 
-  <div class="eyebrow">
-    A fan-made watch tracker
-  </div>
-
-  <h1>
-    My Critical Role
-    <span>Journey</span>
-  </h1>
-
-  <p class="subtitle">
-    Track your adventures through Critical Role.
-    Customize your experience, check off what you've watched,
-    and always know where your journey continues.
-  </p>
-
-
-  <section class="theme-panel">
-
-    <div class="theme-heading">
-      ✦ Customize Your Journey
+    <div class="eyebrow">
+      A fan-made watch tracker
     </div>
 
-    <div class="preset-grid">
+    <h1>
+      My Critical Role
+      <span>Journey</span>
+    </h1>
 
-      <button class="preset-button" data-theme="vox">
-        Vox Machina
+    <p class="subtitle">
+      Track your adventures through Critical Role.
+      Customize your experience, check off what you've watched,
+      and always know where your journey continues.
+    </p>
+
+
+    <!-- =========================
+         THEME PANEL
+    ========================== -->
+
+    <section class="theme-panel">
+
+      <div class="theme-heading">
+        ✦ Customize Your Journey
+      </div>
+
+      <div class="preset-grid">
+
+        <button class="preset-button" data-theme="vox">
+          Vox Machina
+        </button>
+
+        <button class="preset-button" data-theme="mighty">
+          Mighty Nein
+        </button>
+
+        <button class="preset-button" data-theme="bells">
+          Bells Hells
+        </button>
+
+        <button class="preset-button" data-theme="midnight">
+          Midnight
+        </button>
+
+        <button class="preset-button" data-theme="academia">
+          Dark Academia
+        </button>
+
+        <button class="preset-button" data-theme="custom">
+          Custom
+        </button>
+
+      </div>
+
+
+      <div class="custom-colors">
+
+        <div class="color-row">
+          <span>Accent</span>
+          <input
+            type="color"
+            id="accentColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Background</span>
+          <input
+            type="color"
+            id="backgroundColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Background Glow</span>
+          <input
+            type="color"
+            id="backgroundTopColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Cards</span>
+          <input
+            type="color"
+            id="cardColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Secondary Cards</span>
+          <input
+            type="color"
+            id="cardSoftColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Main Text</span>
+          <input
+            type="color"
+            id="textColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Secondary Text</span>
+          <input
+            type="color"
+            id="mutedColor"
+            class="color-input"
+          >
+        </div>
+
+        <div class="color-row">
+          <span>Borders</span>
+          <input
+            type="color"
+            id="borderColor"
+            class="color-input"
+          >
+        </div>
+
+      </div>
+
+      <button
+        class="reset-theme"
+        id="resetTheme"
+      >
+        Reset to default theme
       </button>
 
-      <button class="preset-button" data-theme="mighty">
-        Mighty Nein
-      </button>
+    </section>
 
-      <button class="preset-button" data-theme="bells">
-        Bells Hells
-      </button>
 
-      <button class="preset-button" data-theme="midnight">
-        Midnight
-      </button>
+    <!-- =========================
+         OVERALL PROGRESS
+    ========================== -->
 
-      <button class="preset-button" data-theme="academia">
-        Dark Academia
-      </button>
+    <section class="progress-card">
 
-      <button class="preset-button" data-theme="custom">
-        Custom
-      </button>
+      <div class="progress-ring">
 
+        <div class="progress-inner">
+
+          <div
+            class="percent"
+            id="percent"
+          >
+            0%
+          </div>
+
+          <div class="complete">
+            COMPLETE
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="up-next">
+
+        <div class="up-label">
+          ◆ Up Next
+        </div>
+
+        <div
+          class="up-title"
+          id="upNext"
+        >
+          Arrival at Kraghammer
+        </div>
+
+      </div>
+
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong id="watchedCount">
+            0
+          </strong>
+          <span>Watched</span>
+        </div>
+
+        <div class="stat">
+          <strong id="remainingCount">
+            5
+          </strong>
+          <span>Remaining</span>
+        </div>
+
+        <div class="stat">
+          <strong id="totalCount">
+            5
+          </strong>
+          <span>Adventures</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CAMPAIGNS
+    ========================== -->
+
+    <div class="section-title">
+      Begin Your Adventure
     </div>
 
 
-    <div class="custom-colors">
+    <!-- CAMPAIGN ONE -->
 
-      <div class="color-row">
-        <span>Accent</span>
-        <input type="color" id="accentColor" class="color-input">
+    <div
+      class="campaign campaign-button"
+      id="campaign1Button"
+    >
+
+      <div class="campaign-number">
+        I
       </div>
 
-      <div class="color-row">
-        <span>Background</span>
-        <input type="color" id="backgroundColor" class="color-input">
+      <div class="campaign-info">
+
+        <div class="campaign-name">
+          Vox Machina
+        </div>
+
+        <div class="campaign-subtitle">
+          Campaign One • 115 Episodes
+        </div>
+
       </div>
 
-      <div class="color-row">
-        <span>Background Glow</span>
-        <input type="color" id="backgroundTopColor" class="color-input">
-      </div>
-
-      <div class="color-row">
-        <span>Cards</span>
-        <input type="color" id="cardColor" class="color-input">
-      </div>
-
-      <div class="color-row">
-        <span>Secondary Cards</span>
-        <input type="color" id="cardSoftColor" class="color-input">
-      </div>
-
-      <div class="color-row">
-        <span>Main Text</span>
-        <input type="color" id="textColor" class="color-input">
-      </div>
-
-      <div class="color-row">
-        <span>Secondary Text</span>
-        <input type="color" id="mutedColor" class="color-input">
-      </div>
-
-      <div class="color-row">
-        <span>Borders</span>
-        <input type="color" id="borderColor" class="color-input">
-      </div>
-
-    </div>
-
-    <button class="reset-theme" id="resetTheme">
-      Reset to default theme
-    </button>
-
-  </section>
-
-
-  <section class="progress-card">
-
-    <div class="progress-ring">
-      <div class="progress-inner">
-        <div class="percent" id="percent">0%</div>
-        <div class="complete">COMPLETE</div>
-      </div>
-    </div>
-
-    <div class="up-next">
-      <div class="up-label">◆ Up Next</div>
-      <div class="up-title" id="upNext">
-        Campaign 1, Episode 1
-      </div>
-    </div>
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong id="watchedCount">0</strong>
-        <span>Watched</span>
-      </div>
-
-      <div class="stat">
-        <strong id="remainingCount">5</strong>
-        <span>Remaining</span>
-      </div>
-
-      <div class="stat">
-        <strong id="totalCount">5</strong>
-        <span>Adventures</span>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <div class="section-title">
-    Begin Your Adventure
-  </div>
-
-  <div class="campaign campaign-button" id="campaign1Button">
-  <div class="campaign-number">I</div>
-
-  <div class="campaign-info">
-    <div class="campaign-name">Vox Machina</div>
-    <div class="campaign-subtitle">
-      Campaign One • 115 Episodes
-    </div>
-  </div>
-
-  <div class="arrow" id="campaign1Arrow">›</div>
-</div>
-
-<section class="campaign-content" id="campaign1Content">
-
-  <div class="campaign-header">
-
-    <div>
-      <div class="campaign-small-label">
-        Campaign One
-      </div>
-
-      <h2>Vox Machina</h2>
-
-      <p>
-        Follow Vox Machina through Tal'Dorei,
-        from Kraghammer to the end of their
-        legendary adventure.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="campaign-progress">
-    <div class="campaign-progress-top">
-      <span>Campaign Progress</span>
-      <strong id="c1ProgressText">0 / 5</strong>
-    </div>
-
-    <div class="campaign-progress-bar">
       <div
-        class="campaign-progress-fill"
-        id="c1ProgressFill">
+        class="arrow"
+        id="campaign1Arrow"
+      >
+        ›
       </div>
-    </div>
-  </div>
 
-  <div class="arc-title">
-    Arc I — Kraghammer & Vasselheim
-  </div>
-
-  <div class="episode-list" id="campaign1Episodes"></div>
-
-</section>
-
-  <div class="campaign">
-    <div class="campaign-number">II</div>
-
-    <div class="campaign-info">
-      <div class="campaign-name">The Mighty Nein</div>
-      <div class="campaign-subtitle">Campaign Two</div>
     </div>
 
-    <div class="arrow">›</div>
-  </div>
 
-  <div class="campaign">
-    <div class="campaign-number">III</div>
+    <section
+      class="campaign-content"
+      id="campaign1Content"
+    >
 
-    <div class="campaign-info">
-      <div class="campaign-name">Bells Hells</div>
-      <div class="campaign-subtitle">Campaign Three</div>
+      <div class="campaign-header">
+
+        <div class="campaign-small-label">
+          Campaign One
+        </div>
+
+        <h2>
+          Vox Machina
+        </h2>
+
+        <p>
+          Follow Vox Machina through Tal'Dorei,
+          from Kraghammer to the end of their
+          legendary adventure.
+        </p>
+
+      </div>
+
+
+      <div class="campaign-progress">
+
+        <div class="campaign-progress-top">
+
+          <span>
+            Campaign Progress
+          </span>
+
+          <strong id="c1ProgressText">
+            0 / 5
+          </strong>
+
+        </div>
+
+        <div class="campaign-progress-bar">
+
+          <div
+            class="campaign-progress-fill"
+            id="c1ProgressFill"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="arc-title">
+        Arc I — Kraghammer & Vasselheim
+      </div>
+
+      <div
+        class="episode-list"
+        id="campaign1Episodes"
+      ></div>
+
+
+      <button
+        class="reset-button"
+        id="resetProgress"
+      >
+        Reset Campaign 1 progress
+      </button>
+
+    </section>
+
+
+    <!-- CAMPAIGN TWO -->
+
+    <div class="campaign">
+
+      <div class="campaign-number">
+        II
+      </div>
+
+      <div class="campaign-info">
+
+        <div class="campaign-name">
+          The Mighty Nein
+        </div>
+
+        <div class="campaign-subtitle">
+          Campaign Two
+        </div>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
     </div>
 
-    <div class="arrow">›</div>
-  </div>
+
+    <!-- CAMPAIGN THREE -->
+
+    <div class="campaign">
+
+      <div class="campaign-number">
+        III
+      </div>
+
+      <div class="campaign-info">
+
+        <div class="campaign-name">
+          Bells Hells
+        </div>
+
+        <div class="campaign-subtitle">
+          Campaign Three
+        </div>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </div>
 
 
-  <div class="section-title">
-    Test Your Tracker
-  </div>
+    <div class="footer-quote">
+      "How do you want to do this?"
+    </div>
 
-  <div class="episode-list" id="episodeList"></div>
-
-  <button class="reset-button" id="resetProgress">
-    Reset test progress
-  </button>
-
-  <div class="footer-quote">
-    "How do you want to do this?"
-  </div>
-
-</main>
+  </main>
 
 
-<script>
+  <script>
 
-  const defaultTheme = {
-    accent: "#c6404f",
-    background: "#09090b",
-    backgroundTop: "#24131b",
-    card: "#201519",
-    cardSoft: "#29181e",
-    text: "#eee8df",
-    muted: "#a99fa0",
-    border: "#543039"
-  };
+    /* =========================
+       THEMES
+    ========================= */
+
+    const defaultTheme = {
+      accent: "#c6404f",
+      background: "#09090b",
+      backgroundTop: "#24131b",
+      card: "#201519",
+      cardSoft: "#29181e",
+      text: "#eee8df",
+      muted: "#a99fa0",
+      border: "#543039"
+    };
 
 
-  const themes = {
+    const themes = {
 
-    vox: {
-      accent: "#b33f4b",
-      background: "#0b090a",
-      backgroundTop: "#291418",
-      card: "#211619",
-      cardSoft: "#2e1a1f",
-      text: "#f2e8df",
-      muted: "#ab9293",
-      border: "#583039"
-    },
+      vox: {
+        accent: "#b33f4b",
+        background: "#0b090a",
+        backgroundTop: "#291418",
+        card: "#211619",
+        cardSoft: "#2e1a1f",
+        text: "#f2e8df",
+        muted: "#ab9293",
+        border: "#583039"
+      },
 
-    mighty: {
-      accent: "#4aa6b8",
-      background: "#081012",
-      backgroundTop: "#10282d",
-      card: "#101f22",
-      cardSoft: "#153036",
-      text: "#e8f2f2",
-      muted: "#8da7aa",
-      border: "#28525b"
-    },
+      mighty: {
+        accent: "#4aa6b8",
+        background: "#081012",
+        backgroundTop: "#10282d",
+        card: "#101f22",
+        cardSoft: "#153036",
+        text: "#e8f2f2",
+        muted: "#8da7aa",
+        border: "#28525b"
+      },
 
-    bells: {
-      accent: "#b58bdb",
-      background: "#0d0a12",
-      backgroundTop: "#241735",
-      card: "#1c1426",
-      cardSoft: "#2c1d3a",
-      text: "#f0eaf6",
-      muted: "#a995b9",
-      border: "#513968"
-    },
+      bells: {
+        accent: "#b58bdb",
+        background: "#0d0a12",
+        backgroundTop: "#241735",
+        card: "#1c1426",
+        cardSoft: "#2c1d3a",
+        text: "#f0eaf6",
+        muted: "#a995b9",
+        border: "#513968"
+      },
 
-    midnight: {
-      accent: "#6d8cff",
-      background: "#050811",
-      backgroundTop: "#111a36",
-      card: "#101522",
-      cardSoft: "#171f33",
-      text: "#eef2ff",
-      muted: "#8f99b8",
-      border: "#29395e"
-    },
+      midnight: {
+        accent: "#6d8cff",
+        background: "#050811",
+        backgroundTop: "#111a36",
+        card: "#101522",
+        cardSoft: "#171f33",
+        text: "#eef2ff",
+        muted: "#8f99b8",
+        border: "#29395e"
+      },
 
-    academia: {
-      accent: "#b58b53",
-      background: "#100d09",
-      backgroundTop: "#2b2114",
-      card: "#211a12",
-      cardSoft: "#302518",
-      text: "#f2e8d4",
-      muted: "#a79980",
-      border: "#58452a"
+      academia: {
+        accent: "#b58b53",
+        background: "#100d09",
+        backgroundTop: "#2b2114",
+        card: "#211a12",
+        cardSoft: "#302518",
+        text: "#f2e8d4",
+        muted: "#a79980",
+        border: "#58452a"
+      }
+
+    };
+
+
+    const inputs = {
+      accent: document.getElementById("accentColor"),
+      background: document.getElementById("backgroundColor"),
+      backgroundTop: document.getElementById("backgroundTopColor"),
+      card: document.getElementById("cardColor"),
+      cardSoft: document.getElementById("cardSoftColor"),
+      text: document.getElementById("textColor"),
+      muted: document.getElementById("mutedColor"),
+      border: document.getElementById("borderColor")
+    };
+
+
+    function applyTheme(theme, save = true) {
+
+      document.documentElement.style.setProperty(
+        "--accent",
+        theme.accent
+      );
+
+      document.documentElement.style.setProperty(
+        "--background",
+        theme.background
+      );
+
+      document.documentElement.style.setProperty(
+        "--background-top",
+        theme.backgroundTop
+      );
+
+      document.documentElement.style.setProperty(
+        "--card",
+        theme.card
+      );
+
+      document.documentElement.style.setProperty(
+        "--card-soft",
+        theme.cardSoft
+      );
+
+      document.documentElement.style.setProperty(
+        "--text",
+        theme.text
+      );
+
+      document.documentElement.style.setProperty(
+        "--muted",
+        theme.muted
+      );
+
+      document.documentElement.style.setProperty(
+        "--border",
+        theme.border
+      );
+
+
+      Object.keys(inputs).forEach(key => {
+        inputs[key].value = theme[key];
+      });
+
+
+      if (save) {
+        localStorage.setItem(
+          "criticalRoleTheme",
+          JSON.stringify(theme)
+        );
+      }
+
     }
 
-  };
 
+    function getCurrentTheme() {
 
-  const inputs = {
-    accent: document.getElementById("accentColor"),
-    background: document.getElementById("backgroundColor"),
-    backgroundTop: document.getElementById("backgroundTopColor"),
-    card: document.getElementById("cardColor"),
-    cardSoft: document.getElementById("cardSoftColor"),
-    text: document.getElementById("textColor"),
-    muted: document.getElementById("mutedColor"),
-    border: document.getElementById("borderColor")
-  };
+      return {
+        accent: inputs.accent.value,
+        background: inputs.background.value,
+        backgroundTop: inputs.backgroundTop.value,
+        card: inputs.card.value,
+        cardSoft: inputs.cardSoft.value,
+        text: inputs.text.value,
+        muted: inputs.muted.value,
+        border: inputs.border.value
+      };
 
-
-  function applyTheme(theme, save = true) {
-
-    document.documentElement.style.setProperty(
-      "--accent",
-      theme.accent
-    );
-
-    document.documentElement.style.setProperty(
-      "--background",
-      theme.background
-    );
-
-    document.documentElement.style.setProperty(
-      "--background-top",
-      theme.backgroundTop
-    );
-
-    document.documentElement.style.setProperty(
-      "--card",
-      theme.card
-    );
-
-    document.documentElement.style.setProperty(
-      "--card-soft",
-      theme.cardSoft
-    );
-
-    document.documentElement.style.setProperty(
-      "--text",
-      theme.text
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted",
-      theme.muted
-    );
-
-    document.documentElement.style.setProperty(
-      "--border",
-      theme.border
-    );
+    }
 
 
     Object.keys(inputs).forEach(key => {
 
-      inputs[key].value = theme[key];
+      inputs[key].addEventListener(
+        "input",
+        () => {
 
-    });
+          const customTheme =
+            getCurrentTheme();
 
-
-    if (save) {
-
-      localStorage.setItem(
-        "criticalRoleTheme",
-        JSON.stringify(theme)
-      );
-
-    }
-
-  }
-
-
-  function getCurrentTheme() {
-
-    return {
-
-      accent: inputs.accent.value,
-      background: inputs.background.value,
-      backgroundTop: inputs.backgroundTop.value,
-      card: inputs.card.value,
-      cardSoft: inputs.cardSoft.value,
-      text: inputs.text.value,
-      muted: inputs.muted.value,
-      border: inputs.border.value
-
-    };
-
-  }
-
-
-  Object.keys(inputs).forEach(key => {
-
-    inputs[key].addEventListener("input", () => {
-
-      const customTheme = getCurrentTheme();
-
-      applyTheme(customTheme);
-
-      localStorage.setItem(
-        "criticalRoleThemeName",
-        "custom"
-      );
-
-      updateActiveThemeButton();
-
-    });
-
-  });
-
-
-  document
-    .querySelectorAll(".preset-button")
-    .forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const name = button.dataset.theme;
-
-        if (name === "custom") {
+          applyTheme(customTheme);
 
           localStorage.setItem(
             "criticalRoleThemeName",
@@ -985,337 +1278,525 @@
 
           updateActiveThemeButton();
 
-          return;
-
         }
-
-        applyTheme(themes[name]);
-
-        localStorage.setItem(
-          "criticalRoleThemeName",
-          name
-        );
-
-        updateActiveThemeButton();
-
-      });
+      );
 
     });
 
-
-  function updateActiveThemeButton() {
-
-    const activeName =
-      localStorage.getItem("criticalRoleThemeName");
 
     document
       .querySelectorAll(".preset-button")
       .forEach(button => {
 
-        button.classList.toggle(
-          "active",
-          button.dataset.theme === activeName
+        button.addEventListener(
+          "click",
+          () => {
+
+            const name =
+              button.dataset.theme;
+
+
+            if (name === "custom") {
+
+              localStorage.setItem(
+                "criticalRoleThemeName",
+                "custom"
+              );
+
+              updateActiveThemeButton();
+
+              return;
+
+            }
+
+
+            applyTheme(
+              themes[name]
+            );
+
+            localStorage.setItem(
+              "criticalRoleThemeName",
+              name
+            );
+
+            updateActiveThemeButton();
+
+          }
         );
 
       });
 
-  }
 
+    function updateActiveThemeButton() {
 
-  document
-    .getElementById("resetTheme")
-    .addEventListener("click", () => {
+      const activeName =
+        localStorage.getItem(
+          "criticalRoleThemeName"
+        );
 
-      applyTheme(defaultTheme);
+      document
+        .querySelectorAll(".preset-button")
+        .forEach(button => {
 
-      localStorage.setItem(
-        "criticalRoleThemeName",
-        "vox"
-      );
+          button.classList.toggle(
+            "active",
+            button.dataset.theme === activeName
+          );
 
-      updateActiveThemeButton();
+        });
 
-    });
-
-
-  const savedTheme =
-    JSON.parse(
-      localStorage.getItem("criticalRoleTheme")
-    );
-
-  if (savedTheme) {
-
-    applyTheme(savedTheme, false);
-
-  } else {
-
-    applyTheme(defaultTheme, false);
-
-  }
-
-  updateActiveThemeButton();
-
-
-
-  const episodes = [
-    {
-      id: "c1e1",
-      label: "Campaign 1 • Episode 1",
-      title: "Campaign 1, Episode 1"
-    },
-    {
-      id: "c1e2",
-      label: "Campaign 1 • Episode 2",
-      title: "Campaign 1, Episode 2"
-    },
-    {
-      id: "c1e3",
-      label: "Campaign 1 • Episode 3",
-      title: "Campaign 1, Episode 3"
-    },
-    {
-      id: "c1e4",
-      label: "Campaign 1 • Episode 4",
-      title: "Campaign 1, Episode 4"
-    },
-    {
-      id: "c1e5",
-      label: "Campaign 1 • Episode 5",
-      title: "Campaign 1, Episode 5"
     }
-  ];
 
 
-  const savedWatched =
-    JSON.parse(
-      localStorage.getItem("criticalRoleWatched")
-    ) || [];
+    document
+      .getElementById("resetTheme")
+      .addEventListener(
+        "click",
+        () => {
 
-  let watched = new Set(savedWatched);
+          applyTheme(defaultTheme);
 
+          localStorage.setItem(
+            "criticalRoleThemeName",
+            "vox"
+          );
 
-  function saveProgress() {
-
-    localStorage.setItem(
-      "criticalRoleWatched",
-      JSON.stringify([...watched])
-    );
-
-  }
-
-  function renderEpisodes() {
-
-  const list =
-    document.getElementById("campaign1Episodes");
-
-  list.innerHTML = "";
-
-  const campaign1 =
-    episodes.filter(
-      episode => episode.campaign === 1
-    );
-
-  campaign1.forEach(episode => {
-
-    const card =
-      document.createElement("div");
-
-    card.className =
-      "episode" +
-      (watched.has(episode.id)
-        ? " watched"
-        : "");
-
-    card.innerHTML = `
-
-      <input
-        class="watch-check"
-        type="checkbox"
-        ${watched.has(episode.id)
-          ? "checked"
-          : ""}
-        aria-label="Mark ${episode.title} watched"
-      >
-
-      <div>
-
-        <div class="episode-number">
-          ${episode.label}
-        </div>
-
-        <div class="episode-name">
-          ${episode.title}
-        </div>
-
-        <div class="episode-note">
-          Tap the box to mark this episode watched.
-        </div>
-
-      </div>
-
-    `;
-
-    const checkbox =
-      card.querySelector(".watch-check");
-
-    checkbox.addEventListener(
-      "change",
-      () => {
-
-        if (checkbox.checked) {
-
-          watched.add(episode.id);
-
-        } else {
-
-          watched.delete(episode.id);
+          updateActiveThemeButton();
 
         }
+      );
 
-        saveProgress();
-        renderEpisodes();
-        updateProgress();
-        updateCampaignProgress();
+
+    const savedTheme =
+      JSON.parse(
+        localStorage.getItem(
+          "criticalRoleTheme"
+        )
+      );
+
+
+    if (savedTheme) {
+
+      applyTheme(
+        savedTheme,
+        false
+      );
+
+    } else {
+
+      applyTheme(
+        defaultTheme,
+        false
+      );
+
+    }
+
+
+    updateActiveThemeButton();
+
+
+    /* =========================
+       EPISODE DATA
+    ========================= */
+
+    const episodes = [
+
+      {
+        id: "c1e1",
+        campaign: 1,
+        episode: 1,
+        label: "Campaign 1 • Episode 1",
+        title: "Arrival at Kraghammer"
+      },
+
+      {
+        id: "c1e2",
+        campaign: 1,
+        episode: 2,
+        label: "Campaign 1 • Episode 2",
+        title: "Into the Greyspine Mines"
+      },
+
+      {
+        id: "c1e3",
+        campaign: 1,
+        episode: 3,
+        label: "Campaign 1 • Episode 3",
+        title: "Strange Bedfellows"
+      },
+
+      {
+        id: "c1e4",
+        campaign: 1,
+        episode: 4,
+        label: "Campaign 1 • Episode 4",
+        title: "Attack on the Duergar Warcamp"
+      },
+
+      {
+        id: "c1e5",
+        campaign: 1,
+        episode: 5,
+        label: "Campaign 1 • Episode 5",
+        title: "The Trick About Falling"
+      }
+
+    ];
+
+
+    /* =========================
+       SAVED WATCH PROGRESS
+    ========================= */
+
+    const savedWatched =
+      JSON.parse(
+        localStorage.getItem(
+          "criticalRoleWatched"
+        )
+      ) || [];
+
+
+    let watched =
+      new Set(savedWatched);
+
+
+    function saveProgress() {
+
+      localStorage.setItem(
+        "criticalRoleWatched",
+        JSON.stringify(
+          [...watched]
+        )
+      );
+
+    }
+
+
+    /* =========================
+       RENDER EPISODES
+    ========================= */
+
+    function renderEpisodes() {
+
+      const list =
+        document.getElementById(
+          "campaign1Episodes"
+        );
+
+
+      list.innerHTML = "";
+
+
+      const campaign1 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1
+        );
+
+
+      campaign1.forEach(episode => {
+
+        const card =
+          document.createElement("div");
+
+
+        card.className =
+          "episode" +
+          (
+            watched.has(episode.id)
+              ? " watched"
+              : ""
+          );
+
+
+        card.innerHTML = `
+
+          <input
+            class="watch-check"
+            type="checkbox"
+            ${
+              watched.has(episode.id)
+                ? "checked"
+                : ""
+            }
+            aria-label="Mark ${episode.title} watched"
+          >
+
+          <div>
+
+            <div class="episode-number">
+              ${episode.label}
+            </div>
+
+            <div class="episode-name">
+              ${episode.title}
+            </div>
+
+            <div class="episode-note">
+              Tap the box to mark this episode watched.
+            </div>
+
+          </div>
+
+        `;
+
+
+        const checkbox =
+          card.querySelector(
+            ".watch-check"
+          );
+
+
+        checkbox.addEventListener(
+          "change",
+          () => {
+
+            if (checkbox.checked) {
+
+              watched.add(
+                episode.id
+              );
+
+            } else {
+
+              watched.delete(
+                episode.id
+              );
+
+            }
+
+
+            saveProgress();
+
+            renderEpisodes();
+
+            updateProgress();
+
+            updateCampaignProgress();
+
+          }
+        );
+
+
+        list.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =========================
+       OVERALL PROGRESS
+    ========================= */
+
+    function updateProgress() {
+
+      const total =
+        episodes.length;
+
+
+      const watchedNumber =
+        episodes.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+
+
+      const remaining =
+        total - watchedNumber;
+
+
+      const percentage =
+        total
+          ? Math.round(
+              (
+                watchedNumber /
+                total
+              ) * 100
+            )
+          : 0;
+
+
+      document
+        .getElementById("percent")
+        .textContent =
+          percentage + "%";
+
+
+      document
+        .getElementById("watchedCount")
+        .textContent =
+          watchedNumber;
+
+
+      document
+        .getElementById("remainingCount")
+        .textContent =
+          remaining;
+
+
+      document
+        .getElementById("totalCount")
+        .textContent =
+          total;
+
+
+      document.documentElement
+        .style
+        .setProperty(
+          "--progress",
+          (percentage * 3.6) + "deg"
+        );
+
+
+      const nextEpisode =
+        episodes.find(
+          episode =>
+            !watched.has(episode.id)
+        );
+
+
+      document
+        .getElementById("upNext")
+        .textContent =
+          nextEpisode
+            ? `C1E${nextEpisode.episode} — ${nextEpisode.title}`
+            : "All caught up! ✦";
+
+    }
+
+
+    /* =========================
+       CAMPAIGN 1 PROGRESS
+    ========================= */
+
+    function updateCampaignProgress() {
+
+      const campaign1 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1
+        );
+
+
+      const watchedCampaign1 =
+        campaign1.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+
+
+      const percentage =
+        campaign1.length
+          ? Math.round(
+              (
+                watchedCampaign1 /
+                campaign1.length
+              ) * 100
+            )
+          : 0;
+
+
+      document
+        .getElementById(
+          "c1ProgressText"
+        )
+        .textContent =
+          watchedCampaign1 +
+          " / " +
+          campaign1.length;
+
+
+      document
+        .getElementById(
+          "c1ProgressFill"
+        )
+        .style
+        .width =
+          percentage + "%";
+
+    }
+
+
+    /* =========================
+       OPEN / CLOSE CAMPAIGN 1
+    ========================= */
+
+    const campaign1Button =
+      document.getElementById(
+        "campaign1Button"
+      );
+
+
+    const campaign1Content =
+      document.getElementById(
+        "campaign1Content"
+      );
+
+
+    const campaign1Arrow =
+      document.getElementById(
+        "campaign1Arrow"
+      );
+
+
+    campaign1Button.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          campaign1Content
+            .classList
+            .toggle("open");
+
+
+        campaign1Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
 
       }
     );
 
-    list.appendChild(card);
 
-  });
+    /* =========================
+       RESET WATCH PROGRESS
+    ========================= */
 
-}
+    document
+      .getElementById(
+        "resetProgress"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-  
-  function updateCampaignProgress() {
+          watched.clear();
 
-  const campaign1 =
-    episodes.filter(
-      episode => episode.campaign === 1
-    );
+          saveProgress();
 
-  const watchedCampaign1 =
-    campaign1.filter(
-      episode => watched.has(episode.id)
-    ).length;
+          renderEpisodes();
 
-  const percentage =
-    campaign1.length
-      ? Math.round(
-          watchedCampaign1 /
-          campaign1.length *
-          100
-        )
-      : 0;
+          updateProgress();
 
-  document
-    .getElementById("c1ProgressText")
-    .textContent =
-      watchedCampaign1 +
-      " / " +
-      campaign1.length;
+          updateCampaignProgress();
 
-  document
-    .getElementById("c1ProgressFill")
-    .style.width =
-      percentage + "%";
-
-}
-
-  const campaign1Button =
-  document.getElementById("campaign1Button");
-
-const campaign1Content =
-  document.getElementById("campaign1Content");
-
-const campaign1Arrow =
-  document.getElementById("campaign1Arrow");
-
-
-campaign1Button.addEventListener(
-  "click",
-  () => {
-
-    const isOpen =
-      campaign1Content.classList.toggle("open");
-
-    campaign1Arrow.textContent =
-      isOpen ? "⌄" : "›";
-
-  }
-);
-  
-
-  function updateProgress() {
-
-    const total =
-      episodes.length;
-
-    const watchedNumber =
-      episodes.filter(
-        episode => watched.has(episode.id)
-      ).length;
-
-    const remaining =
-      total - watchedNumber;
-
-    const percentage =
-      Math.round(
-        (watchedNumber / total) * 100
+        }
       );
 
 
-    document.getElementById("percent").textContent =
-      percentage + "%";
+    /* =========================
+       START THE WEBSITE
+    ========================= */
 
-    document.getElementById("watchedCount").textContent =
-      watchedNumber;
+    renderEpisodes();
 
-    document.getElementById("remainingCount").textContent =
-      remaining;
+    updateProgress();
 
-    document.getElementById("totalCount").textContent =
-      total;
+    updateCampaignProgress();
 
-
-    document.documentElement.style.setProperty(
-      "--progress",
-      (percentage * 3.6) + "deg"
-    );
-
-
-    const nextEpisode =
-      episodes.find(
-        episode => !watched.has(episode.id)
-      );
-
-    document.getElementById("upNext").textContent =
-      nextEpisode
-        ? nextEpisode.title
-        : "All caught up! ✦";
-
-  }
-
-
-  document
-    .getElementById("resetProgress")
-    .addEventListener("click", () => {
-
-      watched.clear();
-
-      saveProgress();
-      renderEpisodes();
-      updateProgress();
-
-    });
-
-
-  renderEpisodes();
-updateProgress();
-updateCampaignProgress();
-  
-
-</script>
+  </script>
 
 </body>
+
 </html>
