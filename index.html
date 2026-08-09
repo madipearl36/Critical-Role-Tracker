@@ -1103,84 +1103,148 @@
 
   }
 
-
   function renderEpisodes() {
 
-    const list =
-      document.getElementById("episodeList");
+  const list =
+    document.getElementById("campaign1Episodes");
 
-    list.innerHTML = "";
+  list.innerHTML = "";
 
-    episodes.forEach(episode => {
+  const campaign1 =
+    episodes.filter(
+      episode => episode.campaign === 1
+    );
 
-      const card =
-        document.createElement("div");
+  campaign1.forEach(episode => {
 
-      card.className =
-        "episode" +
-        (watched.has(episode.id)
-          ? " watched"
-          : "");
+    const card =
+      document.createElement("div");
 
-      card.innerHTML = `
+    card.className =
+      "episode" +
+      (watched.has(episode.id)
+        ? " watched"
+        : "");
 
-        <input
-          class="watch-check"
-          type="checkbox"
-          ${watched.has(episode.id)
-            ? "checked"
-            : ""}
-          aria-label="Mark ${episode.title} watched"
-        >
+    card.innerHTML = `
 
-        <div>
+      <input
+        class="watch-check"
+        type="checkbox"
+        ${watched.has(episode.id)
+          ? "checked"
+          : ""}
+        aria-label="Mark ${episode.title} watched"
+      >
 
-          <div class="episode-number">
-            ${episode.label}
-          </div>
+      <div>
 
-          <div class="episode-name">
-            ${episode.title}
-          </div>
-
-          <div class="episode-note">
-            Tap the box to mark this adventure watched.
-          </div>
-
+        <div class="episode-number">
+          ${episode.label}
         </div>
 
-      `;
+        <div class="episode-name">
+          ${episode.title}
+        </div>
 
-      const checkbox =
-        card.querySelector(".watch-check");
+        <div class="episode-note">
+          Tap the box to mark this episode watched.
+        </div>
 
-      checkbox.addEventListener(
-        "change",
-        () => {
+      </div>
 
-          if (checkbox.checked) {
+    `;
 
-            watched.add(episode.id);
+    const checkbox =
+      card.querySelector(".watch-check");
 
-          } else {
+    checkbox.addEventListener(
+      "change",
+      () => {
 
-            watched.delete(episode.id);
+        if (checkbox.checked) {
 
-          }
+          watched.add(episode.id);
 
-          saveProgress();
-          renderEpisodes();
-          updateProgress();
+        } else {
+
+          watched.delete(episode.id);
 
         }
-      );
 
-      list.appendChild(card);
+        saveProgress();
+        renderEpisodes();
+        updateProgress();
+        updateCampaignProgress();
 
-    });
+      }
+    );
+
+    list.appendChild(card);
+
+  });
+
+}
+
+  
+  function updateCampaignProgress() {
+
+  const campaign1 =
+    episodes.filter(
+      episode => episode.campaign === 1
+    );
+
+  const watchedCampaign1 =
+    campaign1.filter(
+      episode => watched.has(episode.id)
+    ).length;
+
+  const percentage =
+    campaign1.length
+      ? Math.round(
+          watchedCampaign1 /
+          campaign1.length *
+          100
+        )
+      : 0;
+
+  document
+    .getElementById("c1ProgressText")
+    .textContent =
+      watchedCampaign1 +
+      " / " +
+      campaign1.length;
+
+  document
+    .getElementById("c1ProgressFill")
+    .style.width =
+      percentage + "%";
+
+}
+
+  const campaign1Button =
+  document.getElementById("campaign1Button");
+
+const campaign1Content =
+  document.getElementById("campaign1Content");
+
+const campaign1Arrow =
+  document.getElementById("campaign1Arrow");
+
+
+campaign1Button.addEventListener(
+  "click",
+  () => {
+
+    const isOpen =
+      campaign1Content.classList.toggle("open");
+
+    campaign1Arrow.textContent =
+      isOpen ? "⌄" : "›";
 
   }
-
+);
+  
 
   function updateProgress() {
 
@@ -1247,7 +1311,9 @@
 
 
   renderEpisodes();
-  updateProgress();
+updateProgress();
+updateCampaignProgress();
+  
 
 </script>
 
