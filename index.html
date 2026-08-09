@@ -702,6 +702,71 @@
         scale(0.99);
     }
 
+    /* =========================
+       CAMPAIGN WATCH CONTROL
+    ========================= */
+    
+    .campaign-action-button {
+      width: 100%;
+    
+      margin-top: 15px;
+      padding: 12px 14px;
+    
+      border:
+        1px solid
+        var(--border);
+    
+      border-radius: 10px;
+    
+      background:
+        var(--card);
+    
+      color:
+        var(--muted);
+    
+      font-family:
+        Arial,
+        sans-serif;
+    
+      font-size: 11px;
+      font-weight: bold;
+    
+      cursor: pointer;
+    
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+    
+    .campaign-action-button:hover {
+      border-color:
+        var(--accent);
+    
+      color:
+        var(--accent);
+    }
+    
+    .campaign-action-button.complete {
+      border-color:
+        var(--accent);
+    
+      color:
+        var(--accent);
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--accent) 10%,
+          var(--card)
+        );
+    }
+    
+    .campaign-action-button:active {
+      transform:
+        scale(0.99);
+    }
+
 
     /* =========================
        CAMPAIGN PROGRESS
@@ -1477,7 +1542,7 @@
           </span>
 
           <strong id="c1ProgressText">
-            0 / 5
+            0 / 115
           </strong>
 
         </div>
@@ -1490,6 +1555,14 @@
           ></div>
 
         </div>
+
+        <button
+          class="campaign-action-button"
+          id="campaign1ActionButton"
+          type="button"
+        >
+          ✓ Mark Campaign Watched
+        </button>
 
       </div>
 
@@ -3505,6 +3578,8 @@
             updateArc5Progress();
 
             updateArcActionButtons();
+
+            updateCampaignActionButton();
     
           }
         );
@@ -4170,6 +4245,109 @@
               );
     
             }
+
+    /* =========================
+       CAMPAIGN WATCH BUTTON
+    ========================= */
+    
+    function updateCampaignActionButton() {
+    
+      const button =
+        document.getElementById(
+          "campaign1ActionButton"
+        );
+    
+    
+      const campaign1Episodes =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1
+        );
+    
+    
+      const campaignComplete =
+        campaign1Episodes.length > 0 &&
+        campaign1Episodes.every(
+          episode =>
+            watched.has(
+              episode.id
+            )
+        );
+    
+    
+      if (campaignComplete) {
+    
+        button.textContent =
+          "↶ Mark Campaign Unwatched";
+    
+        button.classList.add(
+          "complete"
+        );
+    
+      } else {
+    
+        button.textContent =
+          "✓ Mark Campaign Watched";
+    
+        button.classList.remove(
+          "complete"
+        );
+    
+      }
+    
+    }
+
+    const campaign1ActionButton =
+      document.getElementById(
+        "campaign1ActionButton"
+      );
+    
+    
+    campaign1ActionButton.addEventListener(
+      "click",
+      () => {
+    
+        const campaign1Episodes =
+          episodes.filter(
+            episode =>
+              episode.campaign === 1
+          );
+    
+    
+        const campaignComplete =
+          campaign1Episodes.every(
+            episode =>
+              watched.has(
+                episode.id
+              )
+          );
+    
+    
+        if (campaignComplete) {
+    
+          campaign1Episodes.forEach(
+            episode => {
+    
+              watched.delete(
+                episode.id
+              );
+    
+            }
+          );
+    
+        } else {
+    
+          campaign1Episodes.forEach(
+            episode => {
+    
+              watched.add(
+                episode.id
+              );
+    
+            }
+          );
+    
+        }
     
     
             saveProgress();
@@ -4191,6 +4369,8 @@
             updateArc5Progress();
     
             updateArcActionButtons();
+
+            updateCampaignActionButton();
     
           }
         );
@@ -4521,6 +4701,8 @@
 
           updateArcActionButtons();
 
+          updateCampaignActionButton();
+
         }
       );
 
@@ -4546,6 +4728,8 @@
     updateArc5Progress();
 
     updateArcActionButtons();
+
+    updateCampaignActionButton();
 
   </script>
 
