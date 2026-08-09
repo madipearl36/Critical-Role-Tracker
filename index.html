@@ -1187,6 +1187,19 @@
       transform: scale(0.98);
     }
 
+    .episode-watch-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    
+      margin-top: 12px;
+    }
+    
+    .episode-watch-links
+    .episode-watch-button {
+      margin-top: 0;
+    }
+
 
     /* =========================
        BUTTONS & FOOTER
@@ -3524,7 +3537,7 @@
     
       22: "https://www.youtube.com/watch?v=1GY3HTZE5R0",
     
-      23: "https://www.youtube.com/watch?v=FM6L4tuyXq0"
+      23: "https://www.youtube.com/watch?v=FM6L4tuyXq0",
 
       24: "https://www.youtube.com/watch?v=kre27f30IVs",
 
@@ -3540,15 +3553,24 @@
       
       30: "https://www.youtube.com/watch?v=MtS1LGdqxuI&t=11586s",
       
-      31: "https://www.youtube.com/watch?v=CVSgD1iB1G0",
+      31: [
+        { label: "Part 1", url: "https://www.youtube.com/watch?v=CVSgD1iB1G0" },
+        { label: "Part 2", url: "https://www.youtube.com/watch?v=K-k2JpMSa_k&t=37s"}
+      ],
       
       32: "https://www.youtube.com/watch?v=B5sUXSaTHKc",
       
-      33: "https://www.youtube.com/watch?v=EtdswJtQ_Ew",
+      33: [
+        { label: "Part 1", url: "https://www.youtube.com/watch?v=EtdswJtQ_Ew" },
+        { label: "Part 2", url: "https://www.youtube.com/watch?v=iP1gylnxfLU"}
+      ],
       
       34: "https://www.youtube.com/watch?v=2AqLu-u-GcY",
       
-      35: "https://www.youtube.com/results?search_query=Critical+Role+Campaign+1+Episode+35+Denouement",
+      35: [
+        { label: "Part 1", url: "https://www.youtube.com/watch?v=p8p5qZcqIk0"},
+        { label: "Part 2", url: "https://www.youtube.com/watch?v=WFbmY79Qdfc"}
+      ],
       
       36: "https://www.youtube.com/watch?v=EikRMYRf5-Y",
       
@@ -3558,7 +3580,7 @@
     
     };
 
-    function getEpisodeYouTubeLink(episode) {
+    function getEpisodeYouTubeLinks(episode) {
     
       const directLink =
         campaign1YouTubeLinks[
@@ -3566,9 +3588,21 @@
         ];
     
     
-      if (directLink) {
+      if (Array.isArray(directLink)) {
     
         return directLink;
+    
+      }
+    
+    
+      if (directLink) {
+    
+        return [
+          {
+            label: "Watch on YouTube",
+            url: directLink
+          }
+        ];
     
       }
     
@@ -3577,10 +3611,14 @@
         `Critical Role Campaign 1 Episode ${episode.episode} ${episode.title}`;
     
     
-      return (
-        "https://www.youtube.com/results?search_query=" +
-        encodeURIComponent(searchText)
-      );
+      return [
+        {
+          label: "Search on YouTube",
+          url:
+            "https://www.youtube.com/results?search_query=" +
+            encodeURIComponent(searchText)
+        }
+      ];
     
     }
 
@@ -3681,14 +3719,24 @@
               Check the box to mark this episode watched.
             </div>
             
-            <a
-              class="episode-watch-button"
-              href="${getEpisodeYouTubeLink(episode)}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ▶ Watch on YouTube
-            </a>
+            <div class="episode-watch-links">
+
+              ${getEpisodeYouTubeLinks(episode)
+                .map(link => `
+            
+                  <a
+                    class="episode-watch-button"
+                    href="${link.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ▶ ${link.label}
+                  </a>
+            
+                `)
+                .join("")}
+            
+            </div>
     
           </div>
     
