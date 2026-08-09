@@ -3,11 +3,367 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Critical Role Tracker</title>
+
+  <title>My Critical Role Journey</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, #24131b 0%, #100d11 38%, #09090b 100%);
+      color: #eee8df;
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(92%, 760px);
+      margin: auto;
+      padding: 55px 0 100px;
+    }
+
+    .eyebrow {
+      text-align: center;
+      color: #a48f91;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(46px, 11vw, 78px);
+      line-height: .88;
+      margin: 0;
+      font-weight: normal;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      display: block;
+      color: #c6404f;
+    }
+
+    .subtitle {
+      max-width: 560px;
+      margin: 25px auto 45px;
+      text-align: center;
+      color: #a99fa0;
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .progress-card {
+      background: rgba(32, 21, 26, .88);
+      border: 1px solid #543039;
+      border-radius: 22px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+
+    .progress-circle {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      border: 11px solid #40232a;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .percent {
+      color: #d54b5b;
+      font-size: 34px;
+      font-weight: bold;
+    }
+
+    .complete {
+      margin-top: 5px;
+      color: #8e7e80;
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+    }
+
+    .up-next {
+      margin-top: 25px;
+      padding: 18px;
+      border: 1px solid #61333e;
+      background: #29181e;
+      border-radius: 14px;
+    }
+
+    .up-label {
+      color: #d54b5b;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .up-title {
+      margin-top: 8px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      border: 1px solid #443036;
+      border-radius: 12px;
+      padding: 15px 5px;
+      text-align: center;
+      background: rgba(10,10,12,.25);
+    }
+
+    .stat strong {
+      display: block;
+      color: #d54b5b;
+      font-size: 20px;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: #817578;
+      font-family: Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-top: 50px;
+      margin-bottom: 18px;
+      color: #a89598;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .campaign {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px;
+      margin-bottom: 13px;
+      border: 1px solid #432a31;
+      border-radius: 17px;
+      background: rgba(27,18,22,.82);
+    }
+
+    .campaign-number {
+      color: #c6404f;
+      font-size: 35px;
+      width: 45px;
+      text-align: center;
+    }
+
+    .campaign-info {
+      flex: 1;
+    }
+
+    .campaign-name {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .campaign-subtitle {
+      color: #887c7e;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .arrow {
+      color: #9c777d;
+      font-size: 22px;
+    }
+
+    .footer-quote {
+      margin-top: 55px;
+      text-align: center;
+      color: #665a5d;
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    @media (max-width: 430px) {
+      .page {
+        padding-top: 40px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .campaign {
+        padding: 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>My Critical Role Journey</h1>
-  <p>How do you want to do this?</p>
+
+  <main class="page">
+
+    <div class="eyebrow">
+      A fan-made watch tracker
+    </div>
+
+    <h1>
+      My Critical Role
+      <span>Journey</span>
+    </h1>
+
+    <p class="subtitle">
+      Track your adventures through Critical Role.
+      Check off what you've watched, find what comes next,
+      and never lose your place.
+    </p>
+
+    <section class="progress-card">
+
+      <div class="progress-circle">
+        <div class="percent">0%</div>
+        <div class="complete">COMPLETE</div>
+      </div>
+
+      <div class="up-next">
+        <div class="up-label">◆ Up Next</div>
+        <div class="up-title">
+          Campaign 1, Episode 1
+        </div>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>0</strong>
+          <span>Watched</span>
+        </div>
+
+        <div class="stat">
+          <strong>—</strong>
+          <span>Hours Left</span>
+        </div>
+
+        <div class="stat">
+          <strong>—</strong>
+          <span>Adventures</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="section-title">
+      Begin Your Adventure
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">I</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">Vox Machina</div>
+        <div class="campaign-subtitle">Campaign One</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">II</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">The Mighty Nein</div>
+        <div class="campaign-subtitle">Campaign Two</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">III</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">Bells Hells</div>
+        <div class="campaign-subtitle">Campaign Three</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">IV</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">Campaign Four</div>
+        <div class="campaign-subtitle">A new adventure</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="section-title">
+      More Stories
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">✦</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">Exandria Unlimited</div>
+        <div class="campaign-subtitle">Limited series & adventures</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">◆</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">One-Shots & Specials</div>
+        <div class="campaign-subtitle">Side quests and special events</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-number">◇</div>
+
+      <div class="campaign-info">
+        <div class="campaign-name">Animated Adventures</div>
+        <div class="campaign-subtitle">The Legend of Vox Machina & more</div>
+      </div>
+
+      <div class="arrow">›</div>
+    </div>
+
+    <div class="footer-quote">
+      "How do you want to do this?"
+    </div>
+
+  </main>
+
 </body>
 </html>
