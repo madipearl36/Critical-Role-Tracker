@@ -1357,6 +1357,62 @@
       
       </div>
 
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="arc4Button"
+          type="button"
+        >
+      
+          <div>
+            <div class="arc-label">
+              Arc IV
+            </div>
+      
+            <div class="arc-name">
+              Taryon Darrington
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="arc4ProgressText"
+            >
+              0 / 16 watched
+            </div>
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="arc4Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="arc4Content"
+        >
+      
+          <div class="arc-progress-bar">
+            <div
+              class="arc-progress-fill"
+              id="arc4ProgressFill"
+            ></div>
+          </div>
+      
+          <div
+            class="episode-list"
+            id="campaign1Arc4Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
+
 
       <button
         class="reset-button"
@@ -2479,6 +2535,150 @@
         episode: 83,
         label: "Campaign 1 • Episode 83",
         title: "The Deceiver's Stand"
+      },
+
+      {
+        id: "c1e84",
+        campaign: 1,
+        arc: 4,
+        episode: 84,
+        label: "Campaign 1 • Episode 84",
+        title: "Loose Ends"
+      },
+      
+      {
+        id: "c1e85",
+        campaign: 1,
+        arc: 4,
+        episode: 85,
+        label: "Campaign 1 • Episode 85",
+        title: "A Bard's Lament"
+      },
+      
+      {
+        id: "c1e86",
+        campaign: 1,
+        arc: 4,
+        episode: 86,
+        label: "Campaign 1 • Episode 86",
+        title: "Daring Days"
+      },
+      
+      {
+        id: "c1e87",
+        campaign: 1,
+        arc: 4,
+        episode: 87,
+        label: "Campaign 1 • Episode 87",
+        title: "Onward to Vesrah"
+      },
+      
+      {
+        id: "c1e88",
+        campaign: 1,
+        arc: 4,
+        episode: 88,
+        label: "Campaign 1 • Episode 88",
+        title: "Tangled Depths"
+      },
+      
+      {
+        id: "c1e89",
+        campaign: 1,
+        arc: 4,
+        episode: 89,
+        label: "Campaign 1 • Episode 89",
+        title: "Curious Tides"
+      },
+      
+      {
+        id: "c1e90",
+        campaign: 1,
+        arc: 4,
+        episode: 90,
+        label: "Campaign 1 • Episode 90",
+        title: "Voice of the Tempest"
+      },
+      
+      {
+        id: "c1e91",
+        campaign: 1,
+        arc: 4,
+        episode: 91,
+        label: "Campaign 1 • Episode 91",
+        title: "Vox Machina Go to Hell"
+      },
+      
+      {
+        id: "c1e92",
+        campaign: 1,
+        arc: 4,
+        episode: 92,
+        label: "Campaign 1 • Episode 92",
+        title: "Deals in the Dark"
+      },
+      
+      {
+        id: "c1e93",
+        campaign: 1,
+        arc: 4,
+        episode: 93,
+        label: "Campaign 1 • Episode 93",
+        title: "Bats Out of Hell"
+      },
+      
+      {
+        id: "c1e94",
+        campaign: 1,
+        arc: 4,
+        episode: 94,
+        label: "Campaign 1 • Episode 94",
+        title: "Jugs and Rods"
+      },
+      
+      {
+        id: "c1e95",
+        campaign: 1,
+        arc: 4,
+        episode: 95,
+        label: "Campaign 1 • Episode 95",
+        title: "One Year Later..."
+      },
+      
+      {
+        id: "c1e96",
+        campaign: 1,
+        arc: 4,
+        episode: 96,
+        label: "Campaign 1 • Episode 96",
+        title: "Family Matters"
+      },
+      
+      {
+        id: "c1e97",
+        campaign: 1,
+        arc: 4,
+        episode: 97,
+        label: "Campaign 1 • Episode 97",
+        title: "Taryon, My Wayward Son"
+      },
+      
+      {
+        id: "c1e98",
+        campaign: 1,
+        arc: 4,
+        episode: 98,
+        label: "Campaign 1 • Episode 98",
+        title: "The Mines of the Many"
+      },
+      
+      {
+        id: "c1e99",
+        campaign: 1,
+        arc: 4,
+        episode: 99,
+        label: "Campaign 1 • Episode 99",
+        title: "Masquerade"
       }
     
     ];
@@ -2560,11 +2760,17 @@
         document.getElementById(
           "campaign1Arc3Episodes"
         );
+
+      const arc4List = 
+        document.getElementById(
+          "campaign1Arc4Episodes"
+        );
     
     
       arc1List.innerHTML = "";
       arc2List.innerHTML = "";
       arc3List.innerHTML = "";
+      arc4List.innerHTML = "";
     
     
       const campaign1 =
@@ -2659,6 +2865,8 @@
             updateArc2Progress();
 
             updateArc3Progress();
+
+            updateArc4Progress();
     
           }
         );
@@ -2718,6 +2926,10 @@
         
           arc3List.appendChild(card);
         
+        } else if (episode.arc === 4) {
+
+          arc4List.appendChild(card);
+          
         }
     
       });
@@ -2949,6 +3161,55 @@
     
     }
 
+    function updateArc4Progress() {
+
+      const arc4 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1 &&
+            episode.arc === 4
+        );
+    
+    
+      const watchedArc4 =
+        arc4.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+    
+    
+      const percentage =
+        arc4.length
+          ? Math.round(
+              (
+                watchedArc4 /
+                arc4.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(
+          "arc4ProgressText"
+        )
+        .textContent =
+          watchedArc4 +
+          " / " +
+          arc4.length +
+          " watched";
+    
+    
+      document
+        .getElementById(
+          "arc4ProgressFill"
+        )
+        .style
+        .width =
+          percentage + "%";
+    
+    }
+
 
     /* =========================
        CAMPAIGN 1 PROGRESS
@@ -3085,7 +3346,7 @@
 
 
     /* =========================
-       ARC 2 OPEN / CLOSE
+       ARC 3 OPEN / CLOSE
     ========================= */
 
     const arc3Button =
@@ -3117,6 +3378,43 @@
     
     
         arc3Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       ARC 3 OPEN / CLOSE
+    ========================= */
+
+    const arc4Button =
+      document.getElementById(
+        "arc4Button"
+      );
+    
+    const arc4Content =
+      document.getElementById(
+        "arc4Content"
+      );
+    
+    const arc4Arrow =
+      document.getElementById(
+        "arc4Arrow"
+      );
+    
+    
+    arc4Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          arc4Content
+            .classList
+            .toggle("open");
+    
+        arc4Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
@@ -3193,6 +3491,8 @@
 
           updateArc3Progress();
 
+          updateArc4Progress();
+
         }
       );
 
@@ -3212,6 +3512,8 @@
     updateArc2Progress();
 
     updateArc3Progress();
+
+    updateArc4Progress();
 
   </script>
 
