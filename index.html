@@ -1965,29 +1965,87 @@
 
     <!-- CAMPAIGN TWO -->
 
-    <div class="campaign">
-
+    <div
+      class="campaign campaign-button"
+      id="campaign2Button"
+    >
+    
       <div class="campaign-number">
         II
       </div>
-
+    
       <div class="campaign-info">
-
+    
         <div class="campaign-name">
           The Mighty Nein
         </div>
-
+    
         <div class="campaign-subtitle">
-          Campaign Two
+          Campaign Two • 141 Episodes
         </div>
-
+    
       </div>
-
-      <div class="arrow">
+    
+      <div
+        class="arrow"
+        id="campaign2Arrow"
+      >
         ›
       </div>
-
+    
     </div>
+    
+    
+    <section
+      class="campaign-content"
+      id="campaign2Content"
+    >
+    
+      <div class="campaign-header">
+    
+        <div class="campaign-small-label">
+          Campaign Two
+        </div>
+    
+        <h2>
+          The Mighty Nein
+        </h2>
+    
+        <p>
+          Follow a group of chaotic strangers
+          across Wildemount as they become a
+          fiercely loyal found family.
+        </p>
+    
+      </div>
+    
+    
+      <div class="campaign-progress">
+    
+        <div class="campaign-progress-top">
+    
+          <span>
+            Campaign Progress
+          </span>
+    
+          <strong id="c2ProgressText">
+            0 / 0
+          </strong>
+    
+        </div>
+    
+        <div class="campaign-progress-bar">
+    
+          <div
+            class="campaign-progress-fill"
+            id="c2ProgressFill"
+          ></div>
+    
+        </div>
+    
+      </div>
+    
+    </section>
 
 
     <!-- CAMPAIGN THREE -->
@@ -4825,6 +4883,59 @@
           percentage + "%";
     
     }
+
+    /* =========================
+       CAMPAIGN 2 PROGRESS
+    ========================= */
+
+    function updateCampaign2Progress() {
+
+      const campaign2 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 2
+        );
+    
+    
+      const watchedCampaign2 =
+        campaign2.filter(
+          episode =>
+            watched.has(
+              episode.id
+            )
+        ).length;
+    
+    
+      const percentage =
+        campaign2.length
+          ? Math.round(
+              (
+                watchedCampaign2 /
+                campaign2.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(
+          "c2ProgressText"
+        )
+        .textContent =
+          watchedCampaign2 +
+          " / " +
+          campaign2.length;
+    
+    
+      document
+        .getElementById(
+          "c2ProgressFill"
+        )
+        .style
+        .width =
+          percentage + "%";
+    
+    }
     
     
     /* =========================
@@ -5063,6 +5174,46 @@
       }
     );
 
+    /* =========================
+       OPEN / CLOSE CAMPAIGN 2
+    ========================= */
+    
+    const campaign2Button =
+      document.getElementById(
+        "campaign2Button"
+      );
+    
+    
+    const campaign2Content =
+      document.getElementById(
+        "campaign2Content"
+      );
+    
+    
+    const campaign2Arrow =
+      document.getElementById(
+        "campaign2Arrow"
+      );
+    
+    
+    campaign2Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          campaign2Content
+            .classList
+            .toggle("open");
+    
+    
+        campaign2Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
 
     /* =========================
        RESET WATCH PROGRESS
@@ -5127,6 +5278,8 @@
     updateArcActionButtons();
 
     updateCampaignActionButton();
+
+    updateCampaign2Progress();
 
   </script>
 
