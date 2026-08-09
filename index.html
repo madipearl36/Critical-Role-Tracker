@@ -1413,6 +1413,62 @@
       
       </div>
 
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="arc5Button"
+          type="button"
+        >
+      
+          <div>
+            <div class="arc-label">
+              Arc V
+            </div>
+      
+            <div class="arc-name">
+              Vecna
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="arc5ProgressText"
+            >
+              0 / 16 watched
+            </div>
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="arc5Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="arc5Content"
+        >
+      
+          <div class="arc-progress-bar">
+            <div
+              class="arc-progress-fill"
+              id="arc5ProgressFill"
+            ></div>
+          </div>
+      
+          <div
+            class="episode-list"
+            id="campaign1Arc5Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
+
 
       <button
         class="reset-button"
@@ -2679,6 +2735,150 @@
         episode: 99,
         label: "Campaign 1 • Episode 99",
         title: "Masquerade"
+      },
+
+      {
+        id: "c1e100",
+        campaign: 1,
+        arc: 5,
+        episode: 100,
+        label: "Campaign 1 • Episode 100",
+        title: "Unfinished Business"
+      },
+      
+      {
+        id: "c1e101",
+        campaign: 1,
+        arc: 5,
+        episode: 101,
+        label: "Campaign 1 • Episode 101",
+        title: "Thar Amphala"
+      },
+      
+      {
+        id: "c1e102",
+        campaign: 1,
+        arc: 5,
+        episode: 102,
+        label: "Campaign 1 • Episode 102",
+        title: "Race to the Tower"
+      },
+      
+      {
+        id: "c1e103",
+        campaign: 1,
+        arc: 5,
+        episode: 103,
+        label: "Campaign 1 • Episode 103",
+        title: "The Fate-Touched"
+      },
+      
+      {
+        id: "c1e104",
+        campaign: 1,
+        arc: 5,
+        episode: 104,
+        label: "Campaign 1 • Episode 104",
+        title: "Elysium"
+      },
+      
+      {
+        id: "c1e105",
+        campaign: 1,
+        arc: 5,
+        episode: 105,
+        label: "Campaign 1 • Episode 105",
+        title: "The Fear of Isolation"
+      },
+      
+      {
+        id: "c1e106",
+        campaign: 1,
+        arc: 5,
+        episode: 106,
+        label: "Campaign 1 • Episode 106",
+        title: "The Endless Atheneum"
+      },
+      
+      {
+        id: "c1e107",
+        campaign: 1,
+        arc: 5,
+        episode: 107,
+        label: "Campaign 1 • Episode 107",
+        title: "Scaldseat"
+      },
+      
+      {
+        id: "c1e108",
+        campaign: 1,
+        arc: 5,
+        episode: 108,
+        label: "Campaign 1 • Episode 108",
+        title: "The Core Anvil"
+      },
+      
+      {
+        id: "c1e109",
+        campaign: 1,
+        arc: 5,
+        episode: 109,
+        label: "Campaign 1 • Episode 109",
+        title: "The Ominous March"
+      },
+      
+      {
+        id: "c1e110",
+        campaign: 1,
+        arc: 5,
+        episode: 110,
+        label: "Campaign 1 • Episode 110",
+        title: "The Climb Within"
+      },
+      
+      {
+        id: "c1e111",
+        campaign: 1,
+        arc: 5,
+        episode: 111,
+        label: "Campaign 1 • Episode 111",
+        title: "Shadows of Thomara"
+      },
+      
+      {
+        id: "c1e112",
+        campaign: 1,
+        arc: 5,
+        episode: 112,
+        label: "Campaign 1 • Episode 112",
+        title: "Dark Dealings"
+      },
+      
+      {
+        id: "c1e113",
+        campaign: 1,
+        arc: 5,
+        episode: 113,
+        label: "Campaign 1 • Episode 113",
+        title: "The Final Ascent"
+      },
+      
+      {
+        id: "c1e114",
+        campaign: 1,
+        arc: 5,
+        episode: 114,
+        label: "Campaign 1 • Episode 114",
+        title: "Vecna, the Ascended"
+      },
+      
+      {
+        id: "c1e115",
+        campaign: 1,
+        arc: 5,
+        episode: 115,
+        label: "Campaign 1 • Episode 115",
+        title: "The Chapter Closes"
       }
     
     ];
@@ -2765,12 +2965,18 @@
         document.getElementById(
           "campaign1Arc4Episodes"
         );
+
+      const arc5List =
+        document.getElementById (
+          "campaign1Arc5Episodes"
+        );
     
     
       arc1List.innerHTML = "";
       arc2List.innerHTML = "";
       arc3List.innerHTML = "";
       arc4List.innerHTML = "";
+      arc5List.innerHTML = "";
     
     
       const campaign1 =
@@ -2867,6 +3073,8 @@
             updateArc3Progress();
 
             updateArc4Progress();
+
+            updateArc5Progress();
     
           }
         );
@@ -2929,6 +3137,10 @@
         } else if (episode.arc === 4) {
 
           arc4List.appendChild(card);
+          
+        } else if (episode.arc === 5) {
+
+          arc5List.appendChild(card);
           
         }
     
@@ -3210,6 +3422,55 @@
     
     }
 
+    function updateArc5Progress() {
+
+      const arc5 =
+        episodes.filter(
+          episode =>
+            episode.campaign === 1 &&
+            episode.arc === 5
+        );
+    
+    
+      const watchedArc5 =
+        arc5.filter(
+          episode =>
+            watched.has(episode.id)
+        ).length;
+    
+    
+      const percentage =
+        arc5.length
+          ? Math.round(
+              (
+                watchedArc5 /
+                arc5.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(
+          "arc5ProgressText"
+        )
+        .textContent =
+          watchedArc5 +
+          " / " +
+          arc5.length +
+          " watched";
+    
+    
+      document
+        .getElementById(
+          "arc5ProgressFill"
+        )
+        .style
+        .width =
+          percentage + "%";
+    
+    }
+
 
     /* =========================
        CAMPAIGN 1 PROGRESS
@@ -3386,7 +3647,7 @@
     );
 
     /* =========================
-       ARC 3 OPEN / CLOSE
+       ARC 4 OPEN / CLOSE
     ========================= */
 
     const arc4Button =
@@ -3415,6 +3676,43 @@
             .toggle("open");
     
         arc4Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       ARC 5 OPEN / CLOSE
+    ========================= */
+
+    const arc5Button =
+      document.getElementById(
+        "arc5Button"
+      );
+    
+    const arc5Content =
+      document.getElementById(
+        "arc5Content"
+      );
+    
+    const arc5Arrow =
+      document.getElementById(
+        "arc5Arrow"
+      );
+    
+    
+    arc5Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          arc5Content
+            .classList
+            .toggle("open");
+    
+        arc5Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
@@ -3493,6 +3791,8 @@
 
           updateArc4Progress();
 
+          updateArc5Progress();
+
         }
       );
 
@@ -3514,6 +3814,8 @@
     updateArc3Progress();
 
     updateArc4Progress();
+
+    updateArc5Progress();
 
   </script>
 
