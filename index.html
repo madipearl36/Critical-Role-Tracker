@@ -1141,6 +1141,52 @@
       font-size: 11px;
     }
 
+    /* =========================
+       EPISODE WATCH BUTTON
+    ========================= */
+    
+    .episode-watch-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    
+      margin-top: 12px;
+      padding: 9px 12px;
+    
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    
+      background: var(--card-soft);
+      color: var(--text);
+    
+      text-decoration: none;
+    
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+    
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+    
+    .episode-watch-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--accent) 8%,
+          var(--card-soft)
+        );
+    }
+    
+    .episode-watch-button:active {
+      transform: scale(0.98);
+    }
+
 
     /* =========================
        BUTTONS & FOOTER
@@ -3432,6 +3478,18 @@
         "criticalRoleHideWatched"
       ) === "true";
 
+    function getEpisodeYouTubeLink(episode) {
+
+      const searchText =
+        `Critical Role Campaign 1 Episode ${episode.episode} ${episode.title}`;
+    
+      return (
+        "https://www.youtube.com/results?search_query=" +
+        encodeURIComponent(searchText)
+      );
+    
+    }
+
     function renderEpisodes() {
 
       const arc1List =
@@ -3526,8 +3584,17 @@
             </div>
     
             <div class="episode-note">
-              Tap the box to mark this episode watched.
+              Check the box to mark this episode watched.
             </div>
+            
+            <a
+              class="episode-watch-button"
+              href="${getEpisodeYouTubeLink(episode)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Watch on YouTube
+            </a>
     
           </div>
     
