@@ -1622,6 +1622,7 @@
         <button
           class="campaign-action-button"
           id="campaign1ActionButton"
+          data-campaign="1"
           type="button"
         >
           ✓ Mark Campaign Watched
@@ -1679,6 +1680,7 @@
 
           <button
             class="arc-action-button"
+            data-campaign="1"
             data-arc="1"
             type="button"
           >
@@ -1744,6 +1746,7 @@
 
           <button
             class="arc-action-button"
+            data-campaign="1"
             data-arc="2"
             type="button"
           >
@@ -1809,6 +1812,7 @@
 
           <button
             class="arc-action-button"
+            data-campaign="1"
             data-arc="3"
             type="button"
           >
@@ -1873,6 +1877,7 @@
 
           <button
             class="arc-action-button"
+            data-campaign="1"
             data-arc="4"
             type="button"
           >
@@ -1937,6 +1942,7 @@
 
           <button
             class="arc-action-button"
+            data-campaign="1"
             data-arc="5"
             type="button"
           >
@@ -3990,21 +3996,13 @@
     
             updateProgress();
     
-            updateCampaignProgress();
-    
-            updateArc1Progress();
-    
-            updateArc2Progress();
+            updateAllCampaignProgress();
 
-            updateArc3Progress();
-
-            updateArc4Progress();
-
-            updateArc5Progress();
-
+            updateAllArcProgress();
+            
             updateArcActionButtons();
-
-            updateCampaignActionButton();
+            
+            updateAllCampaignActionButtons();
     
           }
         );
@@ -4552,17 +4550,139 @@
     
     }
 
+    function updateArcProgressGeneric(
+      campaignNumber,
+      arcNumber,
+      textId,
+      fillId
+    ) {
+    
+      const arcEpisodes =
+        episodes.filter(
+          episode =>
+            episode.campaign === campaignNumber &&
+            episode.arc === arcNumber
+        );
+    
+    
+      const watchedArc =
+        arcEpisodes.filter(
+          episode =>
+            watched.has(
+              episode.id
+            )
+        ).length;
+    
+    
+      const percentage =
+        arcEpisodes.length
+          ? Math.round(
+              (
+                watchedArc /
+                arcEpisodes.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(textId)
+        .textContent =
+          watchedArc +
+          " / " +
+          arcEpisodes.length +
+          " watched";
+    
+    
+      document
+        .getElementById(fillId)
+        .style
+        .width =
+          percentage + "%";
+    
+    }
+
+    function updateAllArcProgress() {
+
+      updateArcProgressGeneric(
+        1,
+        1,
+        "arc1ProgressText",
+        "arc1ProgressFill"
+      );
+    
+      updateArcProgressGeneric(
+        1,
+        2,
+        "arc2ProgressText",
+        "arc2ProgressFill"
+      );
+    
+      updateArcProgressGeneric(
+        1,
+        3,
+        "arc3ProgressText",
+        "arc3ProgressFill"
+      );
+    
+      updateArcProgressGeneric(
+        1,
+        4,
+        "arc4ProgressText",
+        "arc4ProgressFill"
+      );
+    
+      updateArcProgressGeneric(
+        1,
+        5,
+        "arc5ProgressText",
+        "arc5ProgressFill"
+      );
+    
+    
+      const c2Arc1Text =
+        document.getElementById(
+          "c2Arc1ProgressText"
+        );
+    
+      const c2Arc1Fill =
+        document.getElementById(
+          "c2Arc1ProgressFill"
+        );
+    
+    
+      if (
+        c2Arc1Text &&
+        c2Arc1Fill
+      ) {
+    
+        updateArcProgressGeneric(
+          2,
+          1,
+          "c2Arc1ProgressText",
+          "c2Arc1ProgressFill"
+        );
+    
+      }
+    
+    }
+
     /* =========================
        ARC WATCH BUTTONS
     ========================= */
     
     function updateArcActionButtons() {
-    
+
       document
         .querySelectorAll(
           ".arc-action-button"
         )
         .forEach(button => {
+    
+          const campaignNumber =
+            Number(
+              button.dataset.campaign
+            );
     
           const arcNumber =
             Number(
@@ -4573,7 +4693,7 @@
           const arcEpisodes =
             episodes.filter(
               episode =>
-                episode.campaign === 1 &&
+                episode.campaign === campaignNumber &&
                 episode.arc === arcNumber
             );
     
@@ -4610,12 +4730,157 @@
     
         });
     
+      }
+    
+      document
+        .querySelectorAll(
+          ".arc-action-button"
+        )
+        .forEach(button => {
+      
+          button.addEventListener(
+            "click",
+            () => {
+      
+              const campaignNumber =
+                Number(
+                  button.dataset.campaign
+                );
+      
+              const arcNumber =
+                Number(
+                  button.dataset.arc
+                );
+      
+      
+              const arcEpisodes =
+                episodes.filter(
+                  episode =>
+                    episode.campaign === campaignNumber &&
+                    episode.arc === arcNumber
+                );
+      
+      
+              const arcComplete =
+                arcEpisodes.length > 0 &&
+                arcEpisodes.every(
+                  episode =>
+                    watched.has(
+                      episode.id
+                    )
+                );
+      
+      
+              if (arcComplete) {
+      
+                arcEpisodes.forEach(
+                  episode => {
+      
+                    watched.delete(
+                      episode.id
+                    );
+      
+                  }
+                );
+      
+              } else {
+      
+                arcEpisodes.forEach(
+                  episode => {
+      
+                    watched.add(
+                      episode.id
+                    );
+      
+                  }
+                );
+      
+              }
+      
+      
+              saveProgress();
+      
+              renderEpisodes();
+      
+              updateProgress();
+      
+              updateAllCampaignProgress();
+      
+              updateAllArcProgress();
+      
+              updateArcActionButtons();
+      
+              updateAllCampaignActionButtons();
+      
+            }
+          );
+      
+        });
+      
+    
+    
+    /* =========================
+       CAMPAIGN WATCH BUTTON
+    ========================= */
+    
+    function updateAllCampaignActionButtons() {
+
+      document
+        .querySelectorAll(
+          ".campaign-action-button"
+        )
+        .forEach(button => {
+    
+          const campaignNumber =
+            Number(
+              button.dataset.campaign
+            );
+    
+    
+          const campaignEpisodes =
+            episodes.filter(
+              episode =>
+                episode.campaign === campaignNumber
+            );
+    
+    
+          const campaignComplete =
+            campaignEpisodes.length > 0 &&
+            campaignEpisodes.every(
+              episode =>
+                watched.has(
+                  episode.id
+                )
+            );
+    
+    
+          if (campaignComplete) {
+    
+            button.textContent =
+              "↶ Mark Campaign Unwatched";
+    
+            button.classList.add(
+              "complete"
+            );
+    
+          } else {
+    
+            button.textContent =
+              "✓ Mark Campaign Watched";
+    
+            button.classList.remove(
+              "complete"
+            );
+    
+          }
+    
+        });
+    
     }
-    
-    
+
     document
       .querySelectorAll(
-        ".arc-action-button"
+        ".campaign-action-button"
       )
       .forEach(button => {
     
@@ -4623,23 +4888,22 @@
           "click",
           () => {
     
-            const arcNumber =
+            const campaignNumber =
               Number(
-                button.dataset.arc
+                button.dataset.campaign
               );
     
     
-            const arcEpisodes =
+            const campaignEpisodes =
               episodes.filter(
                 episode =>
-                  episode.campaign === 1 &&
-                  episode.arc === arcNumber
+                  episode.campaign === campaignNumber
               );
     
     
-            const arcComplete =
-              arcEpisodes.length > 0 &&
-              arcEpisodes.every(
+            const campaignComplete =
+              campaignEpisodes.length > 0 &&
+              campaignEpisodes.every(
                 episode =>
                   watched.has(
                     episode.id
@@ -4647,9 +4911,9 @@
               );
     
     
-            if (arcComplete) {
+            if (campaignComplete) {
     
-              arcEpisodes.forEach(
+              campaignEpisodes.forEach(
                 episode => {
     
                   watched.delete(
@@ -4661,7 +4925,7 @@
     
             } else {
     
-              arcEpisodes.forEach(
+              campaignEpisodes.forEach(
                 episode => {
     
                   watched.add(
@@ -4680,158 +4944,18 @@
     
             updateProgress();
     
-            updateCampaignProgress();
+            updateAllCampaignProgress();
     
-            updateArc1Progress();
-    
-            updateArc2Progress();
-    
-            updateArc3Progress();
-    
-            updateArc4Progress();
-    
-            updateArc5Progress();
+            updateAllArcProgress();
     
             updateArcActionButtons();
     
-            updateCampaignActionButton();
+            updateAllCampaignActionButtons();
     
           }
         );
     
       });
-    
-    
-    /* =========================
-       CAMPAIGN WATCH BUTTON
-    ========================= */
-    
-    function updateCampaignActionButton() {
-    
-      const button =
-        document.getElementById(
-          "campaign1ActionButton"
-        );
-    
-    
-      const campaign1Episodes =
-        episodes.filter(
-          episode =>
-            episode.campaign === 1
-        );
-    
-    
-      const campaignComplete =
-        campaign1Episodes.length > 0 &&
-        campaign1Episodes.every(
-          episode =>
-            watched.has(
-              episode.id
-            )
-        );
-    
-    
-      if (campaignComplete) {
-    
-        button.textContent =
-          "↶ Mark Campaign Unwatched";
-    
-        button.classList.add(
-          "complete"
-        );
-    
-      } else {
-    
-        button.textContent =
-          "✓ Mark Campaign Watched";
-    
-        button.classList.remove(
-          "complete"
-        );
-    
-      }
-    
-    }
-    
-    
-    const campaign1ActionButton =
-      document.getElementById(
-        "campaign1ActionButton"
-      );
-    
-    
-    campaign1ActionButton.addEventListener(
-      "click",
-      () => {
-    
-        const campaign1Episodes =
-          episodes.filter(
-            episode =>
-              episode.campaign === 1
-          );
-    
-    
-        const campaignComplete =
-          campaign1Episodes.length > 0 &&
-          campaign1Episodes.every(
-            episode =>
-              watched.has(
-                episode.id
-              )
-          );
-    
-    
-        if (campaignComplete) {
-    
-          campaign1Episodes.forEach(
-            episode => {
-    
-              watched.delete(
-                episode.id
-              );
-    
-            }
-          );
-    
-        } else {
-    
-          campaign1Episodes.forEach(
-            episode => {
-    
-              watched.add(
-                episode.id
-              );
-    
-            }
-          );
-    
-        }
-    
-    
-        saveProgress();
-    
-        renderEpisodes();
-    
-        updateProgress();
-    
-        updateCampaignProgress();
-    
-        updateArc1Progress();
-    
-        updateArc2Progress();
-    
-        updateArc3Progress();
-    
-        updateArc4Progress();
-    
-        updateArc5Progress();
-    
-        updateArcActionButtons();
-    
-        updateCampaignActionButton();
-    
-      }
-    );
 
     /* =========================
        CAMPAIGN 1 PROGRESS
@@ -4934,6 +5058,91 @@
         .style
         .width =
           percentage + "%";
+    
+    }
+
+    /* =========================
+       CAMPAIGN PROGRESS
+    ========================= */
+
+    function updateCampaignProgressGeneric(
+      campaignNumber,
+      textId,
+      fillId
+    ) {
+    
+      const campaignEpisodes =
+        episodes.filter(
+          episode =>
+            episode.campaign === campaignNumber
+        );
+    
+    
+      const watchedCampaign =
+        campaignEpisodes.filter(
+          episode =>
+            watched.has(
+              episode.id
+            )
+        ).length;
+    
+    
+      const percentage =
+        campaignEpisodes.length
+          ? Math.round(
+              (
+                watchedCampaign /
+                campaignEpisodes.length
+              ) * 100
+            )
+          : 0;
+    
+    
+      document
+        .getElementById(textId)
+        .textContent =
+          watchedCampaign +
+          " / " +
+          campaignEpisodes.length;
+    
+    
+      document
+        .getElementById(fillId)
+        .style
+        .width =
+          percentage + "%";
+    
+    }
+
+    function updateAllCampaignProgress() {
+
+      updateCampaignProgressGeneric(
+        1,
+        "c1ProgressText",
+        "c1ProgressFill"
+      );
+    
+    
+      const c2Text =
+        document.getElementById(
+          "c2ProgressText"
+        );
+    
+      const c2Fill =
+        document.getElementById(
+          "c2ProgressFill"
+        );
+    
+    
+      if (c2Text && c2Fill) {
+    
+        updateCampaignProgressGeneric(
+          2,
+          "c2ProgressText",
+          "c2ProgressFill"
+        );
+    
+      }
     
     }
     
@@ -5235,21 +5444,13 @@
 
           updateProgress();
 
-          updateCampaignProgress();
+          updateAllCampaignProgress();
 
-          updateArc1Progress();
-
-          updateArc2Progress();
-
-          updateArc3Progress();
-
-          updateArc4Progress();
-
-          updateArc5Progress();
-
+          updateAllArcProgress();
+          
           updateArcActionButtons();
-
-          updateCampaignActionButton();
+          
+          updateAllCampaignActionButtons();
 
         }
       );
@@ -5263,21 +5464,13 @@
 
     updateProgress();
 
-    updateCampaignProgress();
+    updateAllCampaignProgress();
 
-    updateArc1Progress();
-
-    updateArc2Progress();
-
-    updateArc3Progress();
-
-    updateArc4Progress();
-
-    updateArc5Progress();
-
+    updateAllArcProgress();
+    
     updateArcActionButtons();
-
-    updateCampaignActionButton();
+    
+    updateAllCampaignActionButtons();
 
     updateCampaign2Progress();
 
