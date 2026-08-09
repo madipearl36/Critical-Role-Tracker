@@ -9,6 +9,13 @@
   <style>
     :root {
       --accent: #c6404f;
+      --background: #09090b;
+      --background-top: #24131b;
+      --card: #201519;
+      --card-soft: #29181e;
+      --text: #eee8df;
+      --muted: #a99fa0;
+      --border: #543039;
       --progress: 0deg;
     }
 
@@ -18,33 +25,41 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at top, #24131b 0%, #100d11 38%, #09090b 100%);
-      color: #eee8df;
-      font-family: Georgia, "Times New Roman", serif;
       min-height: 100vh;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(
+          circle at top,
+          var(--background-top) 0%,
+          var(--background) 48%,
+          var(--background) 100%
+        );
+      transition:
+        background .3s ease,
+        color .3s ease;
     }
 
     .page {
       width: min(92%, 760px);
       margin: auto;
-      padding: 55px 0 100px;
+      padding: 45px 0 100px;
     }
 
     .eyebrow {
       text-align: center;
-      color: #a48f91;
+      color: var(--muted);
       font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 5px;
+      font-size: 11px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
 
     h1 {
       text-align: center;
-      font-size: clamp(46px, 11vw, 78px);
-      line-height: .88;
+      font-size: clamp(45px, 11vw, 78px);
+      line-height: .9;
       margin: 0;
       font-weight: normal;
       letter-spacing: -2px;
@@ -53,54 +68,100 @@
     h1 span {
       display: block;
       color: var(--accent);
-      transition: color .25s ease;
     }
 
     .subtitle {
       max-width: 560px;
-      margin: 25px auto 35px;
+      margin: 25px auto 30px;
       text-align: center;
-      color: #a99fa0;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       line-height: 1.7;
       font-size: 16px;
     }
 
-    .customize {
+    .theme-panel {
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+
+    .theme-heading {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .preset-button {
+      border: 1px solid var(--border);
+      background: var(--card-soft);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px 8px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .preset-button:hover,
+    .preset-button.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .custom-colors {
+      display: grid;
+      gap: 10px;
+    }
+
+    .color-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      border: 1px solid #3e2b31;
-      background: rgba(25,18,21,.72);
-      border-radius: 15px;
-      padding: 15px 18px;
-      margin-bottom: 20px;
-    }
-
-    .customize-title {
       font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: #a99fa0;
-      text-transform: uppercase;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    .color-picker {
-      width: 45px;
+    .color-input {
+      width: 52px;
       height: 38px;
       padding: 2px;
-      border: 1px solid #5d4b50;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .reset-theme {
+      margin-top: 16px;
+      width: 100%;
+      padding: 11px;
       border-radius: 10px;
-      background: #161115;
+      border: 1px dashed var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      cursor: pointer;
     }
 
     .progress-card {
-      background: rgba(32, 21, 26, .88);
-      border: 1px solid #543039;
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 22px;
       padding: 28px 22px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      box-shadow: 0 18px 60px rgba(0,0,0,.3);
     }
 
     .progress-ring {
@@ -113,7 +174,7 @@
       background:
         conic-gradient(
           var(--accent) var(--progress),
-          #40232a var(--progress)
+          color-mix(in srgb, var(--border) 70%, transparent) var(--progress)
         );
     }
 
@@ -121,7 +182,7 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: #201519;
+      background: var(--card);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -136,7 +197,7 @@
 
     .complete {
       margin-top: 5px;
-      color: #8e7e80;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 9px;
       letter-spacing: 3px;
@@ -145,8 +206,8 @@
     .up-next {
       margin-top: 25px;
       padding: 18px;
-      border: 1px solid #61333e;
-      background: #29181e;
+      border: 1px solid var(--border);
+      background: var(--card-soft);
       border-radius: 14px;
     }
 
@@ -173,11 +234,11 @@
     }
 
     .stat {
-      border: 1px solid #443036;
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 15px 5px;
       text-align: center;
-      background: rgba(10,10,12,.25);
+      background: color-mix(in srgb, var(--background) 60%, transparent);
     }
 
     .stat strong {
@@ -189,7 +250,7 @@
     .stat span {
       display: block;
       margin-top: 5px;
-      color: #817578;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 8px;
       letter-spacing: 1.5px;
@@ -197,9 +258,9 @@
     }
 
     .section-title {
-      margin-top: 50px;
+      margin-top: 48px;
       margin-bottom: 18px;
-      color: #a89598;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 11px;
       letter-spacing: 4px;
@@ -212,9 +273,9 @@
       gap: 18px;
       padding: 20px;
       margin-bottom: 13px;
-      border: 1px solid #432a31;
+      border: 1px solid var(--border);
       border-radius: 17px;
-      background: rgba(27,18,22,.82);
+      background: var(--card);
     }
 
     .campaign-number {
@@ -234,13 +295,13 @@
     }
 
     .campaign-subtitle {
-      color: #887c7e;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 12px;
     }
 
     .arrow {
-      color: #9c777d;
+      color: var(--muted);
       font-size: 22px;
     }
 
@@ -256,7 +317,7 @@
       top: 20px;
       bottom: 20px;
       width: 2px;
-      background: #39292e;
+      background: var(--border);
     }
 
     .episode {
@@ -264,8 +325,8 @@
       display: flex;
       align-items: flex-start;
       gap: 15px;
-      border: 1px solid #432a31;
-      background: rgba(27,18,22,.82);
+      border: 1px solid var(--border);
+      background: var(--card);
       border-radius: 17px;
       padding: 18px;
       margin-bottom: 14px;
@@ -279,9 +340,9 @@
       top: 27px;
       width: 11px;
       height: 11px;
-      border: 3px solid #66545a;
+      border: 3px solid var(--muted);
       border-radius: 50%;
-      background: #100d11;
+      background: var(--background);
     }
 
     .episode.watched::before {
@@ -303,7 +364,7 @@
       width: 30px;
       min-width: 30px;
       height: 30px;
-      border: 2px solid #67575c;
+      border: 2px solid var(--muted);
       border-radius: 8px;
       margin: 0;
       display: grid;
@@ -318,7 +379,7 @@
 
     .watch-check:checked::after {
       content: "✓";
-      color: white;
+      color: #fff;
       font-family: Arial, sans-serif;
       font-weight: bold;
       font-size: 18px;
@@ -341,7 +402,7 @@
     }
 
     .episode-note {
-      color: #887c7e;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 11px;
       margin-top: 7px;
@@ -351,9 +412,9 @@
       margin-top: 22px;
       padding: 12px 18px;
       border-radius: 12px;
-      border: 1px solid #4b363d;
+      border: 1px solid var(--border);
       background: transparent;
-      color: #998b8f;
+      color: var(--muted);
       font-family: Arial, sans-serif;
       cursor: pointer;
     }
@@ -361,9 +422,16 @@
     .footer-quote {
       margin-top: 55px;
       text-align: center;
-      color: #665a5d;
+      color: var(--muted);
       font-style: italic;
       font-size: 14px;
+      opacity: .7;
+    }
+
+    @media (min-width: 600px) {
+      .preset-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -383,27 +451,100 @@
 
   <p class="subtitle">
     Track your adventures through Critical Role.
-    Check off what you've watched, find what comes next,
-    and never lose your place.
+    Customize your experience, check off what you've watched,
+    and always know where your journey continues.
   </p>
 
-  <div class="customize">
-    <div class="customize-title">
-      🎨 Choose Your Color
+
+  <section class="theme-panel">
+
+    <div class="theme-heading">
+      ✦ Customize Your Journey
     </div>
 
-    <input
-      type="color"
-      id="accentPicker"
-      class="color-picker"
-      value="#c6404f"
-      aria-label="Choose accent color"
-    >
-  </div>
+    <div class="preset-grid">
+
+      <button class="preset-button" data-theme="vox">
+        Vox Machina
+      </button>
+
+      <button class="preset-button" data-theme="mighty">
+        Mighty Nein
+      </button>
+
+      <button class="preset-button" data-theme="bells">
+        Bells Hells
+      </button>
+
+      <button class="preset-button" data-theme="midnight">
+        Midnight
+      </button>
+
+      <button class="preset-button" data-theme="academia">
+        Dark Academia
+      </button>
+
+      <button class="preset-button" data-theme="custom">
+        Custom
+      </button>
+
+    </div>
+
+
+    <div class="custom-colors">
+
+      <div class="color-row">
+        <span>Accent</span>
+        <input type="color" id="accentColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Background</span>
+        <input type="color" id="backgroundColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Background Glow</span>
+        <input type="color" id="backgroundTopColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Cards</span>
+        <input type="color" id="cardColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Secondary Cards</span>
+        <input type="color" id="cardSoftColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Main Text</span>
+        <input type="color" id="textColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Secondary Text</span>
+        <input type="color" id="mutedColor" class="color-input">
+      </div>
+
+      <div class="color-row">
+        <span>Borders</span>
+        <input type="color" id="borderColor" class="color-input">
+      </div>
+
+    </div>
+
+    <button class="reset-theme" id="resetTheme">
+      Reset to default theme
+    </button>
+
+  </section>
+
 
   <section class="progress-card">
 
-    <div class="progress-ring" id="progressRing">
+    <div class="progress-ring">
       <div class="progress-inner">
         <div class="percent" id="percent">0%</div>
         <div class="complete">COMPLETE</div>
@@ -496,6 +637,279 @@
 
 <script>
 
+  const defaultTheme = {
+    accent: "#c6404f",
+    background: "#09090b",
+    backgroundTop: "#24131b",
+    card: "#201519",
+    cardSoft: "#29181e",
+    text: "#eee8df",
+    muted: "#a99fa0",
+    border: "#543039"
+  };
+
+
+  const themes = {
+
+    vox: {
+      accent: "#b33f4b",
+      background: "#0b090a",
+      backgroundTop: "#291418",
+      card: "#211619",
+      cardSoft: "#2e1a1f",
+      text: "#f2e8df",
+      muted: "#ab9293",
+      border: "#583039"
+    },
+
+    mighty: {
+      accent: "#4aa6b8",
+      background: "#081012",
+      backgroundTop: "#10282d",
+      card: "#101f22",
+      cardSoft: "#153036",
+      text: "#e8f2f2",
+      muted: "#8da7aa",
+      border: "#28525b"
+    },
+
+    bells: {
+      accent: "#b58bdb",
+      background: "#0d0a12",
+      backgroundTop: "#241735",
+      card: "#1c1426",
+      cardSoft: "#2c1d3a",
+      text: "#f0eaf6",
+      muted: "#a995b9",
+      border: "#513968"
+    },
+
+    midnight: {
+      accent: "#6d8cff",
+      background: "#050811",
+      backgroundTop: "#111a36",
+      card: "#101522",
+      cardSoft: "#171f33",
+      text: "#eef2ff",
+      muted: "#8f99b8",
+      border: "#29395e"
+    },
+
+    academia: {
+      accent: "#b58b53",
+      background: "#100d09",
+      backgroundTop: "#2b2114",
+      card: "#211a12",
+      cardSoft: "#302518",
+      text: "#f2e8d4",
+      muted: "#a79980",
+      border: "#58452a"
+    }
+
+  };
+
+
+  const inputs = {
+    accent: document.getElementById("accentColor"),
+    background: document.getElementById("backgroundColor"),
+    backgroundTop: document.getElementById("backgroundTopColor"),
+    card: document.getElementById("cardColor"),
+    cardSoft: document.getElementById("cardSoftColor"),
+    text: document.getElementById("textColor"),
+    muted: document.getElementById("mutedColor"),
+    border: document.getElementById("borderColor")
+  };
+
+
+  function applyTheme(theme, save = true) {
+
+    document.documentElement.style.setProperty(
+      "--accent",
+      theme.accent
+    );
+
+    document.documentElement.style.setProperty(
+      "--background",
+      theme.background
+    );
+
+    document.documentElement.style.setProperty(
+      "--background-top",
+      theme.backgroundTop
+    );
+
+    document.documentElement.style.setProperty(
+      "--card",
+      theme.card
+    );
+
+    document.documentElement.style.setProperty(
+      "--card-soft",
+      theme.cardSoft
+    );
+
+    document.documentElement.style.setProperty(
+      "--text",
+      theme.text
+    );
+
+    document.documentElement.style.setProperty(
+      "--muted",
+      theme.muted
+    );
+
+    document.documentElement.style.setProperty(
+      "--border",
+      theme.border
+    );
+
+
+    Object.keys(inputs).forEach(key => {
+
+      inputs[key].value = theme[key];
+
+    });
+
+
+    if (save) {
+
+      localStorage.setItem(
+        "criticalRoleTheme",
+        JSON.stringify(theme)
+      );
+
+    }
+
+  }
+
+
+  function getCurrentTheme() {
+
+    return {
+
+      accent: inputs.accent.value,
+      background: inputs.background.value,
+      backgroundTop: inputs.backgroundTop.value,
+      card: inputs.card.value,
+      cardSoft: inputs.cardSoft.value,
+      text: inputs.text.value,
+      muted: inputs.muted.value,
+      border: inputs.border.value
+
+    };
+
+  }
+
+
+  Object.keys(inputs).forEach(key => {
+
+    inputs[key].addEventListener("input", () => {
+
+      const customTheme = getCurrentTheme();
+
+      applyTheme(customTheme);
+
+      localStorage.setItem(
+        "criticalRoleThemeName",
+        "custom"
+      );
+
+      updateActiveThemeButton();
+
+    });
+
+  });
+
+
+  document
+    .querySelectorAll(".preset-button")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const name = button.dataset.theme;
+
+        if (name === "custom") {
+
+          localStorage.setItem(
+            "criticalRoleThemeName",
+            "custom"
+          );
+
+          updateActiveThemeButton();
+
+          return;
+
+        }
+
+        applyTheme(themes[name]);
+
+        localStorage.setItem(
+          "criticalRoleThemeName",
+          name
+        );
+
+        updateActiveThemeButton();
+
+      });
+
+    });
+
+
+  function updateActiveThemeButton() {
+
+    const activeName =
+      localStorage.getItem("criticalRoleThemeName");
+
+    document
+      .querySelectorAll(".preset-button")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.theme === activeName
+        );
+
+      });
+
+  }
+
+
+  document
+    .getElementById("resetTheme")
+    .addEventListener("click", () => {
+
+      applyTheme(defaultTheme);
+
+      localStorage.setItem(
+        "criticalRoleThemeName",
+        "vox"
+      );
+
+      updateActiveThemeButton();
+
+    });
+
+
+  const savedTheme =
+    JSON.parse(
+      localStorage.getItem("criticalRoleTheme")
+    );
+
+  if (savedTheme) {
+
+    applyTheme(savedTheme, false);
+
+  } else {
+
+    applyTheme(defaultTheme, false);
+
+  }
+
+  updateActiveThemeButton();
+
+
+
   const episodes = [
     {
       id: "c1e1",
@@ -526,7 +940,9 @@
 
 
   const savedWatched =
-    JSON.parse(localStorage.getItem("criticalRoleWatched")) || [];
+    JSON.parse(
+      localStorage.getItem("criticalRoleWatched")
+    ) || [];
 
   let watched = new Set(savedWatched);
 
@@ -543,24 +959,30 @@
 
   function renderEpisodes() {
 
-    const list = document.getElementById("episodeList");
+    const list =
+      document.getElementById("episodeList");
 
     list.innerHTML = "";
 
-    episodes.forEach((episode) => {
+    episodes.forEach(episode => {
 
-      const card = document.createElement("div");
+      const card =
+        document.createElement("div");
 
       card.className =
         "episode" +
-        (watched.has(episode.id) ? " watched" : "");
+        (watched.has(episode.id)
+          ? " watched"
+          : "");
 
       card.innerHTML = `
 
         <input
           class="watch-check"
           type="checkbox"
-          ${watched.has(episode.id) ? "checked" : ""}
+          ${watched.has(episode.id)
+            ? "checked"
+            : ""}
           aria-label="Mark ${episode.title} watched"
         >
 
@@ -585,23 +1007,26 @@
       const checkbox =
         card.querySelector(".watch-check");
 
-      checkbox.addEventListener("change", () => {
+      checkbox.addEventListener(
+        "change",
+        () => {
 
-        if (checkbox.checked) {
+          if (checkbox.checked) {
 
-          watched.add(episode.id);
+            watched.add(episode.id);
 
-        } else {
+          } else {
 
-          watched.delete(episode.id);
+            watched.delete(episode.id);
+
+          }
+
+          saveProgress();
+          renderEpisodes();
+          updateProgress();
 
         }
-
-        saveProgress();
-        renderEpisodes();
-        updateProgress();
-
-      });
+      );
 
       list.appendChild(card);
 
@@ -612,7 +1037,8 @@
 
   function updateProgress() {
 
-    const total = episodes.length;
+    const total =
+      episodes.length;
 
     const watchedNumber =
       episodes.filter(
@@ -627,6 +1053,7 @@
         (watchedNumber / total) * 100
       );
 
+
     document.getElementById("percent").textContent =
       percentage + "%";
 
@@ -639,12 +1066,10 @@
     document.getElementById("totalCount").textContent =
       total;
 
-    const degrees =
-      percentage * 3.6;
 
     document.documentElement.style.setProperty(
       "--progress",
-      degrees + "deg"
+      (percentage * 3.6) + "deg"
     );
 
 
@@ -653,54 +1078,12 @@
         episode => !watched.has(episode.id)
       );
 
-    if (nextEpisode) {
-
-      document.getElementById("upNext").textContent =
-        nextEpisode.title;
-
-    } else {
-
-      document.getElementById("upNext").textContent =
-        "All caught up! ✦";
-
-    }
+    document.getElementById("upNext").textContent =
+      nextEpisode
+        ? nextEpisode.title
+        : "All caught up! ✦";
 
   }
-
-
-  const picker =
-    document.getElementById("accentPicker");
-
-  const savedAccent =
-    localStorage.getItem("criticalRoleAccent");
-
-  if (savedAccent) {
-
-    picker.value = savedAccent;
-
-    document.documentElement.style.setProperty(
-      "--accent",
-      savedAccent
-    );
-
-  }
-
-
-  picker.addEventListener("input", () => {
-
-    const newColor = picker.value;
-
-    document.documentElement.style.setProperty(
-      "--accent",
-      newColor
-    );
-
-    localStorage.setItem(
-      "criticalRoleAccent",
-      newColor
-    );
-
-  });
 
 
   document
@@ -710,16 +1093,13 @@
       watched.clear();
 
       saveProgress();
-
       renderEpisodes();
-
       updateProgress();
 
     });
 
 
   renderEpisodes();
-
   updateProgress();
 
 </script>
