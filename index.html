@@ -635,6 +635,76 @@
     }
 
     /* =========================
+       ARC SUBCHAPTERS
+    ========================= */
+    
+    .subchapter {
+      position: relative;
+    
+      margin:
+        30px
+        0
+        16px
+        -28px;
+    
+      padding:
+        14px
+        16px;
+    
+      border-left:
+        3px solid
+        var(--accent);
+    
+      border-radius:
+        0 12px 12px 0;
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--card-soft) 85%,
+          transparent
+        );
+    }
+    
+    .subchapter:first-child {
+      margin-top: 0;
+    }
+    
+    .subchapter-label {
+      margin-bottom: 5px;
+    
+      color: var(--accent);
+    
+      font-family:
+        Arial,
+        sans-serif;
+    
+      font-size: 9px;
+    
+      letter-spacing: 3px;
+    
+      text-transform: uppercase;
+    }
+    
+    .subchapter-name {
+      color: var(--text);
+    
+      font-size: 18px;
+    }
+    
+    .subchapter-range {
+      margin-top: 5px;
+    
+      color: var(--muted);
+    
+      font-family:
+        Arial,
+        sans-serif;
+    
+      font-size: 10px;
+    }
+
+    /* =========================
        EPISODE TIMELINE
     ========================= */
 
@@ -2446,6 +2516,34 @@
        RENDER EPISODES
     ========================= */
 
+    const arc3Subchapters = {
+
+      39: {
+        chapter: "Chapter I",
+        name: "The Conclave Strikes",
+        range: "Episodes 39–45"
+      },
+    
+      46: {
+        chapter: "Chapter II",
+        name: "Westruun & Umbrasyl",
+        range: "Episodes 46–56"
+      },
+    
+      57: {
+        chapter: "Chapter III",
+        name: "Vestiges, Feywild & Marquet",
+        range: "Episodes 57–69"
+      },
+    
+      70: {
+        chapter: "Chapter IV",
+        name: "The Final Dragons",
+        range: "Episodes 70–83"
+      }
+    
+    };
+
     function renderEpisodes() {
 
       const arc1List =
@@ -2567,17 +2665,59 @@
     
     
         if (episode.arc === 1) {
-    
-          arc1List.appendChild(card);
-    
-        } else if (episode.arc === 2) {
-    
-          arc2List.appendChild(card);
-    
-        } else if (episode.arc === 3) {
 
+          arc1List.appendChild(card);
+        
+        } else if (episode.arc === 2) {
+        
+          arc2List.appendChild(card);
+        
+        } else if (episode.arc === 3) {
+        
+          const chapter =
+            arc3Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+        
+            divider.className =
+              "subchapter";
+        
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+        
+            arc3List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
           arc3List.appendChild(card);
-          
+        
         }
     
       });
