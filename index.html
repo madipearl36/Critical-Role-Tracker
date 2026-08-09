@@ -507,6 +507,132 @@
       text-transform: uppercase;
     }
 
+    /* =========================
+       WATCH CONTROLS
+    ========================= */
+    
+    .watch-controls {
+      margin-top: 18px;
+      padding: 18px;
+    
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    
+      background: var(--card);
+    }
+    
+    .watch-controls-heading {
+      margin-bottom: 15px;
+    
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    
+    .watch-toggle {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    
+      color: var(--text);
+    
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    
+      cursor: pointer;
+    }
+    
+    .watch-toggle input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .watch-toggle-box {
+      width: 23px;
+      height: 23px;
+    
+      display: grid;
+      place-items: center;
+    
+      border: 2px solid var(--muted);
+      border-radius: 7px;
+    
+      background: transparent;
+    }
+    
+    .watch-toggle input:checked
+      + .watch-toggle-box {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    
+    .watch-toggle input:checked
+      + .watch-toggle-box::after {
+      content: "✓";
+    
+      color: #fff;
+    
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    .continue-button {
+      width: 100%;
+    
+      margin-top: 16px;
+      padding: 13px 16px;
+    
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+    
+      background: var(--accent);
+      color: #fff;
+    
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+    
+      cursor: pointer;
+    }
+    
+    .continue-button:active {
+      transform: scale(0.99);
+    }
+
+    .continue-highlight {
+      border-color: var(--accent);
+    
+      box-shadow:
+        0 0 0 2px
+        color-mix(
+          in srgb,
+          var(--accent) 35%,
+          transparent
+        );
+    
+      animation:
+        continuePulse 0.9s ease
+        2;
+    }
+    
+    @keyframes continuePulse {
+    
+      0%,
+      100% {
+        transform: scale(1);
+      }
+    
+      50% {
+        transform: scale(1.015);
+      }
+    
+    }
+
 
     /* =========================
        CAMPAIGN PROGRESS
@@ -1168,6 +1294,42 @@
 
       </div>
 
+    </section>
+
+    <!-- =========================
+         WATCH CONTROLS
+    ========================== -->
+
+    <section class="watch-controls">
+
+      <div class="watch-controls-heading">
+        Watch Controls
+      </div>
+    
+      <label class="watch-toggle">
+    
+        <input
+          type="checkbox"
+          id="hideWatchedToggle"
+        >
+    
+        <span class="watch-toggle-box"></span>
+    
+        <span>
+          Hide watched episodes
+        </span>
+    
+      </label>
+    
+    
+      <button
+        class="continue-button"
+        id="continueWatching"
+        type="button"
+      >
+        ▶ Continue Watching
+      </button>
+    
     </section>
 
 
@@ -3083,6 +3245,11 @@
     
     };
 
+    let hideWatched =
+      localStorage.getItem(
+        "criticalRoleHideWatched"
+      ) === "true";
+
     function renderEpisodes() {
 
       const arc1List =
@@ -3138,6 +3305,19 @@
               ? " watched"
               : ""
           );
+
+        if (
+          hideWatched &&
+          watched.has(episode.id)
+        ) {
+
+          card.style.display =
+            "none";
+          
+        }
+
+        card.id =
+          "episode-" + episode.id;
     
     
         card.innerHTML = `
@@ -3170,6 +3350,12 @@
           </div>
     
         `;
+        
+        
+            renderEpisodes();
+        
+          }
+        );
     
     
         const checkbox =
@@ -3286,6 +3472,157 @@
       });
     
     }
+
+    const hideWatchedToggle =
+      document.getElementById(
+        "hideWatchedToggle"
+      );
+    
+    
+    hideWatchedToggle.checked =
+      hideWatched;
+    
+    
+    hideWatchedToggle.addEventListener(
+      "change",
+      () => {
+    
+        hideWatched =
+          hideWatchedToggle.checked;
+    
+    
+        localStorage.setItem(
+          "criticalRoleHideWatched",
+          hideWatched
+        );
+    
+    
+        renderEpisodes();
+    
+      }
+    );
+
+    const continueWatchingButton =
+      document.getElementById(
+        "continueWatching"
+      );
+    
+    
+    continueWatchingButton.addEventListener(
+      "click",
+      () => {
+    
+        const nextEpisode =
+          episodes.find(
+            episode =>
+              !watched.has(episode.id)
+          );
+    
+    
+        if (!nextEpisode) {
+    
+          continueWatchingButton
+            .textContent =
+              "✓ All Caught Up!";
+    
+          return;
+    
+        }
+    
+    
+        /* Open Campaign 1 */
+    
+        campaign1Content
+          .classList
+          .add("open");
+    
+        campaign1Arrow.textContent =
+          "⌄";
+    
+    
+        /* Open the correct arc */
+    
+        const arcNumber =
+          nextEpisode.arc;
+    
+    
+        const arcContent =
+          document.getElementById(
+            `arc${arcNumber}Content`
+          );
+    
+    
+        const arcArrow =
+          document.getElementById(
+            `arc${arcNumber}Arrow`
+          );
+    
+    
+        if (arcContent) {
+    
+          arcContent
+            .classList
+            .add("open");
+    
+        }
+    
+    
+        if (arcArrow) {
+    
+          arcArrow.textContent =
+            "⌄";
+    
+        }
+    
+    
+        /* Make sure episode exists
+           in the rendered list */
+    
+        renderEpisodes();
+    
+    
+        setTimeout(
+          () => {
+    
+            const target =
+              document.getElementById(
+                "episode-" +
+                nextEpisode.id
+              );
+    
+    
+            if (target) {
+    
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+    
+    
+              target.classList.add(
+                "continue-highlight"
+              );
+    
+    
+              setTimeout(
+                () => {
+    
+                  target.classList.remove(
+                    "continue-highlight"
+                  );
+    
+                },
+                1800
+              );
+    
+            }
+    
+          },
+          100
+        );
+    
+      }
+    );
 
 
     /* =========================
