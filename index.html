@@ -2272,6 +2272,219 @@
         </div>
       
       </div>
+
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="c2Arc4Button"
+          type="button"
+        >
+      
+          <div>
+      
+            <div class="arc-label">
+              Arc IV
+            </div>
+      
+            <div class="arc-name">
+              Swords and Angels
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="c2Arc4ProgressText"
+            >
+              0 / 22 watched
+            </div>
+      
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="c2Arc4Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="c2Arc4Content"
+        >
+      
+          <div class="arc-progress-bar">
+      
+            <div
+              class="arc-progress-fill"
+              id="c2Arc4ProgressFill"
+            ></div>
+      
+          </div>
+      
+      
+          <button
+            class="arc-action-button"
+            data-campaign="2"
+            data-arc="4"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+      
+      
+          <div
+            class="episode-list"
+            id="campaign2Arc4Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
+
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="c2Arc5Button"
+          type="button"
+        >
+      
+          <div>
+      
+            <div class="arc-label">
+              Arc V
+            </div>
+      
+            <div class="arc-name">
+              Family Ties
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="c2Arc5ProgressText"
+            >
+              0 / 20 watched
+            </div>
+      
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="c2Arc5Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="c2Arc5Content"
+        >
+      
+          <div class="arc-progress-bar">
+      
+            <div
+              class="arc-progress-fill"
+              id="c2Arc5ProgressFill"
+            ></div>
+      
+          </div>
+      
+      
+          <button
+            class="arc-action-button"
+            data-campaign="2"
+            data-arc="5"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+      
+      
+          <div
+            class="episode-list"
+            id="campaign2Arc5Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
+
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="c2Arc6Button"
+          type="button"
+        >
+      
+          <div>
+      
+            <div class="arc-label">
+              Arc VI
+            </div>
+      
+            <div class="arc-name">
+              Weird Magic
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="c2Arc6ProgressText"
+            >
+              0 / 28 watched
+            </div>
+      
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="c2Arc6Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="c2Arc6Content"
+        >
+      
+          <div class="arc-progress-bar">
+      
+            <div
+              class="arc-progress-fill"
+              id="c2Arc6ProgressFill"
+            ></div>
+      
+          </div>
+      
+      
+          <button
+            class="arc-action-button"
+            data-campaign="2"
+            data-arc="6"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+      
+      
+          <div
+            class="episode-list"
+            id="campaign2Arc6Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
     
     </section>
 
@@ -2806,6 +3019,78 @@
     
     };
 
+    const c2Arc4Subchapters = {
+
+      70: {
+        chapter: "Chapter I",
+        name: "Fjord's Journey",
+        range: "Episodes 70–76"
+      },
+    
+      77: {
+        chapter: "Chapter II",
+        name: "Quest for Dwueth'var",
+        range: "Episodes 77–79"
+      },
+    
+      80: {
+        chapter: "Chapter III",
+        name: "The Folding Halls",
+        range: "Episodes 80–83"
+      },
+    
+      84: {
+        chapter: "Chapter IV",
+        name: "The Fall of Obann",
+        range: "Episodes 84–91"
+      }
+    
+    };
+
+    const c2Arc5Subchapters = {
+
+      92: {
+        chapter: "Chapter I",
+        name: "Family & Diplomacy",
+        range: "Episodes 92–98"
+      },
+    
+      99: {
+        chapter: "Chapter II",
+        name: "Rumblecusp",
+        range: "Episodes 99–105"
+      },
+    
+      106: {
+        chapter: "Chapter III",
+        name: "Traveler Con & Old Friends",
+        range: "Episodes 106–112"
+      }
+    
+    };
+
+    const c2Arc6Subchapters = {
+
+      113: {
+        chapter: "Chapter I",
+        name: "Into Eiselcross",
+        range: "Episodes 113–122"
+      },
+    
+      123: {
+        chapter: "Chapter II",
+        name: "Eyes of Nine",
+        range: "Episodes 123–132"
+      },
+    
+      133: {
+        chapter: "Chapter III",
+        name: "Aeor & Cognouza",
+        range: "Episodes 133–141"
+      }
+    
+    };
+
     let hideWatched =
       localStorage.getItem(
         "criticalRoleHideWatched"
@@ -2907,6 +3192,21 @@
         document.getElementById(
           "campaign2Arc3Episodes"
         );
+
+      const c2Arc4List =
+        document.getElementById(
+          "campaign2Arc4Episodes"
+        );
+
+      const c2Arc5List =
+        document.getElementById(
+          "campaign2Arc5Episodes"
+        );
+
+      const c2Arc6List =
+        document.getElementById(
+          "campaign2Arc6Episodes"
+        );
     
     
       arc1List.innerHTML = "";
@@ -2917,6 +3217,9 @@
       c2Arc1List.innerHTML = "";
       c2Arc2List.innerHTML = "";
       c2Arc3List.innerHTML = "";
+      c2Arc4List.innerHTML = "";
+      c2Arc5List.innerHTML = "";
+      c2Arc6List.innerHTML = "";
     
     
       episodes.forEach(episode => {
@@ -3251,6 +3554,144 @@
         
         
           c2Arc3List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 2 &&
+          episode.arc === 4
+        ) {
+        
+          const chapter =
+            c2Arc4Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c2Arc4List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c2Arc4List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 2 &&
+          episode.arc === 5
+        ) {
+        
+          const chapter =
+            c2Arc5Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c2Arc5List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c2Arc5List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 2 &&
+          episode.arc === 6
+        ) {
+        
+          const chapter =
+            c2Arc6Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c2Arc6List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c2Arc6List.appendChild(card);
         
         }
      });
@@ -3651,6 +4092,81 @@
           3,
           "c2Arc3ProgressText",
           "c2Arc3ProgressFill"
+        );
+      
+      }
+
+      const c2Arc4Text =
+        document.getElementById(
+          "c2Arc4ProgressText"
+        );
+      
+      const c2Arc4Fill =
+        document.getElementById(
+          "c2Arc4ProgressFill"
+        );
+      
+      
+      if (
+        c2Arc4Text &&
+        c2Arc4Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          2,
+          4,
+          "c2Arc4ProgressText",
+          "c2Arc4ProgressFill"
+        );
+      
+      }
+
+      const c2Arc5Text =
+        document.getElementById(
+          "c2Arc5ProgressText"
+        );
+      
+      const c2Arc5Fill =
+        document.getElementById(
+          "c2Arc5ProgressFill"
+        );
+      
+      
+      if (
+        c2Arc5Text &&
+        c2Arc5Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          2,
+          5,
+          "c2Arc5ProgressText",
+          "c2Arc5ProgressFill"
+        );
+      
+      }
+
+      const c2Arc6Text =
+        document.getElementById(
+          "c2Arc6ProgressText"
+        );
+      
+      const c2Arc6Fill =
+        document.getElementById(
+          "c2Arc6ProgressFill"
+        );
+      
+      
+      if (
+        c2Arc6Text &&
+        c2Arc6Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          2,
+          6,
+          "c2Arc4ProgressText",
+          "c2Arc6ProgressFill"
         );
       
       }
@@ -4336,6 +4852,120 @@
     
     
         c2Arc3Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C2 ARC 4 OPEN / CLOSE
+    ========================= */
+
+    const c2Arc4Button =
+      document.getElementById(
+        "c2Arc4Button"
+      );
+    
+    const c2Arc4Content =
+      document.getElementById(
+        "c2Arc4Content"
+      );
+    
+    const c2Arc4Arrow =
+      document.getElementById(
+        "c2Arc4Arrow"
+      );
+    
+    
+    c2Arc4Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c2Arc4Content
+            .classList
+            .toggle("open");
+    
+    
+        c2Arc4Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C2 ARC 5 OPEN / CLOSE
+    ========================= */
+
+    const c2Arc5Button =
+      document.getElementById(
+        "c2Arc5Button"
+      );
+    
+    const c2Arc5Content =
+      document.getElementById(
+        "c2Arc5Content"
+      );
+    
+    const c2Arc5Arrow =
+      document.getElementById(
+        "c2Arc5Arrow"
+      );
+    
+    
+    c2Arc5Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c2Arc5Content
+            .classList
+            .toggle("open");
+    
+    
+        c2Arc5Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C2 ARC 6 OPEN / CLOSE
+    ========================= */
+
+    const c2Arc6Button =
+      document.getElementById(
+        "c2Arc6Button"
+      );
+    
+    const c2Arc6Content =
+      document.getElementById(
+        "c2Arc6Content"
+      );
+    
+    const c2Arc6Arrow =
+      document.getElementById(
+        "c2Arc6Arrow"
+      );
+    
+    
+    c2Arc6Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c2Arc6Content
+            .classList
+            .toggle("open");
+    
+    
+        c2Arc6Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
