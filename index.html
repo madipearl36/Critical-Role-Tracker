@@ -2730,6 +2730,12 @@
             episode.episode
           ];
       
+      } else if (episode.campaign === 2) {
+
+        directLink =
+          campaign2YoutubeLinks[
+            episode.episode
+          ];
       }
     
     
@@ -2812,13 +2818,6 @@
       arc5List.innerHTML = "";
       c2Arc1List.innerHTML = "";
       c2Arc2List.innerHTML = "";
-    
-    
-      const campaign1 =
-        episodes.filter(
-          episode =>
-            episode.campaign === 1
-        );
     
     
       episodes.forEach(episode => {
