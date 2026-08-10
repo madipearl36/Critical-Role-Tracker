@@ -956,7 +956,7 @@ const campaign1Episodes = [
         episode: 96,
         label: "Campaign 1 • Episode 96",
         title: "Family Matters",
-        duration: "04:48:48
+        duration: "04:48:48"
       },
       
       {
