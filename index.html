@@ -2489,7 +2489,7 @@
               class="arc-progress-text"
               id="c2Arc5ProgressText"
             >
-              0 / 20 watched
+              0 / 21 watched
             </div>
       
           </div>
@@ -2560,7 +2560,7 @@
               class="arc-progress-text"
               id="c2Arc6ProgressText"
             >
-              0 / 28 watched
+              0 / 29 watched
             </div>
       
           </div>
@@ -4086,31 +4086,76 @@
         }
     
     
-        /* Open Campaign 1 */
-    
-        campaign1Content
-          .classList
-          .add("open");
-    
-        campaign1Arrow.textContent =
-          "⌄";
-    
-    
-        /* Open the correct arc */
+        const campaignNumber =
+          nextEpisode.campaign;
     
         const arcNumber =
           nextEpisode.arc;
     
     
-        const arcContent =
+        /* Open the correct campaign */
+    
+        const campaignContent =
           document.getElementById(
-            `arc${arcNumber}Content`
+            `campaign${campaignNumber}Content`
+          );
+    
+        const campaignArrow =
+          document.getElementById(
+            `campaign${campaignNumber}Arrow`
           );
     
     
+        if (campaignContent) {
+    
+          campaignContent
+            .classList
+            .add("open");
+    
+        }
+    
+    
+        if (campaignArrow) {
+    
+          campaignArrow.textContent =
+            "⌄";
+    
+        }
+    
+    
+        /* Open the correct arc */
+    
+        let arcContentId;
+        let arcArrowId;
+    
+    
+        if (campaignNumber === 1) {
+    
+          arcContentId =
+            `arc${arcNumber}Content`;
+    
+          arcArrowId =
+            `arc${arcNumber}Arrow`;
+    
+        } else {
+    
+          arcContentId =
+            `c${campaignNumber}Arc${arcNumber}Content`;
+    
+          arcArrowId =
+            `c${campaignNumber}Arc${arcNumber}Arrow`;
+    
+        }
+    
+    
+        const arcContent =
+          document.getElementById(
+            arcContentId
+          );
+    
         const arcArrow =
           document.getElementById(
-            `arc${arcNumber}Arrow`
+            arcArrowId
           );
     
     
@@ -4136,6 +4181,8 @@
     
         renderEpisodes();
     
+    
+        /* Scroll to next episode */
     
         setTimeout(
           () => {
@@ -4256,7 +4303,7 @@
         .getElementById("upNext")
         .textContent =
           nextEpisode
-            ? `C1E${nextEpisode.episode} — ${nextEpisode.title}`
+            ? `C${nextEpisode.campaign}E${nextEpisode.episode} — ${nextEpisode.title}`
             : "All caught up! ✦";
 
     }
