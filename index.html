@@ -2130,6 +2130,77 @@
         </div>
       
       </div>
+
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="c2Arc2Button"
+          type="button"
+        >
+      
+          <div>
+      
+            <div class="arc-label">
+              Arc II
+            </div>
+      
+            <div class="arc-name">
+              The Bad Guys
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="c2Arc2ProgressText"
+            >
+              0 / 22 watched
+            </div>
+      
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="c2Arc2Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="c2Arc2Content"
+        >
+      
+          <div class="arc-progress-bar">
+      
+            <div
+              class="arc-progress-fill"
+              id="c2Arc2ProgressFill"
+            ></div>
+      
+          </div>
+      
+      
+          <button
+            class="arc-action-button"
+            data-campaign="2"
+            data-arc="2"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+      
+      
+          <div
+            class="episode-list"
+            id="campaign2Arc2Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
     
     </section>
 
@@ -2626,6 +2697,22 @@
     
     };
 
+    const c2Arc2Subchapters = {
+
+      26: {
+        chapter: "Chapter I",
+        name: "Iron and Blood",
+        range: "Episodes 26–35"
+      },
+    
+      36: {
+        chapter: "Chapter II",
+        name: "Adventure on the High Seas",
+        range: "Episodes 36–47"
+      }
+    
+    };
+
     let hideWatched =
       localStorage.getItem(
         "criticalRoleHideWatched"
@@ -2711,6 +2798,11 @@
         document.getElementById(
           "campaign2Arc1Episodes"
         );
+
+      const c2Arc2list = 
+        document.getElementByID(
+          "campaign2Arc2Episodes"
+        );
     
     
       arc1List.innerHTML = "";
@@ -2719,6 +2811,7 @@
       arc4List.innerHTML = "";
       arc5List.innerHTML = "";
       c2Arc1List.innerHTML = "";
+      c2Arc2List.innerHTML = "";
     
     
       const campaign1 =
@@ -2968,6 +3061,52 @@
         
         
           c2Arc1List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 2 &&
+          episode.arc === 2
+        ) {
+        
+          const chapter =
+            c2Arc2Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c2Arc2List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c2Arc2List.appendChild(card);
         
         }
      });
@@ -3320,6 +3459,31 @@
           "c2Arc1ProgressFill"
         );
     
+      }
+
+      const c2Arc2Text =
+        document.getElementById(
+          "c2Arc2ProgressText"
+        );
+      
+      const c2Arc2Fill =
+        document.getElementById(
+          "c2Arc2ProgressFill"
+        );
+      
+      
+      if (
+        c2Arc2Text &&
+        c2Arc2Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          2,
+          2,
+          "c2Arc2ProgressText",
+          "c2Arc2ProgressFill"
+        );
+      
       }
     
     }
@@ -3897,7 +4061,7 @@
     );
 
     /* =========================
-       ARC 5 OPEN / CLOSE
+       C2 ARC 1 OPEN / CLOSE
     ========================= */
 
     const c2Arc1Button =
@@ -3927,6 +4091,44 @@
     
     
         c2Arc1Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C2 ARC 2 OPEN / CLOSE
+    ========================= */
+
+    const c2Arc2Button =
+      document.getElementById(
+        "c2Arc2Button"
+      );
+    
+    const c2Arc2Content =
+      document.getElementById(
+        "c2Arc2Content"
+      );
+    
+    const c2Arc2Arrow =
+      document.getElementById(
+        "c2Arc2Arrow"
+      );
+    
+    
+    c2Arc2Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c2Arc2Content
+            .classList
+            .toggle("open");
+    
+    
+        c2Arc2Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
