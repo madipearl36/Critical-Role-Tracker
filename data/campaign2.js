@@ -420,6 +420,204 @@ const campaign2Episodes = [
         episode: 47,
         label: "Campaign 2 • Episode 47",
         title: "The Second Seal"
+      },
+
+      {
+        id: "c2e48",
+        campaign: 2,
+        arc: 3,
+        episode: 48,
+        label: "Campaign 2 • Episode 48",
+        title: "Homeward Bound"
+      },
+      
+      {
+        id: "c2e49",
+        campaign: 2,
+        arc: 3,
+        episode: 49,
+        label: "Campaign 2 • Episode 49",
+        title: "A Game of Names"
+      },
+      
+      {
+        id: "c2e50",
+        campaign: 2,
+        arc: 3,
+        episode: 50,
+        label: "Campaign 2 • Episode 50",
+        title: "The Endless Burrows"
+      },
+      
+      {
+        id: "c2e51",
+        campaign: 2,
+        arc: 3,
+        episode: 51,
+        label: "Campaign 2 • Episode 51",
+        title: "Xhorhas"
+      },
+      
+      {
+        id: "c2e52",
+        campaign: 2,
+        arc: 3,
+        episode: 52,
+        label: "Campaign 2 • Episode 52",
+        title: "Feral Business"
+      },
+      
+      {
+        id: "c2e53",
+        campaign: 2,
+        arc: 3,
+        episode: 53,
+        label: "Campaign 2 • Episode 53",
+        title: "Cornered"
+      },
+      
+      {
+        id: "c2e54",
+        campaign: 2,
+        arc: 3,
+        episode: 54,
+        label: "Campaign 2 • Episode 54",
+        title: "Well Beneath"
+      },
+      
+      {
+        id: "c2e55",
+        campaign: 2,
+        arc: 3,
+        episode: 55,
+        label: "Campaign 2 • Episode 55",
+        title: "Duplicity"
+      },
+      
+      {
+        id: "c2e56",
+        campaign: 2,
+        arc: 3,
+        episode: 56,
+        label: "Campaign 2 • Episode 56",
+        title: "The Favor"
+      },
+      
+      {
+        id: "c2e57",
+        campaign: 2,
+        arc: 3,
+        episode: 57,
+        label: "Campaign 2 • Episode 57",
+        title: "In Love and War"
+      },
+      
+      {
+        id: "c2e58",
+        campaign: 2,
+        arc: 3,
+        episode: 58,
+        label: "Campaign 2 • Episode 58",
+        title: "Wood and Steel"
+      },
+      
+      {
+        id: "c2e59",
+        campaign: 2,
+        arc: 3,
+        episode: 59,
+        label: "Campaign 2 • Episode 59",
+        title: "Perspective"
+      },
+      
+      {
+        id: "c2e60",
+        campaign: 2,
+        arc: 3,
+        episode: 60,
+        label: "Campaign 2 • Episode 60",
+        title: "A Turtle By Any Other Name"
+      },
+      
+      {
+        id: "c2e61",
+        campaign: 2,
+        arc: 3,
+        episode: 61,
+        label: "Campaign 2 • Episode 61",
+        title: "Agreements"
+      },
+      
+      {
+        id: "c2e62",
+        campaign: 2,
+        arc: 3,
+        episode: 62,
+        label: "Campaign 2 • Episode 62",
+        title: "Domestic Respite"
+      },
+      
+      {
+        id: "c2e63",
+        campaign: 2,
+        arc: 3,
+        episode: 63,
+        label: "Campaign 2 • Episode 63",
+        title: "Intervention"
+      },
+      
+      {
+        id: "c2e64",
+        campaign: 2,
+        arc: 3,
+        episode: 64,
+        label: "Campaign 2 • Episode 64",
+        title: "A Dangerous Chase"
+      },
+      
+      {
+        id: "c2e65",
+        campaign: 2,
+        arc: 3,
+        episode: 65,
+        label: "Campaign 2 • Episode 65",
+        title: "Chases and Trees"
+      },
+      
+      {
+        id: "c2e66",
+        campaign: 2,
+        arc: 3,
+        episode: 66,
+        label: "Campaign 2 • Episode 66",
+        title: "Beneath Bazzoxan"
+      },
+      
+      {
+        id: "c2e67",
+        campaign: 2,
+        arc: 3,
+        episode: 67,
+        label: "Campaign 2 • Episode 67",
+        title: "Beyond the Eyes of Angels"
+      },
+      
+      {
+        id: "c2e68",
+        campaign: 2,
+        arc: 3,
+        episode: 68,
+        label: "Campaign 2 • Episode 68",
+        title: "Reflections"
+      },
+      
+      {
+        id: "c2e69",
+        campaign: 2,
+        arc: 3,
+        episode: 69,
+        label: "Campaign 2 • Episode 69",
+        title: "The King's Cage"
       }
 ];
 
