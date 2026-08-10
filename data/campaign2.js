@@ -1496,7 +1496,7 @@ const campaign2YoutubeLinks = {
 
   42: "https://www.youtube.com/watch?v=W723E1ofhcE",
 
-  43: "https://www.youtube.com/watch?v=dyArEJYKr5U"
+  43: "https://www.youtube.com/watch?v=dyArEJYKr5U",
 
   44: "https://www.youtube.com/watch?v=P8UVu-kGusg",
 
