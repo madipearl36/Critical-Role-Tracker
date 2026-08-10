@@ -5,7 +5,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 1,
         label: "Campaign 1 • Episode 1",
-        title: "Arrival at Kraghammer"
+        title: "Arrival at Kraghammer",
+        duration: "03:03:07"
       },
     
       {
@@ -14,7 +15,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 2,
         label: "Campaign 1 • Episode 2",
-        title: "Into the Greyspine Mines"
+        title: "Into the Greyspine Mines",
+        duration: "03:19:40"
       },
     
       {
@@ -23,7 +25,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 3,
         label: "Campaign 1 • Episode 3",
-        title: "Strange Bedfellows"
+        title: "Strange Bedfellows",
+        duration: "02:36:16"
       },
     
       {
@@ -32,7 +35,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 4,
         label: "Campaign 1 • Episode 4",
-        title: "Attack on the Duergar Warcamp"
+        title: "Attack on the Duergar Warcamp",
+        duration: "04:42:42"
       },
     
       {
@@ -41,7 +45,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 5,
         label: "Campaign 1 • Episode 5",
-        title: "The Trick About Falling"
+        title: "The Trick About Falling",
+        duration: "03:09:41"
       },
     
       {
@@ -50,7 +55,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 6,
         label: "Campaign 1 • Episode 6",
-        title: "Breaching the Emberhold"
+        title: "Breaching the Emberhold",
+        duration: "02:57:00"
       },
     
       {
@@ -59,7 +65,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 7,
         label: "Campaign 1 • Episode 7",
-        title: "The Throne Room"
+        title: "The Throne Room",
+        duration: "03:58:41"
       },
     
       {
@@ -68,7 +75,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 8,
         label: "Campaign 1 • Episode 8",
-        title: "Glass and Bone"
+        title: "Glass and Bone",
+        duration: "03:01:25"
       },
     
       {
@@ -77,7 +85,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 9,
         label: "Campaign 1 • Episode 9",
-        title: "Yug'voril Uncovered"
+        title: "Yug'voril Uncovered",
+        duration: "03:05:52"
       },
     
       {
@@ -86,7 +95,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 10,
         label: "Campaign 1 • Episode 10",
-        title: "K'Varn Revealed"
+        title: "K'Varn Revealed",
+        duration: "04:38:34"
       },
     
       {
@@ -95,7 +105,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 11,
         label: "Campaign 1 • Episode 11",
-        title: "The Temple Showdown"
+        title: "The Temple Showdown",
+        duration: "05:32:34"
       },
     
       {
@@ -104,7 +115,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 12,
         label: "Campaign 1 • Episode 12",
-        title: "Dungeons & Dragons Campaign Tips"
+        title: "Dungeons & Dragons Campaign Tips",
+        duration: "03:37:00"
       },
     
       {
@@ -113,7 +125,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 13,
         label: "Campaign 1 • Episode 13",
-        title: "Escape from the Underdark"
+        title: "Escape from the Underdark",
+        duration: "03:28:37"
       },
     
       {
@@ -122,7 +135,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 14,
         label: "Campaign 1 • Episode 14",
-        title: "Shopping and Shipping"
+        title: "Shopping and Shipping",
+        duration: "03:21:14"
       },
     
       {
@@ -131,7 +145,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 15,
         label: "Campaign 1 • Episode 15",
-        title: "Skyward"
+        title: "Skyward",
+        duration: "04:09:01"
       },
     
       {
@@ -140,7 +155,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 16,
         label: "Campaign 1 • Episode 16",
-        title: "Enter Vasselheim"
+        title: "Enter Vasselheim",
+        duration: "02:57:38"
       },
     
       {
@@ -149,7 +165,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 17,
         label: "Campaign 1 • Episode 17",
-        title: "Hubris"
+        title: "Hubris",
+        duration: "04:05:43"
       },
     
       {
@@ -158,7 +175,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 18,
         label: "Campaign 1 • Episode 18",
-        title: "Trial of the Take: Part 1"
+        title: "Trial of the Take: Part 1",
+        duration: "03:01:59"
       },
     
       {
@@ -167,7 +185,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 19,
         label: "Campaign 1 • Episode 19",
-        title: "Trial of the Take: Part 2"
+        title: "Trial of the Take: Part 2",
+        duration: "04:43:04"
       },
     
       {
@@ -176,7 +195,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 20,
         label: "Campaign 1 • Episode 20",
-        title: "Trial of the Take: Part 3"
+        title: "Trial of the Take: Part 3",
+        duration: "03:14:44"
       },
     
       {
@@ -185,7 +205,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 21,
         label: "Campaign 1 • Episode 21",
-        title: "Trial of the Take: Part 4"
+        title: "Trial of the Take: Part 4",
+        duration: "04:44:19"
       },
     
       {
@@ -194,7 +215,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 22,
         label: "Campaign 1 • Episode 22",
-        title: "Aramente to Pyrah"
+        title: "Aramente to Pyrah",
+        duration: "04:40:27"
       },
     
       {
@@ -203,7 +225,8 @@ const campaign1Episodes = [
         arc: 1,
         episode: 23,
         label: "Campaign 1 • Episode 23",
-        title: "The Rematch"
+        title: "The Rematch",
+        duration: "03:52:17"
       },
 
       {
@@ -212,7 +235,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 24,
         label: "Campaign 1 • Episode 24",
-        title: "The Feast"
+        title: "The Feast",
+        duration: "03:56:02"
       },
       
       {
@@ -221,7 +245,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 25,
         label: "Campaign 1 • Episode 25",
-        title: "Crimson Diplomacy"
+        title: "Crimson Diplomacy",
+        duration: "03:47:12"
       },
       
       {
@@ -230,7 +255,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 26,
         label: "Campaign 1 • Episode 26",
-        title: "Consequences and Cows"
+        title: "Consequences and Cows",
+        duration: "04:41:18"
       },
       
       {
@@ -239,7 +265,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 27,
         label: "Campaign 1 • Episode 27",
-        title: "The Path to Whitestone"
+        title: "The Path to Whitestone",
+        duration: "03:34:00"
       },
       
       {
@@ -248,7 +275,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 28,
         label: "Campaign 1 • Episode 28",
-        title: "The Sun Tree"
+        title: "The Sun Tree",
+        duration: "03:08:00"
       },
       
       {
@@ -257,7 +285,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 29,
         label: "Campaign 1 • Episode 29",
-        title: "Whispers"
+        title: "Whispers",
+        duration: "04:04:00"
       },
       
       {
@@ -266,7 +295,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 30,
         label: "Campaign 1 • Episode 30",
-        title: "Stoke the Flames"
+        title: "Stoke the Flames",
+        duration: "03:15:00"
       },
       
       {
@@ -275,7 +305,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 31,
         label: "Campaign 1 • Episode 31",
-        title: "Gunpowder Plot"
+        title: "Gunpowder Plot",
+        duration: "03:15:57"
       },
       
       {
@@ -284,7 +315,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 32,
         label: "Campaign 1 • Episode 32",
-        title: "Against the Tide of Bone"
+        title: "Against the Tide of Bone",
+        duration: "03:36:29"
       },
       
       {
@@ -293,7 +325,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 33,
         label: "Campaign 1 • Episode 33",
-        title: "Reunions"
+        title: "Reunions",
+        duration: "04:24:22"
       },
       
       {
@@ -302,7 +335,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 34,
         label: "Campaign 1 • Episode 34",
-        title: "Race to the Ziggurat"
+        title: "Race to the Ziggurat",
+        duration: "04:41:33"
       },
       
       {
@@ -311,7 +345,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 35,
         label: "Campaign 1 • Episode 35",
-        title: "Denouement"
+        title: "Denouement",
+        duration: "03:14:56"
       },
       
       {
@@ -320,7 +355,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 36,
         label: "Campaign 1 • Episode 36",
-        title: "Winter's Crest in Whitestone"
+        title: "Winter's Crest in Whitestone",
+        duration: "02:48:24"
       },
       
       {
@@ -329,7 +365,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 37,
         label: "Campaign 1 • Episode 37",
-        title: "A Musician's Nostalgia"
+        title: "A Musician's Nostalgia",
+        duration: "04:23:28"
       },
       
       {
@@ -338,7 +375,8 @@ const campaign1Episodes = [
         arc: 2,
         episode: 38,
         label: "Campaign 1 • Episode 38",
-        title: "Echoes of the Past"
+        title: "Echoes of the Past",
+        duration: "04:21:56"
       },
 
       {
@@ -347,7 +385,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 39,
         label: "Campaign 1 • Episode 39",
-        title: "Omens"
+        title: "Omens",
+        duration: "03:55:51"
       },
       
       {
@@ -356,7 +395,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 40,
         label: "Campaign 1 • Episode 40",
-        title: "Desperate Measures"
+        title: "Desperate Measures",
+        duration: "03:01:47"
       },
       
       {
@@ -365,7 +405,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 41,
         label: "Campaign 1 • Episode 41",
-        title: "In Ruins"
+        title: "In Ruins",
+        duration: "04:32:41"
       },
       
       {
@@ -374,7 +415,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 42,
         label: "Campaign 1 • Episode 42",
-        title: "Dangerous Dealings"
+        title: "Dangerous Dealings",
+        duration: "03:38:50"
       },
       
       {
@@ -383,7 +425,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 43,
         label: "Campaign 1 • Episode 43",
-        title: "Return to Vasselheim"
+        title: "Return to Vasselheim",
+        duration: "03:44:33"
       },
       
       {
@@ -392,7 +435,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 44,
         label: "Campaign 1 • Episode 44",
-        title: "The Sunken Tomb"
+        title: "The Sunken Tomb",
+        duration: "04:55:26"
       },
       
       {
@@ -401,7 +445,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 45,
         label: "Campaign 1 • Episode 45",
-        title: "Those Who Walk Away"
+        title: "Those Who Walk Away",
+        duration: "03:03:24"
       },
       
       {
@@ -410,7 +455,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 46,
         label: "Campaign 1 • Episode 46",
-        title: "Cindergrove Revisited"
+        title: "Cindergrove Revisited",
+        duration: "03:23:03"
       },
       
       {
@@ -419,7 +465,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 47,
         label: "Campaign 1 • Episode 47",
-        title: "The Family Business"
+        title: "The Family Business",
+        duration: "03:00:33"
       },
       
       {
@@ -428,7 +475,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 48,
         label: "Campaign 1 • Episode 48",
-        title: "Into the Frostweald"
+        title: "Into the Frostweald",
+        duration: "03:24:37"
       },
       
       {
@@ -437,7 +485,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 49,
         label: "Campaign 1 • Episode 49",
-        title: "A Name Is Earned"
+        title: "A Name Is Earned",
+        duration: "04:51:32"
       },
       
       {
@@ -446,7 +495,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 50,
         label: "Campaign 1 • Episode 50",
-        title: "Best Laid Plans..."
+        title: "Best Laid Plans...",
+        duration: "03:05:00"
       },
       
       {
@@ -455,7 +505,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 51,
         label: "Campaign 1 • Episode 51",
-        title: "Test of Pride"
+        title: "Test of Pride",
+        duration: "02:54:25"
       },
       
       {
@@ -464,7 +515,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 52,
         label: "Campaign 1 • Episode 52",
-        title: "The Kill Box"
+        title: "The Kill Box",
+        duration: "03:19:27"
       },
       
       {
@@ -473,7 +525,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 53,
         label: "Campaign 1 • Episode 53",
-        title: "At Dawn, We Plan!"
+        title: "At Dawn, We Plan!",
+        duration: "03:37:36"
       },
       
       {
@@ -482,7 +535,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 54,
         label: "Campaign 1 • Episode 54",
-        title: "In the Belly of the Beast"
+        title: "In the Belly of the Beast",
+        duration: "04:26:47"
       },
       
       {
@@ -491,7 +545,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 55,
         label: "Campaign 1 • Episode 55",
-        title: "Umbrasyl"
+        title: "Umbrasyl",
+        duration: "04:16:57"
       },
       
       {
@@ -500,7 +555,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 56,
         label: "Campaign 1 • Episode 56",
-        title: "Hope"
+        title: "Hope",
+        duration: "03:53:14"
       },
       
       {
@@ -509,7 +565,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 57,
         label: "Campaign 1 • Episode 57",
-        title: "Duskmeadow"
+        title: "Duskmeadow",
+        duration: "03:45:52"
       },
       
       {
@@ -518,7 +575,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 58,
         label: "Campaign 1 • Episode 58",
-        title: "A Cycle of Vengeance"
+        title: "A Cycle of Vengeance",
+        duration: "03:42:51"
       },
       
       {
@@ -527,7 +585,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 59,
         label: "Campaign 1 • Episode 59",
-        title: "The Feywild"
+        title: "The Feywild",
+        duration: "03:08:33"
       },
       
       {
@@ -536,7 +595,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 60,
         label: "Campaign 1 • Episode 60",
-        title: "Heredity and Hats"
+        title: "Heredity and Hats",
+        duration: "02:42:35"
       },
       
       {
@@ -545,7 +605,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 61,
         label: "Campaign 1 • Episode 61",
-        title: "Denizens of the Moonbrush"
+        title: "Denizens of the Moonbrush",
+        duration: "04:01:21"
       },
       
       {
@@ -554,7 +615,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 62,
         label: "Campaign 1 • Episode 62",
-        title: "Uninviting Waters"
+        title: "Uninviting Waters",
+        duration: "02:59:40"
       },
       
       {
@@ -563,7 +625,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 63,
         label: "Campaign 1 • Episode 63",
-        title: "The Echo Tree"
+        title: "The Echo Tree",
+        duration: "04:10:14"
       },
       
       {
@@ -572,7 +635,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 64,
         label: "Campaign 1 • Episode 64",
-        title: "The Frigid Doom"
+        title: "The Frigid Doom",
+        duration: "03:58:37"
       },
       
       {
@@ -581,7 +645,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 65,
         label: "Campaign 1 • Episode 65",
-        title: "The Streets of Ank'Harel"
+        title: "The Streets of Ank'Harel",
+        duration: "04:19:47"
       },
       
       {
@@ -590,7 +655,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 66,
         label: "Campaign 1 • Episode 66",
-        title: "A Traveler's Gamble"
+        title: "A Traveler's Gamble",
+        duration: "04:17:28"
       },
       
       {
@@ -599,7 +665,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 67,
         label: "Campaign 1 • Episode 67",
-        title: "The Chase to Glintshore"
+        title: "The Chase to Glintshore",
+        duration: "03:43:09"
       },
       
       {
@@ -608,7 +675,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 68,
         label: "Campaign 1 • Episode 68",
-        title: "Cloak and Dagger"
+        title: "Cloak and Dagger",
+        duration: "04:34:22"
       },
       
       {
@@ -617,7 +685,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 69,
         label: "Campaign 1 • Episode 69",
-        title: "Passed Through Fire"
+        title: "Passed Through Fire",
+        duration: "02:58:27"
       },
       
       {
@@ -626,7 +695,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 70,
         label: "Campaign 1 • Episode 70",
-        title: "Trust"
+        title: "Trust",
+        duration: "03:59:32"
       },
       
       {
@@ -635,7 +705,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 71,
         label: "Campaign 1 • Episode 71",
-        title: "Vorugal"
+        title: "Vorugal",
+        duration: "04:52:25"
       },
       
       {
@@ -644,7 +715,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 72,
         label: "Campaign 1 • Episode 72",
-        title: "The Elephant in the Room"
+        title: "The Elephant in the Room",
+        duration: "03:06:50"
       },
       
       {
@@ -653,7 +725,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 73,
         label: "Campaign 1 • Episode 73",
-        title: "The Coming Storm"
+        title: "The Coming Storm",
+        duration: "03:24:38"
       },
       
       {
@@ -662,7 +735,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 74,
         label: "Campaign 1 • Episode 74",
-        title: "Path of Brass"
+        title: "Path of Brass",
+        duration: "04:00:17"
       },
       
       {
@@ -671,7 +745,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 75,
         label: "Campaign 1 • Episode 75",
-        title: "Where the Cards Fall"
+        title: "Where the Cards Fall",
+        duration: "03:57:40"
       },
       
       {
@@ -680,7 +755,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 76,
         label: "Campaign 1 • Episode 76",
-        title: "Brawl in the Arches"
+        title: "Brawl in the Arches",
+        duration: "03:52:02"
       },
       
       {
@@ -689,7 +765,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 77,
         label: "Campaign 1 • Episode 77",
-        title: "Clash at Daxio"
+        title: "Clash at Daxio",
+        duration: "04:25:15"
       },
       
       {
@@ -698,7 +775,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 78,
         label: "Campaign 1 • Episode 78",
-        title: "The Siege of Emon"
+        title: "The Siege of Emon",
+        duration: "04:16:26"
       },
       
       {
@@ -707,7 +785,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 79,
         label: "Campaign 1 • Episode 79",
-        title: "Thordak"
+        title: "Thordak",
+        duration: "04:26:39"
       },
       
       {
@@ -716,7 +795,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 80,
         label: "Campaign 1 • Episode 80",
-        title: "Raishan"
+        title: "Raishan",
+        duration: "03:23:30"
       },
       
       {
@@ -725,7 +805,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 81,
         label: "Campaign 1 • Episode 81",
-        title: "What Lies Beneath the Surface"
+        title: "What Lies Beneath the Surface",
+        duration: "04:00:50"
       },
       
       {
@@ -734,7 +815,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 82,
         label: "Campaign 1 • Episode 82",
-        title: "Deadly Echoes"
+        title: "Deadly Echoes",
+        duration: "04:48:33"
       },
       
       {
@@ -743,7 +825,8 @@ const campaign1Episodes = [
         arc: 3,
         episode: 83,
         label: "Campaign 1 • Episode 83",
-        title: "The Deceiver's Stand"
+        title: "The Deceiver's Stand",
+        duration: "04:18:13"
       },
 
       {
@@ -752,7 +835,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 84,
         label: "Campaign 1 • Episode 84",
-        title: "Loose Ends"
+        title: "Loose Ends",
+        duration: "03:33:53"
       },
       
       {
@@ -761,7 +845,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 85,
         label: "Campaign 1 • Episode 85",
-        title: "A Bard's Lament"
+        title: "A Bard's Lament",
+        duration: "03:27:17"
       },
       
       {
@@ -770,7 +855,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 86,
         label: "Campaign 1 • Episode 86",
-        title: "Daring Days"
+        title: "Daring Days",
+        duration: "03:51:28"
       },
       
       {
@@ -779,7 +865,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 87,
         label: "Campaign 1 • Episode 87",
-        title: "Onward to Vesrah"
+        title: "Onward to Vesrah",
+        duration: "03:33:41"
       },
       
       {
@@ -788,7 +875,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 88,
         label: "Campaign 1 • Episode 88",
-        title: "Tangled Depths"
+        title: "Tangled Depths",
+        duration: "05:30:29"
       },
       
       {
@@ -797,7 +885,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 89,
         label: "Campaign 1 • Episode 89",
-        title: "Curious Tides"
+        title: "Curious Tides",
+        duration: "03:35:50"
       },
       
       {
@@ -806,7 +895,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 90,
         label: "Campaign 1 • Episode 90",
-        title: "Voice of the Tempest"
+        title: "Voice of the Tempest",
+        duration: "04:08:37"
       },
       
       {
@@ -815,7 +905,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 91,
         label: "Campaign 1 • Episode 91",
-        title: "Vox Machina Go to Hell"
+        title: "Vox Machina Go to Hell",
+        duration: "04:12:27"
       },
       
       {
@@ -824,7 +915,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 92,
         label: "Campaign 1 • Episode 92",
-        title: "Deals in the Dark"
+        title: "Deals in the Dark",
+        duration: "03:39:09"
       },
       
       {
@@ -833,7 +925,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 93,
         label: "Campaign 1 • Episode 93",
-        title: "Bats Out of Hell"
+        title: "Bats Out of Hell",
+        duration: "04:29:26"
       },
       
       {
@@ -842,7 +935,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 94,
         label: "Campaign 1 • Episode 94",
-        title: "Jugs and Rods"
+        title: "Jugs and Rods",
+        duration: "04:23:32"
       },
       
       {
@@ -851,7 +945,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 95,
         label: "Campaign 1 • Episode 95",
-        title: "One Year Later..."
+        title: "One Year Later...",
+        duration: "04:05:35"
       },
       
       {
@@ -860,7 +955,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 96,
         label: "Campaign 1 • Episode 96",
-        title: "Family Matters"
+        title: "Family Matters",
+        duration: "04:48:48
       },
       
       {
@@ -869,7 +965,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 97,
         label: "Campaign 1 • Episode 97",
-        title: "Taryon, My Wayward Son"
+        title: "Taryon, My Wayward Son",
+        duration: "04:13:22"
       },
       
       {
@@ -878,7 +975,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 98,
         label: "Campaign 1 • Episode 98",
-        title: "The Mines of the Many"
+        title: "The Mines of the Many",
+        duration: "04:30:37"
       },
       
       {
@@ -887,7 +985,8 @@ const campaign1Episodes = [
         arc: 4,
         episode: 99,
         label: "Campaign 1 • Episode 99",
-        title: "Masquerade"
+        title: "Masquerade",
+        duration: "04:01:28"
       },
 
       {
@@ -896,7 +995,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 100,
         label: "Campaign 1 • Episode 100",
-        title: "Unfinished Business"
+        title: "Unfinished Business",
+        duration: "05:46:36"
       },
       
       {
@@ -905,7 +1005,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 101,
         label: "Campaign 1 • Episode 101",
-        title: "Thar Amphala"
+        title: "Thar Amphala",
+        duration: "03:31:25"
       },
       
       {
@@ -914,7 +1015,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 102,
         label: "Campaign 1 • Episode 102",
-        title: "Race to the Tower"
+        title: "Race to the Tower",
+        duration: "04:32:19"
       },
       
       {
@@ -923,7 +1025,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 103,
         label: "Campaign 1 • Episode 103",
-        title: "The Fate-Touched"
+        title: "The Fate-Touched",
+        duration: "03:33:11"
       },
       
       {
@@ -932,7 +1035,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 104,
         label: "Campaign 1 • Episode 104",
-        title: "Elysium"
+        title: "Elysium",
+        duration: "03:07:56"
       },
       
       {
@@ -941,7 +1045,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 105,
         label: "Campaign 1 • Episode 105",
-        title: "The Fear of Isolation"
+        title: "The Fear of Isolation",
+        duration: "04:08:19"
       },
       
       {
@@ -950,7 +1055,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 106,
         label: "Campaign 1 • Episode 106",
-        title: "The Endless Atheneum"
+        title: "The Endless Atheneum",
+        duration: "03:50:03"
       },
       
       {
@@ -959,7 +1065,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 107,
         label: "Campaign 1 • Episode 107",
-        title: "Scaldseat"
+        title: "Scaldseat",
+        duration: "03:57:25"
       },
       
       {
@@ -968,7 +1075,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 108,
         label: "Campaign 1 • Episode 108",
-        title: "The Core Anvil"
+        title: "The Core Anvil",
+        duration: "04:31:45"
       },
       
       {
@@ -977,7 +1085,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 109,
         label: "Campaign 1 • Episode 109",
-        title: "The Ominous March"
+        title: "The Ominous March",
+        duration: "03:44:21"
       },
       
       {
@@ -986,7 +1095,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 110,
         label: "Campaign 1 • Episode 110",
-        title: "The Climb Within"
+        title: "The Climb Within",
+        duration: "03:45:25"
       },
       
       {
@@ -995,7 +1105,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 111,
         label: "Campaign 1 • Episode 111",
-        title: "Shadows of Thomara"
+        title: "Shadows of Thomara",
+        duration: "04:30:51"
       },
       
       {
@@ -1004,7 +1115,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 112,
         label: "Campaign 1 • Episode 112",
-        title: "Dark Dealings"
+        title: "Dark Dealings",
+        duration: "04:10:09"
       },
       
       {
@@ -1013,7 +1125,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 113,
         label: "Campaign 1 • Episode 113",
-        title: "The Final Ascent"
+        title: "The Final Ascent",
+        duration: "05:02:21"
       },
       
       {
@@ -1022,7 +1135,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 114,
         label: "Campaign 1 • Episode 114",
-        title: "Vecna, the Ascended"
+        title: "Vecna, the Ascended",
+        duration: "05:44:46"
       },
       
       {
@@ -1031,7 +1145,8 @@ const campaign1Episodes = [
         arc: 5,
         episode: 115,
         label: "Campaign 1 • Episode 115",
-        title: "The Chapter Closes"
+        title: "The Chapter Closes",
+        duration: "04:34:10"
       }
 ];
 
