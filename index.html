@@ -2201,6 +2201,77 @@
         </div>
       
       </div>
+
+      <div class="arc">
+
+        <button
+          class="arc-header"
+          id="c2Arc3Button"
+          type="button"
+        >
+      
+          <div>
+      
+            <div class="arc-label">
+              Arc III
+            </div>
+      
+            <div class="arc-name">
+              The Bright Queen's Favor
+            </div>
+      
+            <div
+              class="arc-progress-text"
+              id="c2Arc3ProgressText"
+            >
+              0 / 22 watched
+            </div>
+      
+          </div>
+      
+          <div
+            class="arc-arrow"
+            id="c2Arc3Arrow"
+          >
+            ›
+          </div>
+      
+        </button>
+      
+      
+        <div
+          class="arc-content"
+          id="c2Arc3Content"
+        >
+      
+          <div class="arc-progress-bar">
+      
+            <div
+              class="arc-progress-fill"
+              id="c2Arc3ProgressFill"
+            ></div>
+      
+          </div>
+      
+      
+          <button
+            class="arc-action-button"
+            data-campaign="2"
+            data-arc="3"
+            type="button"
+          >
+            ✓ Mark Arc Watched
+          </button>
+      
+      
+          <div
+            class="episode-list"
+            id="campaign2Arc3Episodes"
+          ></div>
+      
+        </div>
+      
+      </div>
     
     </section>
 
@@ -2713,6 +2784,28 @@
     
     };
 
+    const c2Arc3Subchapters = {
+
+      48: {
+        chapter: "Chapter I",
+        name: "Into Xhorhas",
+        range: "Episodes 48–56"
+      },
+    
+      57: {
+        chapter: "Chapter II",
+        name: "Favor of the Dynasty",
+        range: "Episodes 57–63"
+      },
+    
+      64: {
+        chapter: "Chapter III",
+        name: "The King's Cage",
+        range: "Episodes 64–69"
+      }
+    
+    };
+
     let hideWatched =
       localStorage.getItem(
         "criticalRoleHideWatched"
@@ -2809,6 +2902,11 @@
         document.getElementById(
           "campaign2Arc2Episodes"
         );
+
+      const c2Arc3List =
+        document.getElementById(
+          "campaign2Arc3Episodes"
+        );
     
     
       arc1List.innerHTML = "";
@@ -2818,6 +2916,7 @@
       arc5List.innerHTML = "";
       c2Arc1List.innerHTML = "";
       c2Arc2List.innerHTML = "";
+      c2Arc3List.innerHTML = "";
     
     
       episodes.forEach(episode => {
@@ -3106,6 +3205,52 @@
         
         
           c2Arc2List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 2 &&
+          episode.arc === 3
+        ) {
+        
+          const chapter =
+            c2Arc3Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c2Arc3List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c2Arc3List.appendChild(card);
         
         }
      });
@@ -3481,6 +3626,31 @@
           2,
           "c2Arc2ProgressText",
           "c2Arc2ProgressFill"
+        );
+      
+      }
+
+      const c2Arc3Text =
+        document.getElementById(
+          "c2Arc3ProgressText"
+        );
+      
+      const c2Arc3Fill =
+        document.getElementById(
+          "c2Arc3ProgressFill"
+        );
+      
+      
+      if (
+        c2Arc3Text &&
+        c2Arc3Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          2,
+          3,
+          "c2Arc3ProgressText",
+          "c2Arc3ProgressFill"
         );
       
       }
@@ -4128,6 +4298,44 @@
     
     
         c2Arc2Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C2 ARC 3 OPEN / CLOSE
+    ========================= */
+
+    const c2Arc3Button =
+      document.getElementById(
+        "c2Arc3Button"
+      );
+    
+    const c2Arc3Content =
+      document.getElementById(
+        "c2Arc3Content"
+      );
+    
+    const c2Arc3Arrow =
+      document.getElementById(
+        "c2Arc3Arrow"
+      );
+    
+    
+    c2Arc3Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c2Arc3Content
+            .classList
+            .toggle("open");
+    
+    
+        c2Arc3Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
