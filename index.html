@@ -843,6 +843,57 @@
     }
 
     /* =========================
+       CAMPAIGN TIME
+    ========================= */
+
+    .campaign-time-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    
+      margin-top: 15px;
+    }
+    
+    .campaign-time-stat {
+      padding: 10px 5px;
+    
+      text-align: center;
+    
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--background) 45%,
+          transparent
+        );
+    }
+    
+    .campaign-time-stat strong {
+      display: block;
+    
+      color: var(--accent);
+    
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    
+    .campaign-time-stat span {
+      display: block;
+    
+      margin-top: 5px;
+    
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 8px;
+    
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
        CAMPAIGN ARCS
     ========================= */
     
@@ -1619,6 +1670,42 @@
 
         </div>
 
+        <div class="campaign-time-stats">
+
+          <div class="campaign-time-stat">
+            <strong id="c1WatchedTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Watched
+            </span>
+          </div>
+        
+        
+          <div class="campaign-time-stat">
+            <strong id="c1RemainingTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Remaining
+            </span>
+          </div>
+        
+        
+          <div class="campaign-time-stat">
+            <strong id="c1TotalTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Total
+            </span>
+          </div>
+        
+        </div>
+
         <button
           class="campaign-action-button"
           id="campaign1ActionButton"
@@ -2047,6 +2134,42 @@
             id="c2ProgressFill"
           ></div>
     
+        </div>
+
+        <div class="campaign-time-stats">
+
+          <div class="campaign-time-stat">
+            <strong id="c2WatchedTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Watched
+            </span>
+          </div>
+        
+        
+          <div class="campaign-time-stat">
+            <strong id="c2RemainingTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Remaining
+            </span>
+          </div>
+        
+        
+          <div class="campaign-time-stat">
+            <strong id="c2TotalTime">
+              0h 0m
+            </strong>
+        
+            <span>
+              Total
+            </span>
+          </div>
+        
         </div>
 
         <button
@@ -2898,6 +3021,212 @@
     
     ];
 
+    /* =========================
+       EPISODE DURATION
+    ========================= */
+
+    function durationToSeconds(duration) {
+
+      if (!duration) {
+        return 0;
+      }
+    
+      const parts =
+        duration
+          .split(":")
+          .map(Number);
+    
+    
+      if (parts.length === 3) {
+    
+        const [
+          hours,
+          minutes,
+          seconds
+        ] = parts;
+    
+        return (
+          hours * 3600 +
+          minutes * 60 +
+          seconds
+        );
+    
+      }
+    
+    
+      return 0;
+    
+    }
+    
+    
+    function formatWatchTime(totalSeconds) {
+    
+      const totalMinutes =
+        Math.floor(
+          totalSeconds / 60
+        );
+    
+      const hours =
+        Math.floor(
+          totalMinutes / 60
+        );
+    
+      const minutes =
+        totalMinutes % 60;
+    
+    
+      if (hours === 0) {
+        return minutes + "m";
+      }
+    
+    
+      return (
+        hours +
+        "h " +
+        minutes +
+        "m"
+      );
+    
+    }
+
+    function getCampaignWatchTime(
+      campaignNumber
+    ) {
+    
+      const campaignEpisodes =
+        episodes.filter(
+          episode =>
+            episode.campaign ===
+            campaignNumber
+        );
+    
+    
+      const totalSeconds =
+        campaignEpisodes.reduce(
+          (total, episode) => {
+    
+            return (
+              total +
+              durationToSeconds(
+                episode.duration
+              )
+            );
+    
+          },
+          0
+        );
+    
+    
+      const watchedSeconds =
+        campaignEpisodes
+          .filter(
+            episode =>
+              watched.has(
+                episode.id
+              )
+          )
+          .reduce(
+            (total, episode) => {
+    
+              return (
+                total +
+                durationToSeconds(
+                  episode.duration
+                )
+              );
+    
+            },
+            0
+          );
+    
+    
+      return {
+    
+        total:
+          totalSeconds,
+    
+        watched:
+          watchedSeconds,
+    
+        remaining:
+          totalSeconds -
+          watchedSeconds
+    
+      };
+    
+    } 
+
+    function updateCampaignWatchTimes() {
+
+      const campaign1Time =
+        getCampaignWatchTime(1);
+    
+    
+      document
+        .getElementById(
+          "c1WatchedTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign1Time.watched
+          );
+    
+    
+      document
+        .getElementById(
+          "c1RemainingTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign1Time.remaining
+          );
+    
+    
+      document
+        .getElementById(
+          "c1TotalTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign1Time.total
+          );
+    
+    
+      const campaign2Time =
+        getCampaignWatchTime(2);
+    
+    
+      document
+        .getElementById(
+          "c2WatchedTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign2Time.watched
+          );
+    
+    
+      document
+        .getElementById(
+          "c2RemainingTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign2Time.remaining
+          );
+    
+    
+      document
+        .getElementById(
+          "c2TotalTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign2Time.total
+          );
+    
+    }
+
 
     /* =========================
        SAVED WATCH PROGRESS
@@ -3333,6 +3662,8 @@
             updateProgress();
     
             updateAllCampaignProgress();
+
+            updateCampaignWatchTimes();
 
             updateAllArcProgress();
             
@@ -4311,6 +4642,8 @@
               updateProgress();
       
               updateAllCampaignProgress();
+
+              updateCampaignWatchTimes();
       
               updateAllArcProgress();
       
@@ -4451,6 +4784,8 @@
             updateProgress();
     
             updateAllCampaignProgress();
+
+            updateCampaignWatchTimes();
     
             updateAllArcProgress();
     
@@ -5077,6 +5412,8 @@
 
           updateAllCampaignProgress();
 
+          updateCampaignWatchTimes();
+
           updateAllArcProgress();
           
           updateArcActionButtons();
@@ -5096,6 +5433,8 @@
     updateProgress();
 
     updateAllCampaignProgress();
+
+    updateCampaignWatchTimes();
 
     updateAllArcProgress();
     
