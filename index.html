@@ -3631,6 +3631,11 @@
         document.getElementById(
           "campaign2Arc6Episodes"
         );
+
+      const c3Arc1List =
+        document.getElementById(
+          "campaign3Arc1Episodes"
+        );
     
     
       arc1List.innerHTML = "";
@@ -3644,6 +3649,7 @@
       c2Arc4List.innerHTML = "";
       c2Arc5List.innerHTML = "";
       c2Arc6List.innerHTML = "";
+      c3Arc1List.innerHTML = "";
     
     
       episodes.forEach(episode => {
@@ -4118,6 +4124,52 @@
         
         
           c2Arc6List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 3 &&
+          episode.arc === 1
+        ) {
+        
+          const chapter =
+            c3Arc1Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c3Arc1List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c3Arc1List.appendChild(card);
         
         }
      });
@@ -4643,6 +4695,31 @@
         );
       
       }
+
+      const c3Arc1Text =
+        document.getElementById(
+          "c3Arc1ProgressText"
+        );
+      
+      const c3Arc1Fill =
+        document.getElementById(
+          "c3Arc1ProgressFill"
+        );
+      
+      
+      if (
+        c3Arc1Text &&
+        c3Arc1Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          3,
+          1,
+          "c3Arc1ProgressText",
+          "c3Arc1ProgressFill"
+        );
+      
+      }
     
     }
 
@@ -5021,6 +5098,27 @@
           "c2ProgressFill"
         );
     
+      }
+
+      const c3Text =
+        document.getElementById(
+          "c3ProgressText"
+        );
+      
+      const c3Fill =
+        document.getElementById(
+          "c3ProgressFill"
+        );
+      
+      
+      if (c3Text && c3Fill) {
+      
+        updateCampaignProgressGeneric(
+          3,
+          "c3ProgressText",
+          "c3ProgressFill"
+        );
+      
       }
     
     }
