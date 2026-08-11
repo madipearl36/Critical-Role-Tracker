@@ -1,15 +1,40 @@
 (() => {
 
   /* =========================
-     ONLY CHANGE THESE
+     HELPERS
   ========================= */
 
-  const CAMPAIGN = 2;
-  const ARC = 1;
+  function romanWordToNumber(text) {
+
+    const map = {
+      one: 1,
+      two: 2,
+      three: 3,
+      four: 4,
+      five: 5,
+      six: 6
+    };
+
+    return map[
+      String(text)
+        .trim()
+        .toLowerCase()
+    ] || null;
+
+  }
+
+
+  function cleanText(text) {
+
+    return String(text || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  }
 
 
   /* =========================
-     FIND VOD LINKS
+     FIND ALL VOD LINKS
   ========================= */
 
   const vodLinks =
@@ -21,12 +46,228 @@
       );
 
 
-  const episodes = [];
+  if (vodLinks.length === 0) {
+
+    console.warn(
+      "No VOD links were found on this page."
+    );
+
+    return;
+
+  }
 
 
   /* =========================
-     READ EPISODE ROWS
+     DETECT CAMPAIGN
   ========================= */
+
+  const campaignCounts =
+    new Map();
+
+
+  vodLinks.forEach(link => {
+
+    const row =
+      link.closest("tr");
+
+    if (!row) {
+      return;
+    }
+
+
+    const text =
+      cleanText(
+        row.innerText
+      );
+
+
+    const match =
+      text.match(
+        /\((\d+)x\d+\)/i
+      );
+
+
+    if (!match) {
+      return;
+    }
+
+
+    const campaign =
+      Number(match[1]);
+
+
+    campaignCounts.set(
+      campaign,
+      (
+        campaignCounts.get(
+          campaign
+        ) || 0
+      ) + 1
+    );
+
+  });
+
+
+  if (
+    campaignCounts.size === 0
+  ) {
+
+    console.warn(
+      "Could not detect a campaign number from the episode rows."
+    );
+
+    return;
+
+  }
+
+
+  const CAMPAIGN =
+    [...campaignCounts.entries()]
+      .sort(
+        (a, b) =>
+          b[1] - a[1]
+      )[0][0];
+
+
+  console.log(
+    `✓ Detected Campaign ${CAMPAIGN}`
+  );
+
+
+  /* =========================
+     DETECT ARC
+  ========================= */
+
+  const pageTitle =
+    cleanText(
+      document.querySelector("h1")
+        ?.innerText ||
+      document.title
+    );
+
+
+  let ARC = null;
+
+
+  /*
+    Matches things like:
+    Arc 3
+    Arc III
+  */
+
+  const numericArc =
+    pageTitle.match(
+      /\bArc\s+(\d+)\b/i
+    );
+
+
+  if (numericArc) {
+
+    ARC =
+      Number(
+        numericArc[1]
+      );
+
+  }
+
+
+  /*
+    Try Roman numerals if needed.
+  */
+
+  if (!ARC) {
+
+    const romanArc =
+      pageTitle.match(
+        /\bArc\s+([IVX]+)\b/i
+      );
+
+
+    if (romanArc) {
+
+      const roman =
+        romanArc[1]
+          .toUpperCase();
+
+
+      const romanMap = {
+        I: 1,
+        II: 2,
+        III: 3,
+        IV: 4,
+        V: 5,
+        VI: 6,
+        VII: 7,
+        VIII: 8,
+        IX: 9,
+        X: 10
+      };
+
+
+      ARC =
+        romanMap[roman] ||
+        null;
+
+    }
+
+  }
+
+
+  /*
+    Try written campaign-style wording
+    if Fandom uses something unusual.
+  */
+
+  if (!ARC) {
+
+    const wordArc =
+      pageTitle.match(
+        /\bArc\s+(One|Two|Three|Four|Five|Six)\b/i
+      );
+
+
+    if (wordArc) {
+
+      ARC =
+        romanWordToNumber(
+          wordArc[1]
+        );
+
+    }
+
+  }
+
+
+  if (!ARC) {
+
+    console.warn(
+      "Could not automatically detect the arc number."
+    );
+
+    console.warn(
+      `Page title was: "${pageTitle}"`
+    );
+
+    console.warn(
+      "You can manually set ARC near the top of the script if needed."
+    );
+
+    return;
+
+  }
+
+
+  console.log(
+    `✓ Detected Arc ${ARC}`
+  );
+
+
+  /* =========================
+     READ EPISODES
+  ========================= */
+
+  const episodes = [];
+
 
   vodLinks.forEach(link => {
 
@@ -39,15 +280,10 @@
 
 
     const rowText =
-      row.innerText
-        .replace(/\s+/g, " ")
-        .trim();
+      cleanText(
+        row.innerText
+      );
 
-
-    /*
-      Match only this campaign:
-      (3x52), (3x53), etc.
-    */
 
     const episodeCodePattern =
       new RegExp(
@@ -92,7 +328,9 @@
 
     const title =
       titleMatch
-        ? titleMatch[1].trim()
+        ? cleanText(
+            titleMatch[1]
+          )
         : "";
 
 
@@ -113,7 +351,7 @@
 
 
     /* =========================
-       YOUTUBE
+       VOD
     ========================= */
 
     const youtube =
@@ -134,9 +372,9 @@
     if (nextRow) {
 
       const nextText =
-        nextRow.innerText
-          ?.replace(/\s+/g, " ")
-          ?.trim();
+        cleanText(
+          nextRow.innerText
+        );
 
 
       const nextEpisodePattern =
@@ -148,7 +386,7 @@
 
       const nextIsEpisode =
         nextEpisodePattern.test(
-          nextText || ""
+          nextText
         );
 
 
@@ -165,10 +403,6 @@
 
     }
 
-
-    /* =========================
-       ADD EPISODE
-    ========================= */
 
     episodes.push({
 
@@ -217,36 +451,28 @@
     ];
 
 
-  /* =========================
-     SORT
-  ========================= */
-
   uniqueEpisodes.sort(
     (a, b) =>
       a.episode - b.episode
   );
 
 
-  /* =========================
-     DETECT RANGE
-  ========================= */
-
   if (
     uniqueEpisodes.length === 0
   ) {
 
     console.warn(
-      `No Campaign ${CAMPAIGN} episode VODs were found on this page.`
-    );
-
-    console.warn(
-      "Make sure you're on the correct Critical Role Wiki arc page."
+      `No Campaign ${CAMPAIGN} episodes were successfully extracted.`
     );
 
     return;
 
   }
 
+
+  /* =========================
+     RANGE + GAP CHECK
+  ========================= */
 
   const firstEpisode =
     uniqueEpisodes[0].episode;
@@ -259,36 +485,13 @@
 
 
   console.log(
-    `✓ Detected Campaign ${CAMPAIGN}, Arc ${ARC}`
+    `✓ Detected C${CAMPAIGN}E${firstEpisode}–C${CAMPAIGN}E${lastEpisode}`
   );
 
-  console.log(
-    `✓ C${CAMPAIGN}E${firstEpisode}–C${CAMPAIGN}E${lastEpisode}`
-  );
 
   console.log(
     `✓ ${uniqueEpisodes.length} episodes found`
   );
-
-
-  /* =========================
-     CHECK FOR MISSING EPISODES
-  ========================= */
-
-  const expectedEpisodes = [];
-
-
-  for (
-    let episode = firstEpisode;
-    episode <= lastEpisode;
-    episode++
-  ) {
-
-    expectedEpisodes.push(
-      episode
-    );
-
-  }
 
 
   const foundNumbers =
@@ -300,17 +503,32 @@
     );
 
 
-  const missingEpisodes =
-    expectedEpisodes.filter(
-      episode =>
-        !foundNumbers.has(
-          episode
-        )
-    );
+  const missingEpisodes = [];
+
+
+  for (
+    let episode = firstEpisode;
+    episode <= lastEpisode;
+    episode++
+  ) {
+
+    if (
+      !foundNumbers.has(
+        episode
+      )
+    ) {
+
+      missingEpisodes.push(
+        episode
+      );
+
+    }
+
+  }
 
 
   if (
-    missingEpisodes.length > 0
+    missingEpisodes.length
   ) {
 
     console.warn(
@@ -321,7 +539,70 @@
   } else {
 
     console.log(
-      "✓ No gaps detected in the episode range"
+      "✓ No gaps detected"
+    );
+
+  }
+
+
+  /* =========================
+     DATA QUALITY CHECK
+  ========================= */
+
+  const incomplete =
+    uniqueEpisodes.filter(
+      episode =>
+        !episode.title ||
+        !episode.duration ||
+        !episode.youtube ||
+        !episode.description
+    );
+
+
+  if (
+    incomplete.length > 0
+  ) {
+
+    console.warn(
+      `⚠ ${incomplete.length} episodes have missing data.`
+    );
+
+
+    console.table(
+      incomplete.map(
+        episode => ({
+
+          episode:
+            episode.episode,
+
+          title:
+            episode.title
+              ? "✓"
+              : "MISSING",
+
+          duration:
+            episode.duration
+              ? "✓"
+              : "MISSING",
+
+          youtube:
+            episode.youtube
+              ? "✓"
+              : "MISSING",
+
+          description:
+            episode.description
+              ? "✓"
+              : "MISSING"
+
+        })
+      )
+    );
+
+  } else {
+
+    console.log(
+      "✓ Every episode has title, runtime, VOD, and description"
     );
 
   }
@@ -360,7 +641,7 @@
 
 
   /* =========================
-     GENERATE CODE
+     GENERATE OUTPUT
   ========================= */
 
   const output =
@@ -387,7 +668,7 @@
     copy(output);
 
     console.log(
-      `✓ Copied ${uniqueEpisodes.length} episodes to clipboard!`
+      `✓ Copied ${uniqueEpisodes.length} paste-ready episode objects!`
     );
 
   } else {
@@ -398,5 +679,30 @@
     );
 
   }
+
+
+  /* =========================
+     SUMMARY
+  ========================= */
+
+  console.log(
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  );
+
+  console.log(
+    `Campaign: ${CAMPAIGN}`
+  );
+
+  console.log(
+    `Arc: ${ARC}`
+  );
+
+  console.log(
+    `Range: C${CAMPAIGN}E${firstEpisode}–C${CAMPAIGN}E${lastEpisode}`
+  );
+
+  console.log(
+    `Episodes: ${uniqueEpisodes.length}`
+  );
 
 })();
