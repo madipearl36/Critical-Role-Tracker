@@ -4577,6 +4577,111 @@
     
     };
 
+    const subchapterMaps = {
+
+      "1-3":
+        arc3Subchapters,
+    
+      "2-1":
+        c2Arc1Subchapters,
+    
+      "2-2":
+        c2Arc2Subchapters,
+    
+      "2-3":
+        c2Arc3Subchapters,
+    
+      "2-4":
+        c2Arc4Subchapters,
+    
+      "2-5":
+        c2Arc5Subchapters,
+    
+      "2-6":
+        c2Arc6Subchapters,
+    
+    
+      "3-1":
+        c3Arc1Subchapters,
+    
+      "3-2":
+        c3Arc2Subchapters,
+    
+      "3-3":
+        c3Arc3Subchapters,
+    
+      "3-4":
+        c3Arc4Subchapters,
+    
+      "3-5":
+        c3Arc5Subchapters,
+    
+      "3-6":
+        c3Arc6Subchapters
+    
+    };
+
+    function getEpisodeLists() {
+
+      const lists =
+        new Map();
+    
+    
+      document
+        .querySelectorAll(
+          ".arc-action-button"
+        )
+        .forEach(button => {
+    
+          const campaignNumber =
+            Number(
+              button.dataset.campaign
+            );
+    
+          const arcNumber =
+            Number(
+              button.dataset.arc
+            );
+    
+    
+          const arc =
+            button.closest(
+              ".arc"
+            );
+    
+    
+          if (!arc) {
+            return;
+          }
+    
+    
+          const episodeList =
+            arc.querySelector(
+              ".episode-list"
+            );
+    
+    
+          if (!episodeList) {
+            return;
+          }
+    
+    
+          const key =
+            `${campaignNumber}-${arcNumber}`;
+    
+    
+          lists.set(
+            key,
+            episodeList
+          );
+    
+        });
+    
+    
+      return lists;
+    
+    }
+
     let hideWatched =
       localStorage.getItem(
         "criticalRoleHideWatched"
@@ -4776,754 +4881,228 @@
 
     function renderEpisodes() {
 
-      const arc1List =
-        document.getElementById(
-          "campaign1Episodes"
-        );
-    
-      const arc2List =
-        document.getElementById(
-          "campaign1Arc2Episodes"
-        );
-
-      const arc3List =
-        document.getElementById(
-          "campaign1Arc3Episodes"
-        );
-
-      const arc4List = 
-        document.getElementById(
-          "campaign1Arc4Episodes"
-        );
-
-      const arc5List =
-        document.getElementById (
-          "campaign1Arc5Episodes"
-        );
-
-      const c2Arc1List =
-        document.getElementById(
-          "campaign2Arc1Episodes"
-        );
-
-      const c2Arc2List = 
-        document.getElementById(
-          "campaign2Arc2Episodes"
-        );
-
-      const c2Arc3List =
-        document.getElementById(
-          "campaign2Arc3Episodes"
-        );
-
-      const c2Arc4List =
-        document.getElementById(
-          "campaign2Arc4Episodes"
-        );
-
-      const c2Arc5List =
-        document.getElementById(
-          "campaign2Arc5Episodes"
-        );
-
-      const c2Arc6List =
-        document.getElementById(
-          "campaign2Arc6Episodes"
-        );
-
-      const c3Arc1List =
-        document.getElementById(
-          "campaign3Arc1Episodes"
-        );
-
-      const c3Arc2List =
-        document.getElementById(
-          "campaign3Arc2Episodes"
-        );
-
-      const c3Arc3List =
-        document.getElementById(
-          "campaign3Arc3Episodes"
-        );
-      
-      const c3Arc4List =
-        document.getElementById(
-          "campaign3Arc4Episodes"
-        );
-      
-      const c3Arc5List =
-        document.getElementById(
-          "campaign3Arc5Episodes"
-        );
-      
-      const c3Arc6List =
-        document.getElementById(
-          "campaign3Arc6Episodes"
-        );
+      const episodeLists =
+        getEpisodeLists();
     
     
-      arc1List.innerHTML = "";
-      arc2List.innerHTML = "";
-      arc3List.innerHTML = "";
-      arc4List.innerHTML = "";
-      arc5List.innerHTML = "";
-      c2Arc1List.innerHTML = "";
-      c2Arc2List.innerHTML = "";
-      c2Arc3List.innerHTML = "";
-      c2Arc4List.innerHTML = "";
-      c2Arc5List.innerHTML = "";
-      c2Arc6List.innerHTML = "";
-      c3Arc1List.innerHTML = "";
-      c3Arc2List.innerHTML = "";
-      c3Arc3List.innerHTML = "";
-      c3Arc4List.innerHTML = "";
-      c3Arc5List.innerHTML = "";
-      c3Arc6List.innerHTML = "";
+      episodeLists.forEach(
+        list => {
     
+          list.innerHTML = "";
     
-      episodes.forEach(episode => {
-    
-        const card =
-          document.createElement("div");
-    
-    
-        card.className =
-          "episode" +
-          (
-            watched.has(episode.id)
-              ? " watched"
-              : ""
-          );
-
-        if (
-          hideWatched &&
-          watched.has(episode.id)
-        ) {
-
-          card.style.display =
-            "none";
-          
         }
+      );
+    
+    
+      episodes.forEach(
+        episode => {
+    
+          const card =
+            document.createElement(
+              "div"
+            );
 
-        card.id =
-          "episode-" + episode.id;
-    
-    
-        card.innerHTML = `
-    
-          <input
-            class="watch-check"
-            type="checkbox"
-            ${
+      
+          card.className =
+            "episode" +
+            (
               watched.has(episode.id)
-                ? "checked"
+                ? " watched"
                 : ""
-            }
-            aria-label="Mark ${episode.title} watched"
-          >
-    
-          <div>
-    
-            <div class="episode-number">
-              ${episode.label}
+            );
+  
+          if (
+            hideWatched &&
+            watched.has(episode.id)
+          ) {
+  
+            card.style.display =
+              "none";
+            
+          }
+  
+          card.id =
+            "episode-" + episode.id;
+      
+      
+          card.innerHTML = `
+      
+            <input
+              class="watch-check"
+              type="checkbox"
+              ${
+                watched.has(episode.id)
+                  ? "checked"
+                  : ""
+              }
+              aria-label="Mark ${episode.title} watched"
+            >
+      
+            <div>
+      
+              <div class="episode-number">
+                ${episode.label}
+              </div>
+      
+              <div class="episode-name">
+                ${episode.title}
+              </div>
+  
+              ${
+                episode.description
+                  ? `
+                    <div class="episode-description">
+                      ${episode.description}
+                    </div>
+                  `
+                  : ""
+              }
+  
+              ${
+                episode.duration
+                  ? `
+                    <div class="episode-duration">
+                      ◷ ${formatEpisodeDuration(
+                        episode.duration
+                      )}
+                    </div>
+                  `
+                  : ""
+              }
+      
+              <div class="episode-note">
+                Check the box to mark this episode watched.
+              </div>
+              
+              <div class="episode-watch-links">
+  
+                ${getEpisodeYouTubeLinks(episode)
+                  .map(link => `
+              
+                    <a
+                      class="episode-watch-button"
+                      href="${link.url}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ▶ ${link.label}
+                    </a>
+              
+                  `)
+                  .join("")}
+              
+              </div>
+      
             </div>
-    
-            <div class="episode-name">
-              ${episode.title}
-            </div>
-
-            ${
-              episode.description
-                ? `
-                  <div class="episode-description">
-                    ${episode.description}
-                  </div>
-                `
-                : ""
+      
+          `;
+          
+      
+          const checkbox =
+            card.querySelector(
+              ".watch-check"
+            );
+      
+      
+          checkbox.addEventListener(
+            "change",
+            () => {
+      
+              if (checkbox.checked) {
+      
+                watched.add(
+                  episode.id
+                );
+      
+              } else {
+      
+                watched.delete(
+                  episode.id
+                );
+      
+              }
+      
+      
+              saveProgress();
+      
+              renderEpisodes();
+      
+              updateProgress();
+      
+              updateAllCampaignProgress();
+  
+              updateCampaignWatchTimes();
+  
+              updateOverallWatchTime();
+  
+              updateAllArcProgress();
+  
+              updateArcWatchTimes();
+              
+              updateArcActionButtons();
+              
+              updateAllCampaignActionButtons();
+      
             }
-
-            ${
-              episode.duration
-                ? `
-                  <div class="episode-duration">
-                    ◷ ${formatEpisodeDuration(
-                      episode.duration
-                    )}
-                  </div>
-                `
-                : ""
-            }
-    
-            <div class="episode-note">
-              Check the box to mark this episode watched.
-            </div>
-            
-            <div class="episode-watch-links">
-
-              ${getEpisodeYouTubeLinks(episode)
-                .map(link => `
-            
-                  <a
-                    class="episode-watch-button"
-                    href="${link.url}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ▶ ${link.label}
-                  </a>
-            
-                `)
-                .join("")}
-            
-            </div>
-    
-          </div>
-    
-        `;
-        
-    
-        const checkbox =
-          card.querySelector(
-            ".watch-check"
           );
-    
-    
-        checkbox.addEventListener(
-          "change",
-          () => {
-    
-            if (checkbox.checked) {
-    
-              watched.add(
-                episode.id
-              );
-    
-            } else {
-    
-              watched.delete(
-                episode.id
-              );
-    
-            }
-    
-    
-            saveProgress();
-    
-            renderEpisodes();
-    
-            updateProgress();
-    
-            updateAllCampaignProgress();
-
-            updateCampaignWatchTimes();
-
-            updateOverallWatchTime();
-
-            updateAllArcProgress();
-
-            updateArcWatchTimes();
-            
-            updateArcActionButtons();
-            
-            updateAllCampaignActionButtons();
-    
-          }
-        );
-    
-    
-        if (
-          episode.campaign === 1 &&
-          episode.arc === 1
-        ) {
-        
-          arc1List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 1 &&
-          episode.arc === 2
-        ) {
-        
-          arc2List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 1 &&
-          episode.arc === 3
-        ) {
-        
-          const chapter =
-            arc3Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            arc3List.appendChild(
-              divider
-            );
-        
-          }
-        
-          arc3List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 1 &&
-          episode.arc === 4
-        ) {
-        
-          arc4List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 1 &&
-          episode.arc === 5
-        ) {
-        
-          arc5List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 1
-        ) {
-        
-          const chapter =
-            c2Arc1Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc1List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc1List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 2
-        ) {
-        
-          const chapter =
-            c2Arc2Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc2List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc2List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 3
-        ) {
-        
-          const chapter =
-            c2Arc3Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc3List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc3List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 4
-        ) {
-        
-          const chapter =
-            c2Arc4Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc4List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc4List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 5
-        ) {
-        
-          const chapter =
-            c2Arc5Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc5List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc5List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 2 &&
-          episode.arc === 6
-        ) {
-        
-          const chapter =
-            c2Arc6Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c2Arc6List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c2Arc6List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 1
-        ) {
-        
-          const chapter =
-            c3Arc1Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c3Arc1List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c3Arc1List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 2
-        ) {
-        
-          const chapter =
-            c3Arc2Subchapters[
-              episode.episode
-            ];
-        
-        
-          if (chapter) {
-        
-            const divider =
-              document.createElement(
-                "div"
-              );
-        
-            divider.className =
-              "subchapter";
-        
-            divider.innerHTML = `
-        
-              <div class="subchapter-label">
-                ${chapter.chapter}
-              </div>
-        
-              <div class="subchapter-name">
-                ${chapter.name}
-              </div>
-        
-              <div class="subchapter-range">
-                ${chapter.range}
-              </div>
-        
-            `;
-        
-            c3Arc2List.appendChild(
-              divider
-            );
-        
-          }
-        
-        
-          c3Arc2List.appendChild(card);
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 3
-        ) {
-        
-          appendEpisodeWithSubchapter(
-            episode,
-            card,
-            c3Arc3List,
-            c3Arc3Subchapters
+      
+      
+        /* =========================
+           FIND DESTINATION
+        ========================= */
+  
+        const key =
+          `${episode.campaign}-${episode.arc}`;
+  
+  
+        const list =
+          episodeLists.get(
+            key
           );
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 4
-        ) {
-        
-          appendEpisodeWithSubchapter(
-            episode,
-            card,
-            c3Arc4List,
-            c3Arc4Subchapters
+  
+  
+        if (!list) {
+  
+          console.warn(
+            `No episode list found for C${episode.campaign} Arc ${episode.arc}`,
+            episode
           );
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 5
-        ) {
-        
-          appendEpisodeWithSubchapter(
-            episode,
-            card,
-            c3Arc5List,
-            c3Arc5Subchapters
-          );
-        
-        } else if (
-          episode.campaign === 3 &&
-          episode.arc === 6
-        ) {
-        
-          appendEpisodeWithSubchapter(
-            episode,
-            card,
-            c3Arc6List,
-            c3Arc6Subchapters
-          );
-        
+  
+          return;
+  
         }
-     });
-
-}
+  
+  
+        /* =========================
+           SUBCHAPTERS
+        ========================= */
+  
+        const subchapters =
+          subchapterMaps[key];
+  
+  
+        if (subchapters) {
+  
+          appendEpisodeWithSubchapter(
+            episode,
+            card,
+            list,
+            subchapters
+          );
+  
+        } else {
+  
+          list.appendChild(
+            card
+          );
+  
+        }
+  
+      }
+    );
+  
+  }
+     
 
     const hideWatchedToggle =
       document.getElementById(
