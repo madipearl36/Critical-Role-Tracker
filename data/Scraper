@@ -1,0 +1,312 @@
+(() => {
+
+  /* =========================
+     ONLY CHANGE THESE
+  ========================= */
+
+  const CAMPAIGN = 3;
+  const ARC = 3;
+
+  const START_EPISODE = 52;
+  const END_EPISODE = 64;
+
+
+  /* =========================
+     SCRAPER
+  ========================= */
+
+  const episodes = [];
+
+
+  const vodLinks =
+    [...document.querySelectorAll("a")]
+      .filter(link =>
+        link.textContent
+          .trim()
+          .toLowerCase() === "vod"
+      );
+
+
+  vodLinks.forEach(link => {
+
+    const row =
+      link.closest("tr");
+
+    if (!row) {
+      return;
+    }
+
+
+    const rowText =
+      row.innerText
+        .replace(/\s+/g, " ")
+        .trim();
+
+
+    /*
+      Match episode codes such as:
+
+      (1x24)
+      (2x57)
+      (3x104)
+    */
+
+    const episodeCodePattern =
+      new RegExp(
+        `\\(${CAMPAIGN}x(\\d+)\\)`,
+        "i"
+      );
+
+
+    const episodeCode =
+      rowText.match(
+        episodeCodePattern
+      );
+
+
+    if (!episodeCode) {
+      return;
+    }
+
+
+    const episodeNumber =
+      Number(
+        episodeCode[1]
+      );
+
+
+    if (
+      episodeNumber < START_EPISODE ||
+      episodeNumber > END_EPISODE
+    ) {
+      return;
+    }
+
+
+    /* =========================
+       TITLE
+    ========================= */
+
+    const titlePattern =
+      new RegExp(
+        `["“](.+?)["”]\\s*\\(${CAMPAIGN}x\\d+\\)`,
+        "i"
+      );
+
+
+    const titleMatch =
+      rowText.match(
+        titlePattern
+      );
+
+
+    const title =
+      titleMatch
+        ? titleMatch[1].trim()
+        : "";
+
+
+    /* =========================
+       RUNTIME
+    ========================= */
+
+    const runtimeMatch =
+      rowText.match(
+        /\b\d{1,2}:\d{2}:\d{2}\b/
+      );
+
+
+    const duration =
+      runtimeMatch
+        ? runtimeMatch[0]
+        : "";
+
+
+    /* =========================
+       YOUTUBE VOD
+    ========================= */
+
+    const youtube =
+      link.href || "";
+
+
+    /* =========================
+       DESCRIPTION
+    ========================= */
+
+    let description = "";
+
+
+    /*
+      First try the next table row.
+    */
+
+    const nextRow =
+      row.nextElementSibling;
+
+
+    if (nextRow) {
+
+      const nextText =
+        nextRow.innerText
+          ?.replace(/\s+/g, " ")
+          ?.trim();
+
+
+      const nextEpisodePattern =
+        new RegExp(
+          `\\(${CAMPAIGN}x\\d+\\)`,
+          "i"
+        );
+
+
+      const nextIsEpisode =
+        nextEpisodePattern.test(
+          nextText || ""
+        );
+
+
+      if (
+        nextText &&
+        !nextIsEpisode &&
+        nextText.length > 20
+      ) {
+
+        description =
+          nextText;
+
+      }
+
+    }
+
+
+    /* =========================
+       BUILD EPISODE
+    ========================= */
+
+    episodes.push({
+
+      id:
+        `c${CAMPAIGN}e${episodeNumber}`,
+
+      campaign:
+        CAMPAIGN,
+
+      arc:
+        ARC,
+
+      episode:
+        episodeNumber,
+
+      label:
+        `Campaign ${CAMPAIGN} • Episode ${episodeNumber}`,
+
+      title,
+
+      duration,
+
+      description,
+
+      youtube
+
+    });
+
+  });
+
+
+  /* =========================
+     SORT
+  ========================= */
+
+  episodes.sort(
+    (a, b) =>
+      a.episode - b.episode
+  );
+
+
+  /* =========================
+     CHECK RESULTS
+  ========================= */
+
+  console.log(
+    `Found ${episodes.length} episodes.`
+  );
+
+
+  console.table(
+    episodes.map(
+      episode => ({
+
+        episode:
+          episode.episode,
+
+        title:
+          episode.title,
+
+        duration:
+          episode.duration,
+
+        youtube:
+          episode.youtube
+            ? "✓"
+            : "—",
+
+        description:
+          episode.description
+            ? "✓"
+            : "—"
+
+      })
+    )
+  );
+
+
+  /* =========================
+     CREATE PASTE-READY CODE
+  ========================= */
+
+  const output =
+    episodes
+      .map(
+        episode =>
+          JSON.stringify(
+            episode,
+            null,
+            2
+          )
+      )
+      .join(",\n\n");
+
+
+  console.log(
+    "\nPASTE-READY EPISODE DATA:\n\n" +
+    output
+  );
+
+
+  /* =========================
+     COPY
+  ========================= */
+
+  if (
+    episodes.length > 0 &&
+    typeof copy === "function"
+  ) {
+
+    copy(output);
+
+    console.log(
+      `✓ Copied ${episodes.length} episodes to your clipboard!`
+    );
+
+  } else if (
+    episodes.length === 0
+  ) {
+
+    console.warn(
+      "Nothing copied because no matching episodes were found. Make sure you're on the correct arc page."
+    );
+
+  }
+
+})();
