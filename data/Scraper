@@ -4,19 +4,13 @@
      ONLY CHANGE THESE
   ========================= */
 
-  const CAMPAIGN = 3;
-  const ARC = 4;
-
-  const START_EPISODE = 76;
-  const END_EPISODE = 98;
+  const CAMPAIGN = 2;
+  const ARC = 1;
 
 
   /* =========================
-     SCRAPER
+     FIND VOD LINKS
   ========================= */
-
-  const episodes = [];
-
 
   const vodLinks =
     [...document.querySelectorAll("a")]
@@ -26,6 +20,13 @@
           .toLowerCase() === "vod"
       );
 
+
+  const episodes = [];
+
+
+  /* =========================
+     READ EPISODE ROWS
+  ========================= */
 
   vodLinks.forEach(link => {
 
@@ -44,11 +45,8 @@
 
 
     /*
-      Match episode codes such as:
-
-      (1x24)
-      (2x57)
-      (3x104)
+      Match only this campaign:
+      (3x52), (3x53), etc.
     */
 
     const episodeCodePattern =
@@ -73,14 +71,6 @@
       Number(
         episodeCode[1]
       );
-
-
-    if (
-      episodeNumber < START_EPISODE ||
-      episodeNumber > END_EPISODE
-    ) {
-      return;
-    }
 
 
     /* =========================
@@ -123,7 +113,7 @@
 
 
     /* =========================
-       YOUTUBE VOD
+       YOUTUBE
     ========================= */
 
     const youtube =
@@ -136,10 +126,6 @@
 
     let description = "";
 
-
-    /*
-      First try the next table row.
-    */
 
     const nextRow =
       row.nextElementSibling;
@@ -181,7 +167,7 @@
 
 
     /* =========================
-       BUILD EPISODE
+       ADD EPISODE
     ========================= */
 
     episodes.push({
@@ -215,26 +201,138 @@
 
 
   /* =========================
+     REMOVE DUPLICATES
+  ========================= */
+
+  const uniqueEpisodes =
+    [
+      ...new Map(
+        episodes.map(
+          episode => [
+            episode.id,
+            episode
+          ]
+        )
+      ).values()
+    ];
+
+
+  /* =========================
      SORT
   ========================= */
 
-  episodes.sort(
+  uniqueEpisodes.sort(
     (a, b) =>
       a.episode - b.episode
   );
 
 
   /* =========================
-     CHECK RESULTS
+     DETECT RANGE
   ========================= */
 
+  if (
+    uniqueEpisodes.length === 0
+  ) {
+
+    console.warn(
+      `No Campaign ${CAMPAIGN} episode VODs were found on this page.`
+    );
+
+    console.warn(
+      "Make sure you're on the correct Critical Role Wiki arc page."
+    );
+
+    return;
+
+  }
+
+
+  const firstEpisode =
+    uniqueEpisodes[0].episode;
+
+
+  const lastEpisode =
+    uniqueEpisodes[
+      uniqueEpisodes.length - 1
+    ].episode;
+
+
   console.log(
-    `Found ${episodes.length} episodes.`
+    `✓ Detected Campaign ${CAMPAIGN}, Arc ${ARC}`
+  );
+
+  console.log(
+    `✓ C${CAMPAIGN}E${firstEpisode}–C${CAMPAIGN}E${lastEpisode}`
+  );
+
+  console.log(
+    `✓ ${uniqueEpisodes.length} episodes found`
   );
 
 
+  /* =========================
+     CHECK FOR MISSING EPISODES
+  ========================= */
+
+  const expectedEpisodes = [];
+
+
+  for (
+    let episode = firstEpisode;
+    episode <= lastEpisode;
+    episode++
+  ) {
+
+    expectedEpisodes.push(
+      episode
+    );
+
+  }
+
+
+  const foundNumbers =
+    new Set(
+      uniqueEpisodes.map(
+        episode =>
+          episode.episode
+      )
+    );
+
+
+  const missingEpisodes =
+    expectedEpisodes.filter(
+      episode =>
+        !foundNumbers.has(
+          episode
+        )
+    );
+
+
+  if (
+    missingEpisodes.length > 0
+  ) {
+
+    console.warn(
+      "⚠ Missing episode numbers:",
+      missingEpisodes
+    );
+
+  } else {
+
+    console.log(
+      "✓ No gaps detected in the episode range"
+    );
+
+  }
+
+
+  /* =========================
+     PREVIEW
+  ========================= */
+
   console.table(
-    episodes.map(
+    uniqueEpisodes.map(
       episode => ({
 
         episode:
@@ -262,11 +360,11 @@
 
 
   /* =========================
-     CREATE PASTE-READY CODE
+     GENERATE CODE
   ========================= */
 
   const output =
-    episodes
+    uniqueEpisodes
       .map(
         episode =>
           JSON.stringify(
@@ -278,33 +376,25 @@
       .join(",\n\n");
 
 
-  console.log(
-    "\nPASTE-READY EPISODE DATA:\n\n" +
-    output
-  );
-
-
   /* =========================
      COPY
   ========================= */
 
   if (
-    episodes.length > 0 &&
     typeof copy === "function"
   ) {
 
     copy(output);
 
     console.log(
-      `✓ Copied ${episodes.length} episodes to your clipboard!`
+      `✓ Copied ${uniqueEpisodes.length} episodes to clipboard!`
     );
 
-  } else if (
-    episodes.length === 0
-  ) {
+  } else {
 
-    console.warn(
-      "Nothing copied because no matching episodes were found. Make sure you're on the correct arc page."
+    console.log(
+      "\nPASTE-READY DATA:\n\n" +
+      output
     );
 
   }
