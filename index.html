@@ -384,6 +384,51 @@
       text-transform: uppercase;
     }
 
+    .overall-time-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .overall-time-stat {
+      padding: 14px 6px;
+      text-align: center;
+    
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    
+      background:
+        color-mix(
+          in srgb,
+          var(--background) 60%,
+          transparent
+        );
+    }
+    
+    .overall-time-stat strong {
+      display: block;
+    
+      color: var(--accent);
+    
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    
+    .overall-time-stat span {
+      display: block;
+    
+      margin-top: 5px;
+    
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 8px;
+    
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
 
     /* =========================
        SECTIONS
@@ -1519,6 +1564,40 @@
 
         </div>
 
+      </div>
+
+      <div class="overall-time-stats">
+
+        <div class="overall-time-stat">
+          <strong id="overallWatchedTime">
+            0h 0m
+          </strong>
+      
+          <span>
+            Watched Time
+          </span>
+        </div>
+      
+        <div class="overall-time-stat">
+          <strong id="overallRemainingTime">
+            0h 0m
+          </strong>
+      
+          <span>
+            Time Remaining
+          </span>
+        </div>
+      
+        <div class="overall-time-stat">
+          <strong id="overallTotalTime">
+            0h 0m
+          </strong>
+      
+          <span>
+            Total Runtime
+          </span>
+        </div>
+      
       </div>
 
 
@@ -3642,6 +3721,73 @@
     
     }
 
+    function updateOverallWatchTime() {
+
+      const totalSeconds =
+        episodes.reduce(
+          (total, episode) =>
+            total +
+            durationToSeconds(
+              episode.duration
+            ),
+          0
+        );
+    
+    
+      const watchedSeconds =
+        episodes
+          .filter(
+            episode =>
+              watched.has(
+                episode.id
+              )
+          )
+          .reduce(
+            (total, episode) =>
+              total +
+              durationToSeconds(
+                episode.duration
+              ),
+            0
+          );
+    
+    
+      const remainingSeconds =
+        totalSeconds -
+        watchedSeconds;
+    
+    
+      document
+        .getElementById(
+          "overallWatchedTime"
+        )
+        .textContent =
+          formatWatchTime(
+            watchedSeconds
+          );
+    
+    
+      document
+        .getElementById(
+          "overallRemainingTime"
+        )
+        .textContent =
+          formatWatchTime(
+            remainingSeconds
+          );
+    
+    
+      document
+        .getElementById(
+          "overallTotalTime"
+        )
+        .textContent =
+          formatWatchTime(
+            totalSeconds
+          );
+    
+    }
+
     function getCampaignWatchTime(
       campaignNumber
     ) {
@@ -4540,6 +4686,8 @@
             updateAllCampaignProgress();
 
             updateCampaignWatchTimes();
+
+            updateOverallWatchTime();
 
             updateAllArcProgress();
             
@@ -5757,6 +5905,8 @@
               updateAllCampaignProgress();
 
               updateCampaignWatchTimes();
+
+              updateOverallWatchTime();
       
               updateAllArcProgress();
       
@@ -5899,6 +6049,8 @@
             updateAllCampaignProgress();
 
             updateCampaignWatchTimes();
+
+            updateOverallWatchTime();
     
             updateAllArcProgress();
     
@@ -6662,6 +6814,8 @@
 
           updateCampaignWatchTimes();
 
+          updateOverallWatchTime();
+
           updateAllArcProgress();
           
           updateArcActionButtons();
@@ -6683,6 +6837,8 @@
     updateAllCampaignProgress();
 
     updateCampaignWatchTimes();
+
+    updateOverallWatchTime();
 
     updateAllArcProgress();
     
