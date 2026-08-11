@@ -2613,30 +2613,97 @@
 
 
     <!-- CAMPAIGN THREE -->
-
-    <div class="campaign">
-
+    
+    <div
+      class="campaign campaign-button"
+      id="campaign3Button"
+    >
+    
       <div class="campaign-number">
         III
       </div>
-
+    
       <div class="campaign-info">
-
+    
         <div class="campaign-name">
           Bells Hells
         </div>
-
+    
         <div class="campaign-subtitle">
           Campaign Three
         </div>
-
+    
       </div>
-
-      <div class="arrow">
+    
+      <div
+        class="arrow"
+        id="campaign3Arrow"
+      >
         ›
       </div>
-
+    
     </div>
+    
+    
+    <section
+      class="campaign-content"
+      id="campaign3Content"
+    >
+    
+      <div class="campaign-header">
+    
+        <div class="campaign-small-label">
+          Campaign Three
+        </div>
+    
+        <h2>
+          Bells Hells
+        </h2>
+    
+        <p>
+          Follow Bells Hells across Exandria
+          as strange powers, ancient mysteries,
+          and Ruidus reshape their journey.
+        </p>
+    
+      </div>
+    
+    
+      <div class="campaign-progress">
+    
+        <div class="campaign-progress-top">
+    
+          <span>
+            Campaign Progress
+          </span>
+    
+          <strong id="c3ProgressText">
+            0 / 23
+          </strong>
+    
+        </div>
+    
+    
+        <div class="campaign-progress-bar">
+    
+          <div
+            class="campaign-progress-fill"
+            id="c3ProgressFill"
+          ></div>
+    
+        </div>
+    
+    
+        <button
+          class="campaign-action-button"
+          id="campaign3ActionButton"
+          data-campaign="3"
+          type="button"
+        >
+          ✓ Mark Campaign Watched
+        </button>
+    
+      </div>
 
     <div class="arc">
 
@@ -2706,8 +2773,10 @@
         ></div>
     
       </div>
-    
+
     </div>
+    
+  </section>
 
 
     <div class="footer-quote">
@@ -5548,6 +5617,44 @@
       }
     );
 
+    /* =========================
+       C3 ARC 1 OPEN / CLOSE
+    ========================= */
+    
+    const c3Arc1Button =
+      document.getElementById(
+        "c3Arc1Button"
+      );
+    
+    const c3Arc1Content =
+      document.getElementById(
+        "c3Arc1Content"
+      );
+    
+    const c3Arc1Arrow =
+      document.getElementById(
+        "c3Arc1Arrow"
+      );
+    
+    
+    c3Arc1Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c3Arc1Content
+            .classList
+            .toggle("open");
+    
+    
+        c3Arc1Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
 
     /* =========================
        OPEN / CLOSE CAMPAIGN 1
@@ -5622,6 +5729,44 @@
     
     
         campaign2Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       OPEN / CLOSE CAMPAIGN 3
+    ========================= */
+    
+    const campaign3Button =
+      document.getElementById(
+        "campaign3Button"
+      );
+    
+    const campaign3Content =
+      document.getElementById(
+        "campaign3Content"
+      );
+    
+    const campaign3Arrow =
+      document.getElementById(
+        "campaign3Arrow"
+      );
+    
+    
+    campaign3Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          campaign3Content
+            .classList
+            .toggle("open");
+    
+    
+        campaign3Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
