@@ -1918,6 +1918,42 @@
             ></div>
           </div>
 
+          <div class="campaign-time-stats">
+
+            <div class="campaign-time-stat">
+              <strong id="c3WatchedTime">
+                0h 0m
+              </strong>
+          
+              <span>
+                Watched
+              </span>
+            </div>
+          
+          
+            <div class="campaign-time-stat">
+              <strong id="c3RemainingTime">
+                0h 0m
+              </strong>
+          
+              <span>
+                Remaining
+              </span>
+            </div>
+          
+          
+            <div class="campaign-time-stat">
+              <strong id="c3TotalTime">
+                0h 0m
+              </strong>
+          
+              <span>
+                Total
+              </span>
+            </div>
+          
+          </div>
+
           <button
             class="arc-action-button"
             data-campaign="1"
@@ -3741,6 +3777,39 @@
         .textContent =
           formatWatchTime(
             campaign2Time.total
+          );
+
+      const campaign3Time =
+        getCampaignWatchTime(3);
+      
+      
+      document
+        .getElementById(
+          "c3WatchedTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign3Time.watched
+          );
+      
+      
+      document
+        .getElementById(
+          "c3RemainingTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign3Time.remaining
+          );
+      
+      
+      document
+        .getElementById(
+          "c3TotalTime"
+        )
+        .textContent =
+          formatWatchTime(
+            campaign3Time.total
           );
     
     }
