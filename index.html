@@ -6416,122 +6416,82 @@
 
 
     /* =========================
-       OPEN / CLOSE CAMPAIGN 1
-    ========================= */
-
-    const campaign1Button =
-      document.getElementById(
-        "campaign1Button"
-      );
-
-
-    const campaign1Content =
-      document.getElementById(
-        "campaign1Content"
-      );
-
-
-    const campaign1Arrow =
-      document.getElementById(
-        "campaign1Arrow"
-      );
-
-
-    campaign1Button.addEventListener(
-      "click",
-      () => {
-
-        const isOpen =
-          campaign1Content
-            .classList
-            .toggle("open");
-
-
-        campaign1Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-
-      }
-    );
-
-    /* =========================
-       OPEN / CLOSE CAMPAIGN 2
+      CAMPAIGN OPEN / CLOSE
     ========================= */
     
-    const campaign2Button =
-      document.getElementById(
-        "campaign2Button"
-      );
+    document
+      .querySelectorAll(
+        ".campaign-button"
+      )
+      .forEach(button => {
+    
+        const match =
+          button.id.match(
+            /^campaign(\d+)Button$/
+          );
     
     
-    const campaign2Content =
-      document.getElementById(
-        "campaign2Content"
-      );
+        if (!match) {
+          return;
+        }
     
     
-    const campaign2Arrow =
-      document.getElementById(
-        "campaign2Arrow"
-      );
+        const campaignNumber =
+          Number(
+            match[1]
+          );
     
     
-    campaign2Button.addEventListener(
-      "click",
-      () => {
+        const content =
+          document.getElementById(
+            `campaign${campaignNumber}Content`
+          );
     
-        const isOpen =
-          campaign2Content
-            .classList
-            .toggle("open");
-    
-    
-        campaign2Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       OPEN / CLOSE CAMPAIGN 3
-    ========================= */
-    
-    const campaign3Button =
-      document.getElementById(
-        "campaign3Button"
-      );
-    
-    const campaign3Content =
-      document.getElementById(
-        "campaign3Content"
-      );
-    
-    const campaign3Arrow =
-      document.getElementById(
-        "campaign3Arrow"
-      );
+        const arrow =
+          document.getElementById(
+            `campaign${campaignNumber}Arrow`
+          );
     
     
-    campaign3Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          campaign3Content
-            .classList
-            .toggle("open");
+        if (
+          !content ||
+          !arrow
+        ) {
+          return;
+        }
     
     
-        campaign3Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
+        button.setAttribute(
+          "aria-expanded",
+          "false"
+        );
     
-      }
-    );
+    
+        button.addEventListener(
+          "click",
+          () => {
+    
+            const isOpen =
+              content
+                .classList
+                .toggle("open");
+    
+    
+            arrow.textContent =
+              isOpen
+                ? "⌄"
+                : "›";
+    
+    
+            button.setAttribute(
+              "aria-expanded",
+              String(isOpen)
+            );
+    
+          }
+        );
+    
+      });
 
 
     /* =========================
