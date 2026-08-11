@@ -1196,6 +1196,27 @@
       font-size: 11px;
     }
 
+    .episode-description {
+      margin-top: 9px;
+    
+      color: var(--muted);
+    
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    
+    
+    .episode-duration {
+      margin-top: 9px;
+    
+      color: var(--accent);
+    
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
     /* =========================
        EPISODE WATCH BUTTON
     ========================= */
@@ -3683,44 +3704,91 @@
       ) === "true";
 
     function getEpisodeYouTubeLinks(episode) {
-    
+
       let directLink = null;
-
-
-      if (episode.campaign === 1) {
-      
+    
+    
+      /*
+        NEW SYSTEM:
+        Prefer a YouTube link stored
+        directly on the episode.
+      */
+    
+      if (episode.youtube) {
+    
+        directLink =
+          episode.youtube;
+    
+      }
+    
+    
+      /*
+        OLD SYSTEM FALLBACK:
+        Campaigns 1 and 2 can keep
+        using their existing databases.
+      */
+    
+      if (
+        !directLink &&
+        episode.campaign === 1
+      ) {
+    
         directLink =
           campaign1YouTubeLinks[
             episode.episode
           ];
-      
-      } else if (episode.campaign === 2) {
-
+    
+      }
+    
+    
+      if (
+        !directLink &&
+        episode.campaign === 2
+      ) {
+    
         directLink =
           campaign2YoutubeLinks[
             episode.episode
           ];
+    
       }
     
     
-      if (Array.isArray(directLink)) {
+      /*
+        Multipart episodes
+      */
+    
+      if (
+        Array.isArray(directLink)
+      ) {
     
         return directLink;
     
       }
     
     
+      /*
+        Normal direct VOD
+      */
+    
       if (directLink) {
     
         return [
           {
-            label: "Watch on YouTube",
-            url: directLink
+            label:
+              "Watch on YouTube",
+    
+            url:
+              directLink
           }
         ];
     
       }
     
+    
+      /*
+        Fallback YouTube search
+      */
     
       const searchText =
         `Critical Role Campaign ${episode.campaign} Episode ${episode.episode} ${episode.title}`;
@@ -3728,12 +3796,50 @@
     
       return [
         {
-          label: "Search on YouTube",
+          label:
+            "Search on YouTube",
+    
           url:
             "https://www.youtube.com/results?search_query=" +
-            encodeURIComponent(searchText)
+            encodeURIComponent(
+              searchText
+            )
         }
       ];
+    
+    }
+
+    function formatEpisodeDuration(
+      duration
+    ) {
+    
+      if (!duration) {
+        return "";
+      }
+    
+    
+      const parts =
+        duration.split(":");
+    
+    
+      if (parts.length !== 3) {
+        return duration;
+      }
+    
+    
+      const hours =
+        Number(parts[0]);
+    
+      const minutes =
+        Number(parts[1]);
+    
+    
+      return (
+        hours +
+        "h " +
+        minutes +
+        "m"
+      );
     
     }
 
@@ -3870,6 +3976,28 @@
             <div class="episode-name">
               ${episode.title}
             </div>
+
+            ${
+              episode.description
+                ? `
+                  <div class="episode-description">
+                    ${episode.description}
+                  </div>
+                `
+                : ""
+            }
+
+            ${
+              episode.duration
+                ? `
+                  <div class="episode-duration">
+                    ◷ ${formatEpisodeDuration(
+                      episode.duration
+                    )}
+                  </div>
+                `
+                : ""
+            }
     
             <div class="episode-note">
               Check the box to mark this episode watched.
