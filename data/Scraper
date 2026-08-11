@@ -8,7 +8,7 @@
   const ARC = 3;
 
   const START_EPISODE = 52;
-  const END_EPISODE = 64;
+  const END_EPISODE = 75;
 
 
   /* =========================
