@@ -2775,6 +2775,77 @@
       </div>
 
     </div>
+
+    <div class="arc">
+  
+      <button
+        class="arc-header"
+        id="c3Arc2Button"
+        type="button"
+      >
+    
+        <div>
+    
+          <div class="arc-label">
+            Arc II
+          </div>
+    
+          <div class="arc-name">
+            Ruidus Rising
+          </div>
+    
+          <div
+            class="arc-progress-text"
+            id="c3Arc2ProgressText"
+          >
+            0 / 28 watched
+          </div>
+    
+        </div>
+    
+        <div
+          class="arc-arrow"
+          id="c3Arc2Arrow"
+        >
+          ›
+        </div>
+    
+      </button>
+    
+    
+      <div
+        class="arc-content"
+        id="c3Arc2Content"
+      >
+    
+        <div class="arc-progress-bar">
+    
+          <div
+            class="arc-progress-fill"
+            id="c3Arc2ProgressFill"
+          ></div>
+    
+        </div>
+    
+    
+        <button
+          class="arc-action-button"
+          data-campaign="3"
+          data-arc="2"
+          type="button"
+        >
+          ✓ Mark Arc Watched
+        </button>
+    
+    
+        <div
+          class="episode-list"
+          id="campaign3Arc2Episodes"
+        ></div>
+    
+      </div>
+    
+    </div>
     
   </section>
 
@@ -3584,6 +3655,28 @@
     
     };
 
+    const c3Arc2Subchapters = {
+
+      24: {
+        chapter: "Chapter I",
+        name: "Hellcatch Valley",
+        range: "Episodes 24–33"
+      },
+    
+      34: {
+        chapter: "Chapter II",
+        name: "Dark Portents",
+        range: "Episodes 34–45"
+      },
+    
+      46: {
+        chapter: "Chapter III",
+        name: "The Coming Solstice",
+        range: "Episodes 46–51"
+      }
+    
+    };
+
     let hideWatched =
       localStorage.getItem(
         "criticalRoleHideWatched"
@@ -3705,6 +3798,11 @@
         document.getElementById(
           "campaign3Arc1Episodes"
         );
+
+      const c3Arc2List =
+        document.getElementById(
+          "campaign3Arc2Episodes"
+        );
     
     
       arc1List.innerHTML = "";
@@ -3719,6 +3817,7 @@
       c2Arc5List.innerHTML = "";
       c2Arc6List.innerHTML = "";
       c3Arc1List.innerHTML = "";
+      c3Arc2List.innerHTML = "";
     
     
       episodes.forEach(episode => {
@@ -4239,6 +4338,52 @@
         
         
           c3Arc1List.appendChild(card);
+        
+        } else if (
+          episode.campaign === 3 &&
+          episode.arc === 2
+        ) {
+        
+          const chapter =
+            c3Arc2Subchapters[
+              episode.episode
+            ];
+        
+        
+          if (chapter) {
+        
+            const divider =
+              document.createElement(
+                "div"
+              );
+        
+            divider.className =
+              "subchapter";
+        
+            divider.innerHTML = `
+        
+              <div class="subchapter-label">
+                ${chapter.chapter}
+              </div>
+        
+              <div class="subchapter-name">
+                ${chapter.name}
+              </div>
+        
+              <div class="subchapter-range">
+                ${chapter.range}
+              </div>
+        
+            `;
+        
+            c3Arc2List.appendChild(
+              divider
+            );
+        
+          }
+        
+        
+          c3Arc2List.appendChild(card);
         
         }
      });
@@ -4786,6 +4931,31 @@
           1,
           "c3Arc1ProgressText",
           "c3Arc1ProgressFill"
+        );
+      
+      }
+
+      const c3Arc2Text =
+        document.getElementById(
+          "c3Arc2ProgressText"
+        );
+      
+      const c3Arc2Fill =
+        document.getElementById(
+          "c3Arc2ProgressFill"
+        );
+      
+      
+      if (
+        c3Arc2Text &&
+        c3Arc2Fill
+      ) {
+      
+        updateArcProgressGeneric(
+          3,
+          2,
+          "c3Arc2ProgressText",
+          "c3Arc2ProgressFill"
         );
       
       }
@@ -5648,6 +5818,44 @@
     
     
         c3Arc1Arrow.textContent =
+          isOpen
+            ? "⌄"
+            : "›";
+    
+      }
+    );
+
+    /* =========================
+       C3 ARC 1 OPEN / CLOSE
+    ========================= */
+
+    const c3Arc2Button =
+      document.getElementById(
+        "c3Arc2Button"
+      );
+    
+    const c3Arc2Content =
+      document.getElementById(
+        "c3Arc2Content"
+      );
+    
+    const c3Arc2Arrow =
+      document.getElementById(
+        "c3Arc2Arrow"
+      );
+    
+    
+    c3Arc2Button.addEventListener(
+      "click",
+      () => {
+    
+        const isOpen =
+          c3Arc2Content
+            .classList
+            .toggle("open");
+    
+    
+        c3Arc2Arrow.textContent =
           isOpen
             ? "⌄"
             : "›";
