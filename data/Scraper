@@ -5,10 +5,10 @@
   ========================= */
 
   const CAMPAIGN = 3;
-  const ARC = 3;
+  const ARC = 4;
 
-  const START_EPISODE = 52;
-  const END_EPISODE = 75;
+  const START_EPISODE = 75;
+  const END_EPISODE = 98;
 
 
   /* =========================
