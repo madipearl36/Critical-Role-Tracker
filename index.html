@@ -5859,241 +5859,78 @@
 
     function updateAllArcProgress() {
 
-      updateArcProgressGeneric(
-        1,
-        1,
-        "arc1ProgressText",
-        "arc1ProgressFill"
-      );
+      document
+        .querySelectorAll(
+          ".arc-action-button"
+        )
+        .forEach(button => {
     
-      updateArcProgressGeneric(
-        1,
-        2,
-        "arc2ProgressText",
-        "arc2ProgressFill"
-      );
+          const campaignNumber =
+            Number(
+              button.dataset.campaign
+            );
     
-      updateArcProgressGeneric(
-        1,
-        3,
-        "arc3ProgressText",
-        "arc3ProgressFill"
-      );
-    
-      updateArcProgressGeneric(
-        1,
-        4,
-        "arc4ProgressText",
-        "arc4ProgressFill"
-      );
-    
-      updateArcProgressGeneric(
-        1,
-        5,
-        "arc5ProgressText",
-        "arc5ProgressFill"
-      );
+          const arcNumber =
+            Number(
+              button.dataset.arc
+            );
     
     
-      const c2Arc1Text =
-        document.getElementById(
-          "c2Arc1ProgressText"
-        );
-    
-      const c2Arc1Fill =
-        document.getElementById(
-          "c2Arc1ProgressFill"
-        );
+          let textId;
+          let fillId;
     
     
-      if (
-        c2Arc1Text &&
-        c2Arc1Fill
-      ) {
+          /*
+            Campaign 1 still uses the
+            older arc ID convention.
+          */
     
-        updateArcProgressGeneric(
-          2,
-          1,
-          "c2Arc1ProgressText",
-          "c2Arc1ProgressFill"
-        );
+          if (campaignNumber === 1) {
     
-      }
-
-      const c2Arc2Text =
-        document.getElementById(
-          "c2Arc2ProgressText"
-        );
-      
-      const c2Arc2Fill =
-        document.getElementById(
-          "c2Arc2ProgressFill"
-        );
-      
-      
-      if (
-        c2Arc2Text &&
-        c2Arc2Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          2,
-          2,
-          "c2Arc2ProgressText",
-          "c2Arc2ProgressFill"
-        );
-      
-      }
-
-      const c2Arc3Text =
-        document.getElementById(
-          "c2Arc3ProgressText"
-        );
-      
-      const c2Arc3Fill =
-        document.getElementById(
-          "c2Arc3ProgressFill"
-        );
-      
-      
-      if (
-        c2Arc3Text &&
-        c2Arc3Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          2,
-          3,
-          "c2Arc3ProgressText",
-          "c2Arc3ProgressFill"
-        );
-      
-      }
-
-      const c2Arc4Text =
-        document.getElementById(
-          "c2Arc4ProgressText"
-        );
-      
-      const c2Arc4Fill =
-        document.getElementById(
-          "c2Arc4ProgressFill"
-        );
-      
-      
-      if (
-        c2Arc4Text &&
-        c2Arc4Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          2,
-          4,
-          "c2Arc4ProgressText",
-          "c2Arc4ProgressFill"
-        );
-      
-      }
-
-      const c2Arc5Text =
-        document.getElementById(
-          "c2Arc5ProgressText"
-        );
-      
-      const c2Arc5Fill =
-        document.getElementById(
-          "c2Arc5ProgressFill"
-        );
-      
-      
-      if (
-        c2Arc5Text &&
-        c2Arc5Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          2,
-          5,
-          "c2Arc5ProgressText",
-          "c2Arc5ProgressFill"
-        );
-      
-      }
-
-      const c2Arc6Text =
-        document.getElementById(
-          "c2Arc6ProgressText"
-        );
-      
-      const c2Arc6Fill =
-        document.getElementById(
-          "c2Arc6ProgressFill"
-        );
-      
-      
-      if (
-        c2Arc6Text &&
-        c2Arc6Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          2,
-          6,
-          "c2Arc6ProgressText",
-          "c2Arc6ProgressFill"
-        );
-      
-      }
-
-      const c3Arc1Text =
-        document.getElementById(
-          "c3Arc1ProgressText"
-        );
-      
-      const c3Arc1Fill =
-        document.getElementById(
-          "c3Arc1ProgressFill"
-        );
-      
-      
-      if (
-        c3Arc1Text &&
-        c3Arc1Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          3,
-          1,
-          "c3Arc1ProgressText",
-          "c3Arc1ProgressFill"
-        );
-      
-      }
-
-      const c3Arc2Text =
-        document.getElementById(
-          "c3Arc2ProgressText"
-        );
-      
-      const c3Arc2Fill =
-        document.getElementById(
-          "c3Arc2ProgressFill"
-        );
-      
-      
-      if (
-        c3Arc2Text &&
-        c3Arc2Fill
-      ) {
-      
-        updateArcProgressGeneric(
-          3,
-          2,
-          "c3Arc2ProgressText",
-          "c3Arc2ProgressFill"
-        );
-      
-      }
+            textId =
+              `arc${arcNumber}ProgressText`;
+    
+            fillId =
+              `arc${arcNumber}ProgressFill`;
+    
+          } else {
+    
+            textId =
+              `c${campaignNumber}Arc${arcNumber}ProgressText`;
+    
+            fillId =
+              `c${campaignNumber}Arc${arcNumber}ProgressFill`;
+    
+          }
+    
+    
+          const textElement =
+            document.getElementById(
+              textId
+            );
+    
+          const fillElement =
+            document.getElementById(
+              fillId
+            );
+    
+    
+          if (
+            !textElement ||
+            !fillElement
+          ) {
+            return;
+          }
+    
+    
+          updateArcProgressGeneric(
+            campaignNumber,
+            arcNumber,
+            textId,
+            fillId
+          );
+    
+        });
     
     }
 
@@ -6454,54 +6291,54 @@
 
     function updateAllCampaignProgress() {
 
-      updateCampaignProgressGeneric(
-        1,
-        "c1ProgressText",
-        "c1ProgressFill"
+      const campaignNumbers =
+        [
+          ...new Set(
+            episodes.map(
+              episode =>
+                episode.campaign
+            )
+          )
+        ];
+    
+    
+      campaignNumbers.forEach(
+        campaignNumber => {
+    
+          const textId =
+            `c${campaignNumber}ProgressText`;
+    
+          const fillId =
+            `c${campaignNumber}ProgressFill`;
+    
+    
+          const textElement =
+            document.getElementById(
+              textId
+            );
+    
+          const fillElement =
+            document.getElementById(
+              fillId
+            );
+    
+    
+          if (
+            !textElement ||
+            !fillElement
+          ) {
+            return;
+          }
+    
+    
+          updateCampaignProgressGeneric(
+            campaignNumber,
+            textId,
+            fillId
+          );
+    
+        }
       );
-    
-    
-      const c2Text =
-        document.getElementById(
-          "c2ProgressText"
-        );
-    
-      const c2Fill =
-        document.getElementById(
-          "c2ProgressFill"
-        );
-    
-    
-      if (c2Text && c2Fill) {
-    
-        updateCampaignProgressGeneric(
-          2,
-          "c2ProgressText",
-          "c2ProgressFill"
-        );
-    
-      }
-
-      const c3Text =
-        document.getElementById(
-          "c3ProgressText"
-        );
-      
-      const c3Fill =
-        document.getElementById(
-          "c3ProgressFill"
-        );
-      
-      
-      if (c3Text && c3Fill) {
-      
-        updateCampaignProgressGeneric(
-          3,
-          "c3ProgressText",
-          "c3ProgressFill"
-        );
-      
-      }
     
     }
     
