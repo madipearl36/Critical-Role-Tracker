@@ -6344,504 +6344,75 @@
     
     
     /* =========================
-       ARC 1 OPEN / CLOSE
+       ARC OPEN / CLOSE
     ========================= */
     
-    const arc1Button =
-      document.getElementById(
-        "arc1Button"
-      );
+    document
+      .querySelectorAll(
+        ".arc-header"
+      )
+      .forEach(button => {
     
+        const arc =
+          button.closest(
+            ".arc"
+          );
     
-    const arc1Content =
-      document.getElementById(
-        "arc1Content"
-      );
+        if (!arc) {
+          return;
+        }
     
     
-    const arc1Arrow =
-      document.getElementById(
-        "arc1Arrow"
-      );
+        const content =
+          arc.querySelector(
+            ".arc-content"
+          );
     
+        const arrow =
+          button.querySelector(
+            ".arc-arrow"
+          );
     
-    arc1Button.addEventListener(
-      "click",
-      () => {
     
-        const isOpen =
-          arc1Content
-            .classList
-            .toggle("open");
+        if (
+          !content ||
+          !arrow
+        ) {
+          return;
+        }
     
     
-        arc1Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
+        button.setAttribute(
+          "aria-expanded",
+          "false"
+        );
     
-      }
-    );
     
-  
-    /* =========================
-       ARC 2 OPEN / CLOSE
-    ========================= */
+        button.addEventListener(
+          "click",
+          () => {
     
-    const arc2Button =
-      document.getElementById(
-        "arc2Button"
-      );
+            const isOpen =
+              content
+                .classList
+                .toggle("open");
     
     
-    const arc2Content =
-      document.getElementById(
-        "arc2Content"
-      );
+            arrow.textContent =
+              isOpen
+                ? "⌄"
+                : "›";
     
     
-    const arc2Arrow =
-      document.getElementById(
-        "arc2Arrow"
-      );
-    
-    
-    arc2Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          arc2Content
-            .classList
-            .toggle("open");
-    
-    
-        arc2Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-
-    /* =========================
-       ARC 3 OPEN / CLOSE
-    ========================= */
-
-    const arc3Button =
-      document.getElementById(
-        "arc3Button"
-      );
-    
-    
-    const arc3Content =
-      document.getElementById(
-        "arc3Content"
-      );
-    
-    
-    const arc3Arrow =
-      document.getElementById(
-        "arc3Arrow"
-      );
-    
-    
-    arc3Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          arc3Content
-            .classList
-            .toggle("open");
-    
-    
-        arc3Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       ARC 4 OPEN / CLOSE
-    ========================= */
-
-    const arc4Button =
-      document.getElementById(
-        "arc4Button"
-      );
-    
-    const arc4Content =
-      document.getElementById(
-        "arc4Content"
-      );
-    
-    const arc4Arrow =
-      document.getElementById(
-        "arc4Arrow"
-      );
-    
-    
-    arc4Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          arc4Content
-            .classList
-            .toggle("open");
-    
-        arc4Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       ARC 5 OPEN / CLOSE
-    ========================= */
-
-    const arc5Button =
-      document.getElementById(
-        "arc5Button"
-      );
-    
-    const arc5Content =
-      document.getElementById(
-        "arc5Content"
-      );
-    
-    const arc5Arrow =
-      document.getElementById(
-        "arc5Arrow"
-      );
-    
-    
-    arc5Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          arc5Content
-            .classList
-            .toggle("open");
-    
-        arc5Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 1 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc1Button =
-      document.getElementById(
-        "c2Arc1Button"
-      );
-    
-    const c2Arc1Content =
-      document.getElementById(
-        "c2Arc1Content"
-      );
-    
-    const c2Arc1Arrow =
-      document.getElementById(
-        "c2Arc1Arrow"
-      );
-    
-    
-    c2Arc1Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc1Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc1Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 2 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc2Button =
-      document.getElementById(
-        "c2Arc2Button"
-      );
-    
-    const c2Arc2Content =
-      document.getElementById(
-        "c2Arc2Content"
-      );
-    
-    const c2Arc2Arrow =
-      document.getElementById(
-        "c2Arc2Arrow"
-      );
-    
-    
-    c2Arc2Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc2Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc2Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 3 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc3Button =
-      document.getElementById(
-        "c2Arc3Button"
-      );
-    
-    const c2Arc3Content =
-      document.getElementById(
-        "c2Arc3Content"
-      );
-    
-    const c2Arc3Arrow =
-      document.getElementById(
-        "c2Arc3Arrow"
-      );
-    
-    
-    c2Arc3Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc3Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc3Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 4 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc4Button =
-      document.getElementById(
-        "c2Arc4Button"
-      );
-    
-    const c2Arc4Content =
-      document.getElementById(
-        "c2Arc4Content"
-      );
-    
-    const c2Arc4Arrow =
-      document.getElementById(
-        "c2Arc4Arrow"
-      );
-    
-    
-    c2Arc4Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc4Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc4Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 5 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc5Button =
-      document.getElementById(
-        "c2Arc5Button"
-      );
-    
-    const c2Arc5Content =
-      document.getElementById(
-        "c2Arc5Content"
-      );
-    
-    const c2Arc5Arrow =
-      document.getElementById(
-        "c2Arc5Arrow"
-      );
-    
-    
-    c2Arc5Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc5Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc5Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C2 ARC 6 OPEN / CLOSE
-    ========================= */
-
-    const c2Arc6Button =
-      document.getElementById(
-        "c2Arc6Button"
-      );
-    
-    const c2Arc6Content =
-      document.getElementById(
-        "c2Arc6Content"
-      );
-    
-    const c2Arc6Arrow =
-      document.getElementById(
-        "c2Arc6Arrow"
-      );
-    
-    
-    c2Arc6Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c2Arc6Content
-            .classList
-            .toggle("open");
-    
-    
-        c2Arc6Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C3 ARC 1 OPEN / CLOSE
-    ========================= */
-    
-    const c3Arc1Button =
-      document.getElementById(
-        "c3Arc1Button"
-      );
-    
-    const c3Arc1Content =
-      document.getElementById(
-        "c3Arc1Content"
-      );
-    
-    const c3Arc1Arrow =
-      document.getElementById(
-        "c3Arc1Arrow"
-      );
-    
-    
-    c3Arc1Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c3Arc1Content
-            .classList
-            .toggle("open");
-    
-    
-        c3Arc1Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
-
-    /* =========================
-       C3 ARC 1 OPEN / CLOSE
-    ========================= */
-
-    const c3Arc2Button =
-      document.getElementById(
-        "c3Arc2Button"
-      );
-    
-    const c3Arc2Content =
-      document.getElementById(
-        "c3Arc2Content"
-      );
-    
-    const c3Arc2Arrow =
-      document.getElementById(
-        "c3Arc2Arrow"
-      );
-    
-    
-    c3Arc2Button.addEventListener(
-      "click",
-      () => {
-    
-        const isOpen =
-          c3Arc2Content
-            .classList
-            .toggle("open");
-    
-    
-        c3Arc2Arrow.textContent =
-          isOpen
-            ? "⌄"
-            : "›";
-    
-      }
-    );
+            button.setAttribute(
+              "aria-expanded",
+              String(isOpen)
+            );
+    
+          }
+        );
+    
+      });
 
 
     /* =========================
