@@ -3712,105 +3712,77 @@
 
     function updateCampaignWatchTimes() {
 
-      const campaign1Time =
-        getCampaignWatchTime(1);
+      const campaignNumbers =
+        [
+          ...new Set(
+            episodes.map(
+              episode =>
+                episode.campaign
+            )
+          )
+        ];
     
     
-      document
-        .getElementById(
-          "c1WatchedTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign1Time.watched
-          );
+      campaignNumbers.forEach(
+        campaignNumber => {
+    
+          const watchedElement =
+            document.getElementById(
+              `c${campaignNumber}WatchedTime`
+            );
+    
+          const remainingElement =
+            document.getElementById(
+              `c${campaignNumber}RemainingTime`
+            );
+    
+          const totalElement =
+            document.getElementById(
+              `c${campaignNumber}TotalTime`
+            );
     
     
-      document
-        .getElementById(
-          "c1RemainingTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign1Time.remaining
-          );
+          /*
+            If a campaign doesn't have
+            time-stat HTML yet, skip it.
+          */
+    
+          if (
+            !watchedElement ||
+            !remainingElement ||
+            !totalElement
+          ) {
+    
+            return;
+    
+          }
     
     
-      document
-        .getElementById(
-          "c1TotalTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign1Time.total
-          );
+          const campaignTime =
+            getCampaignWatchTime(
+              campaignNumber
+            );
     
     
-      const campaign2Time =
-        getCampaignWatchTime(2);
+          watchedElement.textContent =
+            formatWatchTime(
+              campaignTime.watched
+            );
     
     
-      document
-        .getElementById(
-          "c2WatchedTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign2Time.watched
-          );
+          remainingElement.textContent =
+            formatWatchTime(
+              campaignTime.remaining
+            );
     
     
-      document
-        .getElementById(
-          "c2RemainingTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign2Time.remaining
-          );
+          totalElement.textContent =
+            formatWatchTime(
+              campaignTime.total
+            );
     
-    
-      document
-        .getElementById(
-          "c2TotalTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign2Time.total
-          );
-
-      const campaign3Time =
-        getCampaignWatchTime(3);
-      
-      
-      document
-        .getElementById(
-          "c3WatchedTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign3Time.watched
-          );
-      
-      
-      document
-        .getElementById(
-          "c3RemainingTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign3Time.remaining
-          );
-      
-      
-      document
-        .getElementById(
-          "c3TotalTime"
-        )
-        .textContent =
-          formatWatchTime(
-            campaign3Time.total
-          );
+        }
+      );
     
     }
 
