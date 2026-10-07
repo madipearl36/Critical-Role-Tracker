@@ -3373,6 +3373,7 @@
   <script src="data/campaign1.js"></script>
   <script src="data/campaign2.js"></script>
   <script src="data/campaign3.js"></script>
+  <script src="data/oneShots.js></script>
 
   <script>
 
@@ -3744,7 +3745,8 @@
 
       ...campaign1Episodes,
       ...campaign2Episodes,
-      ...campaign3Episodes
+      ...campaign3Episodes,
+      ...oneShots
     
     ];
 
@@ -4653,6 +4655,10 @@
         new Map();
     
     
+      /*
+        Normal campaign arcs
+      */
+    
       document
         .querySelectorAll(
           ".arc-action-button"
@@ -4694,6 +4700,61 @@
     
           const key =
             `${campaignNumber}-${arcNumber}`;
+    
+    
+          lists.set(
+            key,
+            episodeList
+          );
+    
+        });
+    
+    
+      /*
+        One-shot campaign groups
+      */
+    
+      document
+        .querySelectorAll(
+          ".oneshots-section .arc"
+        )
+        .forEach(arc => {
+    
+          const campaignMatch =
+            arc
+              .querySelector(
+                ".arc-header span"
+              )
+              ?.textContent
+              .match(
+                /Campaign\s+(\d+)/
+              );
+    
+    
+          if (!campaignMatch) {
+            return;
+          }
+    
+    
+          const campaignNumber =
+            Number(
+              campaignMatch[1]
+            );
+    
+    
+          const episodeList =
+            arc.querySelector(
+              ".episode-list"
+            );
+    
+    
+          if (!episodeList) {
+            return;
+          }
+    
+    
+          const key =
+            `oneshots-${campaignNumber}`;
     
     
           lists.set(
@@ -5078,7 +5139,9 @@
         ========================= */
   
         const key =
-          `${episode.campaign}-${episode.arc}`;
+          episode.type === "oneshot"
+            ? `oneshots-${episode.campaign}`
+            : `${episode.campaign}-${episode.arc}`;
   
   
         const list =
